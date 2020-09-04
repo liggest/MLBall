@@ -5,27 +5,51 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public Transform owner;
-    public float rotateSpeed = 10;
+    public float rotateSpeed = 360;
+    public float rotateRadius = 1.8f;
+
+    public float smoothTime = 0.3f;
+    Rigidbody rig;
+    Vector3 smoothVelocity = Vector3.zero;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rotateRadius = GetComponents<SphereCollider>()[1].radius + 0.6f;
+        Debug.Log(rotateRadius);
+        rig = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
         if (owner)
         {
+            float distance = Vector3.Distance(transform.localPosition, owner.localPosition);
+            if (distance > rotateRadius)
+            {
+                Debug.Log(distance);
+                transform.localPosition = Vector3.SmoothDamp(transform.localPosition, owner.localPosition, ref smoothVelocity, smoothTime, float.PositiveInfinity, Time.fixedDeltaTime);
+            }
+            else
+            {
+                transform.RotateAround(owner.localPosition, owner.up, rotateSpeed * Time.fixedDeltaTime);
+            }
             //transform.Rotate(owner.up + owner.position, rotateSpeed * Time.fixedDeltaTime, Space.Self);
-            transform.RotateAround(owner.position, owner.up, rotateSpeed * Time.fixedDeltaTime);
-            Debug.Log($"{ owner.position},{owner.up}");
+            
 
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            if (!other.transform.Equals(owner))
+            {
+                owner = other.transform;
+            }
+        }
     }
 }
