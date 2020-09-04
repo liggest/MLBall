@@ -108,11 +108,14 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             dir = new Vector2(shootX, shootY);
             Vector2 v2 = (dir - new Vector2(0.0f, 0.0f)).normalized;
             float angle = Mathf.Atan2(v2.y, v2.x) * Mathf.Rad2Deg;
-            angle = -angle + 90;
-            if (angle < 0)
-            {
-                angle += 360;
+            if (angle != 0){
+                angle = -angle + 90;
+                if (angle < 0)
+                {
+                    angle += 360;
+                }
             }
+   
             Debug.Log("角度" + angle);
             dirAngle = angle;
             ball.rotateDegree = dirAngle;
