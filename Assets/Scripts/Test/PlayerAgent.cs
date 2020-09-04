@@ -14,6 +14,10 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     Rigidbody rig;
     BehaviorParameters bp;
 
+    Vector2 dir; //右摇杆 xy 方向
+    float dirAngle; //右摇杆角度
+    float moveSpeed = 10.0f;
+
     private void Awake()
     {
         bp = GetComponent<BehaviorParameters>();
@@ -40,6 +44,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             Vector3 direction = Quaternion.AngleAxis(degree, transform.up) * transform.forward;
             Debug.DrawRay(transform.position, direction * maxDistance, Color.white);
         }
+
     }
 
     public override void OnEpisodeBegin()  // 每个周期开始时 重置场景
@@ -85,9 +90,24 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     {
         float moveX = vectorAction[0];
         float moveY = vectorAction[1];
+        Vector3 moveVector = new Vector3(moveX, 0, moveY);
 
         float shootX = vectorAction[2];
         float shootY = vectorAction[3];
+
+        rig.AddForce(moveVector * moveSpeed);
+
+        //右摇杆角度计算相关
+        dir = new Vector2(shootX, shootY);
+        Vector2 v2 = (dir - new Vector2(0.0f, 0.0f)).normalized;
+        float angle = Mathf.Atan2(v2.y, v2.x) * Mathf.Rad2Deg;
+        angle = -angle + 90;
+        if (angle < 0)
+        {
+            angle += 360;
+        }
+        Debug.Log(angle);
+        //右摇杆角度计算相关结束
 
         if (false)
         {
@@ -98,12 +118,13 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     public override void Heuristic(float[] actionsOut) // 手操
     {
-        actionsOut[0] = Input.GetAxis("Horizontal");
-        actionsOut[1] = Input.GetAxis("Vertical");
+        actionsOut[0] = Input.GetAxis("JoyL_Horizontal");
+        actionsOut[1] = Input.GetAxis("JoyL_Vertical");
 
-        actionsOut[2] = Input.GetAxis("Horizontal");
-        actionsOut[3] = Input.GetAxis("Vertical");
+        actionsOut[2] = Input.GetAxis("JoyR_Horizontal");
+        actionsOut[3] = Input.GetAxis("JoyR_Vertical");
 
     }
+
 
 }
