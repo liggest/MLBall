@@ -46,8 +46,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             Vector3 direction = Quaternion.AngleAxis(degree, transform.up) * transform.forward;
             Debug.DrawRay(transform.position, direction * maxDistance, Color.white);
         }
-        Vector3 dirDirection = Quaternion.AngleAxis(dirAngle, transform.up) * transform.forward;
-        Debug.DrawRay(transform.position, dirDirection * joyForce * 10, Color.red);
+        //Vector3 dirDirection = Quaternion.AngleAxis(dirAngle, transform.up) * transform.forward;
+        Debug.DrawRay(transform.position, transform.forward * joyForce * joyForceFactor, Color.red);
 
     }
 
@@ -106,8 +106,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         Vector3 rDir = new Vector3(shootX, 0, shootY);
         if (rDir != Vector3.zero)
         {
-            rDir = rDir.normalized;
-            transform.forward = rDir;
+            Vector3 nDir = rDir.normalized;
+            transform.forward = nDir;
         }
 
         if (ball.IsOwner(transform))
