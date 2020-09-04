@@ -130,7 +130,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             */
 
             //ball.rotateDegree = dirAngle;
-            joyForce = dir.magnitude;
+            joyForce = rDir.magnitude;
             //Debug.Log("力度" + joyForce);
             #endregion
             if (shoot == 1)
