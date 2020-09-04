@@ -99,7 +99,7 @@ public class Ball : MonoBehaviour
         force = force.normalized * power;
         Debug.Log(force);
         rig.AddForce(force,ForceMode.Impulse);
-        ownerRig.AddForce(-force, ForceMode.Impulse);
+        ownerRig.AddForce(-force*0.65f, ForceMode.Impulse);
         ResetOwner();
         //Debug.Log("射门！");
     }

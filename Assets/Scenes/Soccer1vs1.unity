@@ -983,7 +983,7 @@ MonoBehaviour:
   - 0
   - 45
   maxDistance: 10
-  joyForceFactor: 10
+  joyForceFactor: 30
 --- !u!114 &749402235
 MonoBehaviour:
   m_ObjectHideFlags: 0
