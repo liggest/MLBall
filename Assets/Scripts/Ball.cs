@@ -8,14 +8,14 @@ public class Ball : MonoBehaviour
     public float rotateSpeed = 360;
     public float rotateRadius = 1.8f;
     public float rotateDegree = 0;
-    public float safeRadius = 0.96f;
+    public float safeRadius = 1.8f;
 
-    public float smoothTime = 0.3f;
+    public float smoothTime = 0.05f;
     Rigidbody rig;
     Rigidbody ownerRig;
     Vector3 smoothVelocity = Vector3.zero;
 
-
+    Vector3 initPos = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +23,7 @@ public class Ball : MonoBehaviour
         rotateRadius = GetComponents<SphereCollider>()[1].radius + 0.6f;
         //Debug.Log(rotateRadius);
         rig = GetComponent<Rigidbody>();
+        initPos = transform.localPosition;
     }
 
     private void FixedUpdate()
@@ -31,7 +32,7 @@ public class Ball : MonoBehaviour
         {
             Vector3 onwerFront = owner.localPosition + owner.forward;
             float distance = Vector3.Distance(transform.localPosition, onwerFront);
-            if (distance > rotateRadius)
+            if (distance > safeRadius)
             {
                 ResetOwner();
                 //Debug.Log(distance);
@@ -101,5 +102,12 @@ public class Ball : MonoBehaviour
         ownerRig.AddForce(-force, ForceMode.Impulse);
         ResetOwner();
         //Debug.Log("射门！");
+    }
+
+    public void ResetBall()
+    {
+        ResetOwner();
+        rig.velocity = Vector3.zero;
+        transform.localPosition = initPos;
     }
 }

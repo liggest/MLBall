@@ -139,6 +139,10 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
                 ball.Shoot(joyForce * joyForceFactor);
             }
         }
+        else
+        {
+            joyForce = 0;
+        }
 
         if (false)
         {
