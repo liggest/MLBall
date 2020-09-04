@@ -8,9 +8,11 @@ public class Ball : MonoBehaviour
     public float rotateSpeed = 360;
     public float rotateRadius = 1.8f;
     public float rotateDegree = 0;
+    public float safeRadius = 0.96f;
 
     public float smoothTime = 0.3f;
     Rigidbody rig;
+    Rigidbody ownerRig;
     Vector3 smoothVelocity = Vector3.zero;
 
 
@@ -27,18 +29,21 @@ public class Ball : MonoBehaviour
     {
         if (owner)
         {
-            float distance = Vector3.Distance(transform.localPosition, owner.localPosition);
+            Vector3 onwerFront = owner.localPosition + owner.forward;
+            float distance = Vector3.Distance(transform.localPosition, onwerFront);
             if (distance > rotateRadius)
             {
+                ResetOwner();
                 //Debug.Log(distance);
-                transform.localPosition = Vector3.SmoothDamp(transform.localPosition, owner.localPosition, ref smoothVelocity, smoothTime, float.PositiveInfinity, Time.fixedDeltaTime);
+                //transform.localPosition = Vector3.SmoothDamp(transform.localPosition, onwerFront, ref smoothVelocity, smoothTime, float.PositiveInfinity, Time.fixedDeltaTime);
             }
             else
             {
-                RotateTo(rotateDegree, distance);
+                transform.localPosition = Vector3.SmoothDamp(transform.localPosition, onwerFront, ref smoothVelocity, smoothTime, float.PositiveInfinity, Time.fixedDeltaTime);
+
+                //RotateTo(rotateDegree, distance);
             }
             //transform.RotateAround(owner.localPosition, owner.up, rotateSpeed * Time.fixedDeltaTime);
-
 
         }
     }
@@ -49,14 +54,27 @@ public class Ball : MonoBehaviour
         {
             if (!IsOwner(other.transform))
             {
-                owner = other.transform;
+                SetOwner(other.transform);
             }
         }
     }
 
-    public bool IsOwner(Transform self)
+    public void SetOwner(Transform t)
     {
-        if (self.Equals(owner)) 
+        owner = t;
+        ownerRig = owner.GetComponent<Rigidbody>();
+        Debug.Log("Owner了");
+    }
+
+    public void ResetOwner()
+    {
+        owner = null;
+        ownerRig = null;
+        Debug.Log("Reset了");
+    }
+    public bool IsOwner(Transform t)
+    {
+        if (t.Equals(owner)) 
         {
             return true;
         }
@@ -73,9 +91,14 @@ public class Ball : MonoBehaviour
         transform.localPosition = owner.localPosition + ballpos * distance;
     }
 
-    public void Shoot(float degree,float power)
+    public void Shoot(float power)
     {
-        Debug.DrawRay(owner.position, Quaternion.AngleAxis(degree, owner.up) * owner.forward, Color.red, 1.5f);
-
+        Vector3 force = transform.localPosition - owner.localPosition;
+        force = force.normalized * power;
+        Debug.Log(force);
+        rig.AddForce(force);
+        ownerRig.AddForce(force);
+        ResetOwner();
+        //Debug.Log("射门！");
     }
 }

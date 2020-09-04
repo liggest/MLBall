@@ -17,6 +17,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     Vector2 dir; //右摇杆 xy 方向
     float dirAngle = 0; //右摇杆角度
     float joyForce = 0; //右摇杆力度
+    public float joyForceFactor = 100; // 力度的系数
     float moveSpeed = 10.0f;
 
     private void Awake()
@@ -116,15 +117,16 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
                 }
             }
    
-            Debug.Log("角度" + angle);
+            //Debug.Log("角度" + angle);
             dirAngle = angle;
-            ball.rotateDegree = dirAngle;
+
+            //ball.rotateDegree = dirAngle;
             joyForce = dir.magnitude;
             //Debug.Log("力度" + joyForce);
             #endregion
             if (shoot == 1)
             {
-                Debug.Log("射门！");
+                ball.Shoot(joyForce * joyForceFactor);
             }
         }
 
