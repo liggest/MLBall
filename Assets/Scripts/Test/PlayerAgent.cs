@@ -49,6 +49,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         //Vector3 dirDirection = Quaternion.AngleAxis(dirAngle, transform.up) * transform.forward;
         Debug.DrawRay(transform.position, transform.forward * joyForce * joyForceFactor, Color.red);
 
+
     }
 
     public override void OnEpisodeBegin()  // 每个周期开始时 重置场景
