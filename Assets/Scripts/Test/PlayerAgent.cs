@@ -7,7 +7,7 @@ using Unity.MLAgents.Policies;
 
 public class PlayerAgent : Agent // <- 注意这里是Agent
 {
-
+    public Ball ball;
     public float[] viewDegrees;
     public float maxDistance;
 

@@ -46,10 +46,25 @@ public class Ball : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (!other.transform.Equals(owner))
+            if (!IsOwner(other.transform))
             {
                 owner = other.transform;
             }
         }
+    }
+
+    public bool IsOwner(Transform self)
+    {
+        if( self.Equals(owner))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void Shoot(float degree,float power)
+    {
+        Debug.DrawRay(owner.transform.position, Quaternion.AngleAxis(degree, owner.transform.up) * owner.transform.forward, Color.red, 1.5f);
+
     }
 }
