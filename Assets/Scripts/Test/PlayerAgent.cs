@@ -96,6 +96,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         float shootX = vectorAction[2];
         float shootY = vectorAction[3];
 
+        float shoot = vectorAction[4];
+
         rig.AddForce(moveVector * moveSpeed);
 
         //右摇杆角度计算相关
@@ -112,6 +114,10 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         joyForce = dir.magnitude;
         Debug.Log("力度" + joyForce);
 
+        if(shoot == 1)
+        {
+            Debug.Log("射门！");
+        }
 
         if (false)
         {
@@ -128,7 +134,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         actionsOut[2] = Input.GetAxis("JoyR_Horizontal");
         actionsOut[3] = Input.GetAxis("JoyR_Vertical");
 
-  
+        actionsOut[4] = Input.GetAxis("Fire2");
+
 
     }
 
