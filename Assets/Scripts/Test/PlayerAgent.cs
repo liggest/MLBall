@@ -103,9 +103,17 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
         rig.AddForce(moveVector * moveSpeed);
 
+        Vector3 rDir = new Vector3(shootX, 0, shootY);
+        if (rDir != Vector3.zero)
+        {
+            rDir = rDir.normalized;
+            transform.forward = rDir;
+        }
+
         if (ball.IsOwner(transform))
         {
             #region 右摇杆角度计算相关
+            /*
             dir = new Vector2(shootX, shootY);
             Vector2 v2 = (dir - new Vector2(0.0f, 0.0f)).normalized;
             float angle = Mathf.Atan2(v2.y, v2.x) * Mathf.Rad2Deg;
@@ -116,9 +124,10 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
                     angle += 360;
                 }
             }
-   
+            
             //Debug.Log("角度" + angle);
             dirAngle = angle;
+            */
 
             //ball.rotateDegree = dirAngle;
             joyForce = dir.magnitude;
@@ -146,8 +155,6 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         actionsOut[3] = Input.GetAxis("JoyR_Vertical");
 
         actionsOut[4] = Input.GetAxis("Fire2");
-
-
     }
 
 
