@@ -16,6 +16,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     Vector2 dir; //右摇杆 xy 方向
     float dirAngle; //右摇杆角度
+    float joyForce; //右摇杆力度
     float moveSpeed = 10.0f;
 
     private void Awake()
@@ -106,8 +107,11 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         {
             angle += 360;
         }
-        Debug.Log(angle);
+        Debug.Log("角度"+angle);
         //右摇杆角度计算相关结束
+        joyForce = dir.magnitude;
+        Debug.Log("力度" + joyForce);
+
 
         if (false)
         {
@@ -121,14 +125,10 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         actionsOut[0] = Input.GetAxis("JoyL_Horizontal");
         actionsOut[1] = Input.GetAxis("JoyL_Vertical");
 
-        actionsOut[0] = Input.GetAxis("Horizontal");
-        actionsOut[1] = Input.GetAxis("Vertical");
-
         actionsOut[2] = Input.GetAxis("JoyR_Horizontal");
         actionsOut[3] = Input.GetAxis("JoyR_Vertical");
 
-        actionsOut[2] = Input.GetAxis("Mouse X");
-        actionsOut[3] = Input.GetAxis("Mouse Y");
+  
 
     }
 
