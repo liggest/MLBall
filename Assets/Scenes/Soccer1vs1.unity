@@ -262,6 +262,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   rotateSpeed: 360
   rotateRadius: 1.8
+  rotateDegree: 0
   smoothTime: 0.3
 --- !u!1 &239969958
 GameObject:
@@ -859,12 +860,12 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  ball: {fileID: 0}
+  ball: {fileID: 127401321}
   viewDegrees:
   - -45
   - 0
   - 45
-  maxDistance: 0
+  maxDistance: 10
 --- !u!114 &749402235
 MonoBehaviour:
   m_ObjectHideFlags: 0

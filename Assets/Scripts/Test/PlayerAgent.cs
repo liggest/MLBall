@@ -9,14 +9,14 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 {
     public Ball ball;
     public float[] viewDegrees;
-    public float maxDistance;
+    public float maxDistance = 10;
 
     Rigidbody rig;
     BehaviorParameters bp;
 
     Vector2 dir; //右摇杆 xy 方向
-    float dirAngle; //右摇杆角度
-    float joyForce; //右摇杆力度
+    float dirAngle = 0; //右摇杆角度
+    float joyForce = 0; //右摇杆力度
     float moveSpeed = 10.0f;
 
     private void Awake()
@@ -45,6 +45,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             Vector3 direction = Quaternion.AngleAxis(degree, transform.up) * transform.forward;
             Debug.DrawRay(transform.position, direction * maxDistance, Color.white);
         }
+        Vector3 dirDirection = Quaternion.AngleAxis(dirAngle, transform.up) * transform.forward;
+        Debug.DrawRay(transform.position, dirDirection * joyForce * 10, Color.red);
 
     }
 
@@ -100,23 +102,27 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
         rig.AddForce(moveVector * moveSpeed);
 
-        //右摇杆角度计算相关
-        dir = new Vector2(shootX, shootY);
-        Vector2 v2 = (dir - new Vector2(0.0f, 0.0f)).normalized;
-        float angle = Mathf.Atan2(v2.y, v2.x) * Mathf.Rad2Deg;
-        angle = -angle + 90;
-        if (angle < 0)
+        if (ball.IsOwner(transform))
         {
-            angle += 360;
-        }
-        Debug.Log("角度"+angle);
-        //右摇杆角度计算相关结束
-        joyForce = dir.magnitude;
-        Debug.Log("力度" + joyForce);
-
-        if(shoot == 1)
-        {
-            Debug.Log("射门！");
+            #region 右摇杆角度计算相关
+            dir = new Vector2(shootX, shootY);
+            Vector2 v2 = (dir - new Vector2(0.0f, 0.0f)).normalized;
+            float angle = Mathf.Atan2(v2.y, v2.x) * Mathf.Rad2Deg;
+            angle = -angle + 90;
+            if (angle < 0)
+            {
+                angle += 360;
+            }
+            Debug.Log("角度" + angle);
+            dirAngle = angle;
+            ball.rotateDegree = dirAngle;
+            joyForce = dir.magnitude;
+            //Debug.Log("力度" + joyForce);
+            #endregion
+            if (shoot == 1)
+            {
+                Debug.Log("射门！");
+            }
         }
 
         if (false)
