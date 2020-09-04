@@ -94,10 +94,11 @@ public class Ball : MonoBehaviour
     public void Shoot(float power)
     {
         Vector3 force = transform.localPosition - owner.localPosition;
+        force.y = 0;
         force = force.normalized * power;
         Debug.Log(force);
-        rig.AddForce(force);
-        ownerRig.AddForce(force);
+        rig.AddForce(force,ForceMode.Impulse);
+        ownerRig.AddForce(-force, ForceMode.Impulse);
         ResetOwner();
         //Debug.Log("射门！");
     }

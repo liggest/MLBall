@@ -17,7 +17,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     Vector2 dir; //右摇杆 xy 方向
     float dirAngle = 0; //右摇杆角度
     float joyForce = 0; //右摇杆力度
-    public float joyForceFactor = 100; // 力度的系数
+    public float joyForceFactor = 10; // 力度的系数
     float moveSpeed = 10.0f;
 
     private void Awake()
