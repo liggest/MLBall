@@ -121,8 +121,14 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         actionsOut[0] = Input.GetAxis("JoyL_Horizontal");
         actionsOut[1] = Input.GetAxis("JoyL_Vertical");
 
+        actionsOut[0] = Input.GetAxis("Horizontal");
+        actionsOut[1] = Input.GetAxis("Vertical");
+
         actionsOut[2] = Input.GetAxis("JoyR_Horizontal");
         actionsOut[3] = Input.GetAxis("JoyR_Vertical");
+
+        actionsOut[2] = Input.GetAxis("Mouse X");
+        actionsOut[3] = Input.GetAxis("Mouse Y");
 
     }
 
