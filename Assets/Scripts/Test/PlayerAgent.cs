@@ -7,12 +7,13 @@ using Unity.MLAgents.Policies;
 
 public class PlayerAgent : Agent // <- 注意这里是Agent
 {
-    public Ball ball;
+    //public Ball ball;
     public float[] viewDegrees;
     public float maxDistance = 10;
 
     Rigidbody rig;
     BehaviorParameters bp;
+    StageManager sm;
 
     Vector2 dir; //右摇杆 xy 方向
     float dirAngle = 0; //右摇杆角度
@@ -37,6 +38,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     void Start()
     {
         rig = GetComponent<Rigidbody>();
+        sm = Utils.GetStage(transform);
     }
 
     private void FixedUpdate()
@@ -111,7 +113,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             transform.forward = nDir;
         }
 
-        if (ball.IsOwner(transform))
+        if (sm.ball.IsOwner(transform))
         {
             #region 右摇杆角度计算相关
             /*
@@ -136,7 +138,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             #endregion
             if (shoot == 1)
             {
-                ball.Shoot(joyForce * joyForceFactor);
+                sm.ball.Shoot(joyForce * joyForceFactor);
             }
         }
         else
