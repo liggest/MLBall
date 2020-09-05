@@ -102,6 +102,14 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         float shootX = vectorAction[2];
         float shootY = vectorAction[3];
 
+        //鼠标控制
+        Vector3 v3 = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = v3.z;
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        shootX = worldPos.x * 0.1f;
+        shootY = worldPos.z * 0.1f;
+
         float shoot = vectorAction[4];
 
         rig.AddForce(moveVector * moveSpeed);
@@ -145,6 +153,9 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         {
             joyForce = 0;
         }
+
+
+
 
         if (false)
         {
