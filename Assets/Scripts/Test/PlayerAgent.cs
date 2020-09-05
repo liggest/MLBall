@@ -22,6 +22,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     public float joyForceFactor = 10; // 力度的系数
     public float moveSpeed = 10.0f;
 
+    Vector3 initPos = Vector3.zero;
+
     private void Awake()
     {
         bp = GetComponent<BehaviorParameters>();
@@ -39,6 +41,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     void Start()
     {
         rig = GetComponent<Rigidbody>();
+        initPos = transform.localPosition;
         sm = Utils.GetStage(transform);
     }
 
@@ -146,7 +149,10 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             joyForce = 0;
         }
 
-
+        if (transform.localPosition.y < -2)
+        {
+            InitPlayer();
+        }
 
 
         if (false)
@@ -188,5 +194,12 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     public void ResetBall()
     {
         currentBall = null;
+    }
+
+    public void InitPlayer()
+    {
+        ResetBall();
+        rig.velocity = Vector3.zero;
+        transform.position = initPos;
     }
 }
