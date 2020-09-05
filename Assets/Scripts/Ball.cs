@@ -18,6 +18,8 @@ public class Ball : MonoBehaviour
 
     Vector3 initPos = Vector3.zero;
 
+    public PlayerAgent lastPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +69,22 @@ public class Ball : MonoBehaviour
                 SetOwner(target);
             }
         }
+        else if(other.CompareTag("Wall"))
+        {
+            ResetOwner();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (!IsOwner(other.transform))
+            {
+                PlayerAgent target = other.GetComponent<PlayerAgent>();
+                SetOwner(target);
+            }
+        }
     }
 
     public void SetOwner(PlayerAgent pa)
@@ -79,6 +97,7 @@ public class Ball : MonoBehaviour
 
     public void ResetOwner()
     {
+        lastPlayer = owner;
         if (owner)
         {
             owner.ResetBall();
@@ -90,6 +109,15 @@ public class Ball : MonoBehaviour
     public bool IsOwner(PlayerAgent pa)
     {
         if (pa.Equals(owner))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool IsOwner(Transform t)
+    {
+        if (owner && t.Equals(owner.transform))
         {
             return true;
         }

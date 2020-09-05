@@ -41,9 +41,6 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             bp.BrainParameters.VectorObservationSize = actualSize;
             Debug.Log("正在观测的参数数量与设置中不符，已改正");
         }
-
-        sm = Utils.GetStage(transform);
-
     }
 
     // Start is called before the first frame update
@@ -51,11 +48,14 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     {
         rig = GetComponent<Rigidbody>();
 
+        sm = Utils.GetStage(transform);
+
+        AddTeam();
         teamName = GlobalManager.instance.GetTeamName(teamID);
         teamColor = GlobalManager.instance.GetTeamColor(teamID);
         teamHatColor = GlobalManager.instance.GetTeamColor(teamID, true);
         mr = GetComponent<MeshRenderer>();
-        hatMR = GetComponentInChildren<MeshRenderer>();
+        hatMR = transform.GetChild(0).GetComponent<MeshRenderer>();
         mr.material.color = teamColor;
         hatMR.material.color = teamHatColor;
 
@@ -189,7 +189,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         actionsOut[2] = Input.GetAxis("JoyR_Horizontal");
         actionsOut[3] = Input.GetAxis("JoyR_Vertical");
 
-        if(JoyName.Length > 0 && JoyName[0].Length == 0)
+        if(JoyName.Length == 0 || JoyName[0].Length == 0)
         {
             //鼠标控制
             Vector3 v3 = Camera.main.WorldToScreenPoint(transform.position);
@@ -222,8 +222,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     public void AddTeam()
     {
-        List<PlayerAgent> teamList;
-        if(sm.teams.TryGetValue(teamName,out teamList))
+        if(sm.teams.TryGetValue(teamName,out List<PlayerAgent> teamList))
         {
             teamList.Add(this);
         }
@@ -235,7 +234,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         }
     }
 
-    public bool isTeammate(PlayerAgent pa)
+    public bool IsTeammate(PlayerAgent pa)
     {
         return sm.teams[teamName].Contains(pa);
     }

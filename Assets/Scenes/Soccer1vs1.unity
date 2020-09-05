@@ -982,9 +982,6 @@ MonoBehaviour:
   joyForceFactor: 30
   moveSpeed: 10
   teamID: -1
-  teamName: "\u7164"
-  teamColor: {r: 0, g: 0, b: 0, a: 1}
-  teamHatColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &749402235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1724,6 +1721,10 @@ MonoBehaviour:
   - {r: 0.8352941, g: 0.8352941, b: 0.8352941, a: 0}
   - {r: 0.32941177, g: 0.40392157, b: 0, a: 0}
   - {r: 0.5529412, g: 0, b: 0.6784314, a: 0}
+  - {r: 0.5529412, g: 0, b: 0.6784314, a: 0}
+  defaultTeamName: "\u7164"
+  defaultTeamColor: {r: 0, g: 0, b: 0, a: 1}
+  defaultTeamHatColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!4 &1499055052
 Transform:
   m_ObjectHideFlags: 0
@@ -1994,27 +1995,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balls: []
-  teamNames:
-  - "\u8D64\u6F6E"
-  - "\u6DF1\u84DD"
-  - "\u8471"
-  - "\u91D1\u94F6"
-  - "\u5730\u5934\u86C7"
-  - "\u6BD2\u8725\u8734"
-  teamColors:
-  - {r: 1, g: 0.24056602, b: 0.24056602, a: 0}
-  - {r: 0.2610388, g: 0, b: 0.8301887, a: 0}
-  - {r: 0.6442338, g: 1, b: 0.4481132, a: 0}
-  - {r: 0.9622642, g: 0.9371679, b: 0.16794233, a: 0}
-  - {r: 0.4056604, g: 0.21660213, b: 0, a: 0}
-  - {r: 0.7075472, g: 0, b: 0.40444744, a: 0}
-  teamHatColors:
-  - {r: 1, g: 0, b: 0.30296707, a: 0}
-  - {r: 0.007653452, g: 0, b: 0.41509432, a: 0}
-  - {r: 0.84830457, g: 1, b: 0.3726415, a: 0}
-  - {r: 0.835, g: 0.835, b: 0.835, a: 0}
-  - {r: 0.32806775, g: 0.4056604, b: 0, a: 0}
-  - {r: 0.5534272, g: 0, b: 0.6792453, a: 0}
 --- !u!1 &1967990710
 GameObject:
   m_ObjectHideFlags: 0
