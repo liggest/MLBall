@@ -22,8 +22,14 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     public float joyForceFactor = 10; // 力度的系数
     public float moveSpeed = 10.0f;
 
-    Vector3 initPos = Vector3.zero;
+    public int teamID = -1;
+    string teamName = "煤";
+    Color teamColor = Color.black;
+    Color teamHatColor = Color.gray;
+    MeshRenderer mr;
+    MeshRenderer hatMR;
 
+    Vector3 initPos = Vector3.zero;
     private void Awake()
     {
         bp = GetComponent<BehaviorParameters>();
@@ -35,14 +41,25 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             bp.BrainParameters.VectorObservationSize = actualSize;
             Debug.Log("正在观测的参数数量与设置中不符，已改正");
         }
+
+        sm = Utils.GetStage(transform);
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody>();
+
+        teamName = GlobalManager.instance.GetTeamName(teamID);
+        teamColor = GlobalManager.instance.GetTeamColor(teamID);
+        teamHatColor = GlobalManager.instance.GetTeamColor(teamID, true);
+        mr = GetComponent<MeshRenderer>();
+        hatMR = GetComponentInChildren<MeshRenderer>();
+        mr.material.color = teamColor;
+        hatMR.material.color = teamHatColor;
+
         initPos = transform.localPosition;
-        sm = Utils.GetStage(transform);
     }
 
     private void FixedUpdate()
@@ -201,5 +218,25 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         ResetBall();
         rig.velocity = Vector3.zero;
         transform.position = initPos;
+    }
+
+    public void AddTeam()
+    {
+        List<PlayerAgent> teamList;
+        if(sm.teams.TryGetValue(teamName,out teamList))
+        {
+            teamList.Add(this);
+        }
+        else
+        {
+            teamList = new List<PlayerAgent>();
+            teamList.Add(this);
+            sm.teams.Add(teamName, teamList);
+        }
+    }
+
+    public bool isTeammate(PlayerAgent pa)
+    {
+        return sm.teams[teamName].Contains(pa);
     }
 }

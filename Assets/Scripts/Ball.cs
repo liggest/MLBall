@@ -50,6 +50,11 @@ public class Ball : MonoBehaviour
             }
 
         }
+
+        if (transform.localPosition.y < -2)
+        {
+            InitBall();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
