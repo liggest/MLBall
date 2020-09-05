@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
     //public float rotateRadius = 1.8f;
     //public float rotateDegree = 0;
     public float safeRadius = 2.8f;
+    public float ballDistance = 2;
 
     public float smoothTime = 0.05f;
     Rigidbody rig;
@@ -30,8 +31,9 @@ public class Ball : MonoBehaviour
     {
         if (owner)
         {
-            Vector3 onwerFront = owner.transform.localPosition + owner.transform.forward;
-            float distance = Vector3.Distance(transform.localPosition, onwerFront);
+            Vector3 ownerFront = owner.transform.localPosition + owner.transform.forward * ballDistance;
+            ownerFront.y = 0;
+            float distance = Vector3.Distance(transform.localPosition, ownerFront);
             if (distance > safeRadius)
             {
                 ResetOwner();
@@ -40,7 +42,7 @@ public class Ball : MonoBehaviour
             }
             else
             {
-                transform.localPosition = Vector3.SmoothDamp(transform.localPosition, onwerFront, ref smoothVelocity, smoothTime, float.PositiveInfinity, Time.fixedDeltaTime);
+                transform.localPosition = Vector3.SmoothDamp(transform.localPosition, ownerFront, ref smoothVelocity, smoothTime, float.PositiveInfinity, Time.fixedDeltaTime);
 
                 //RotateTo(rotateDegree, distance);
             }
@@ -64,12 +66,14 @@ public class Ball : MonoBehaviour
     public void SetOwner(PlayerAgent pa)
     {
         owner = pa;
+        pa.SetBall(this);
         //ownerRig = owner.GetComponent<Rigidbody>();
         Debug.Log("Owner了");
     }
 
     public void ResetOwner()
     {
+        owner.ResetBall();
         owner = null;
         //ownerRig = null;
         Debug.Log("Reset了");
@@ -106,7 +110,7 @@ public class Ball : MonoBehaviour
         //Debug.Log("射门！");
     }
 
-    public void ResetBall()
+    public void InitBall()
     {
         ResetOwner();
         rig.velocity = Vector3.zero;

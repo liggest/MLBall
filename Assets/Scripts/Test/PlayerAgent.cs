@@ -182,4 +182,9 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     {
         currentBall = b;
     }
+
+    public void ResetBall()
+    {
+        currentBall = null;
+    }
 }
