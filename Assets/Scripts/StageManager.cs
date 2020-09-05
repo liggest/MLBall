@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    public Ball ball;
+    public List<Ball> balls = new List<Ball>();
 
     private void Awake()
     {

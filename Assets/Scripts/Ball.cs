@@ -10,8 +10,8 @@ public class Ball : MonoBehaviour
     //public float rotateDegree = 0;
     public float safeRadius = 2.8f;
     public float ballDistance = 2;
-
     public float smoothTime = 0.05f;
+
     Rigidbody rig;
     //Rigidbody ownerRig;
     Vector3 smoothVelocity = Vector3.zero;
@@ -25,6 +25,7 @@ public class Ball : MonoBehaviour
         //Debug.Log(rotateRadius);
         rig = GetComponent<Rigidbody>();
         initPos = transform.localPosition;
+        Utils.GetStage(transform).balls.Add(this);
     }
 
     private void FixedUpdate()
