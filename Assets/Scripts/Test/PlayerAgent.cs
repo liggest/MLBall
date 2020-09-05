@@ -106,8 +106,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = v3.z;
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-        shootX = worldPos.x * 0.1f;
-        shootY = worldPos.z * 0.1f;
+        shootX = (worldPos.x - transform.localPosition.x) * 0.1f;
+        shootY = (worldPos.z - transform.localPosition.z) * 0.1f;
 
         float shoot = vectorAction[4];
 
