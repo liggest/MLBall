@@ -260,10 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  rotateSpeed: 360
-  rotateRadius: 1.8
-  rotateDegree: 0
-  safeRadius: 1.8
+  safeRadius: 2.8
   smoothTime: 0.05
 --- !u!1 &239969958
 GameObject:
@@ -415,7 +412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102feeb7af8c98e4cb7eae91244c928a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 127401321}
 --- !u!1 &379463866
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +469,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102feeb7af8c98e4cb7eae91244c928a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 127401321}
 --- !u!1 &551948310
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,8 +976,10 @@ MonoBehaviour:
   - -45
   - 0
   - 45
-  maxDistance: 10
+  maxViewDistance: 10
+  rig: {fileID: 749402233}
   joyForceFactor: 30
+  moveSpeed: 10
 --- !u!114 &749402235
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public Transform owner;
-    public float rotateSpeed = 360;
-    public float rotateRadius = 1.8f;
-    public float rotateDegree = 0;
-    public float safeRadius = 1.8f;
+    public PlayerAgent owner;
+    //public float rotateSpeed = 360;
+    //public float rotateRadius = 1.8f;
+    //public float rotateDegree = 0;
+    public float safeRadius = 2.8f;
 
     public float smoothTime = 0.05f;
     Rigidbody rig;
-    Rigidbody ownerRig;
+    //Rigidbody ownerRig;
     Vector3 smoothVelocity = Vector3.zero;
 
     Vector3 initPos = Vector3.zero;
@@ -20,7 +20,7 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rotateRadius = GetComponents<SphereCollider>()[1].radius + 0.6f;
+        //rotateRadius = GetComponents<SphereCollider>()[1].radius + 0.6f;
         //Debug.Log(rotateRadius);
         rig = GetComponent<Rigidbody>();
         initPos = transform.localPosition;
@@ -30,7 +30,7 @@ public class Ball : MonoBehaviour
     {
         if (owner)
         {
-            Vector3 onwerFront = owner.localPosition + owner.forward;
+            Vector3 onwerFront = owner.transform.localPosition + owner.transform.forward;
             float distance = Vector3.Distance(transform.localPosition, onwerFront);
             if (distance > safeRadius)
             {
@@ -53,29 +53,30 @@ public class Ball : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (!IsOwner(other.transform))
+            PlayerAgent target = other.GetComponent<PlayerAgent>();
+            if (!IsOwner(target))
             {
-                SetOwner(other.transform);
+                SetOwner(target);
             }
         }
     }
 
-    public void SetOwner(Transform t)
+    public void SetOwner(PlayerAgent pa)
     {
-        owner = t;
-        ownerRig = owner.GetComponent<Rigidbody>();
+        owner = pa;
+        //ownerRig = owner.GetComponent<Rigidbody>();
         Debug.Log("Owner了");
     }
 
     public void ResetOwner()
     {
         owner = null;
-        ownerRig = null;
+        //ownerRig = null;
         Debug.Log("Reset了");
     }
-    public bool IsOwner(Transform t)
+    public bool IsOwner(PlayerAgent pa)
     {
-        if (t.Equals(owner)) 
+        if (pa.Equals(owner))
         {
             return true;
         }
@@ -84,22 +85,23 @@ public class Ball : MonoBehaviour
 
     public void RotateTo(float degree, float distance = -1)
     {
-        Vector3 ballpos = Quaternion.AngleAxis(degree, owner.up) * owner.forward;
+        Vector3 ballpos = Quaternion.AngleAxis(degree, owner.transform.up) * owner.transform.forward;
         if (distance < 0)
         {
-            distance = Vector3.Distance(transform.localPosition, owner.localPosition);
+            distance = Vector3.Distance(transform.localPosition, owner.transform.localPosition);
         }
-        transform.localPosition = owner.localPosition + ballpos * distance;
+        transform.localPosition = owner.transform.localPosition + ballpos * distance;
     }
 
     public void Shoot(float power)
     {
-        Vector3 force = transform.localPosition - owner.localPosition;
+        Vector3 force = transform.localPosition - owner.transform.localPosition;
         force.y = 0;
         force = force.normalized * power;
         Debug.Log(force);
         rig.AddForce(force,ForceMode.Impulse);
-        ownerRig.AddForce(-force*0.65f, ForceMode.Impulse);
+        //owner.rig.AddForce(-force*0.65f, ForceMode.Impulse);
+        owner.rig.AddForce(-force, ForceMode.Impulse);
         ResetOwner();
         //Debug.Log("射门！");
     }

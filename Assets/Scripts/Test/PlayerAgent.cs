@@ -9,17 +9,18 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 {
     //public Ball ball;
     public float[] viewDegrees;
-    public float maxDistance = 10;
+    public float maxViewDistance = 10;
 
-    Rigidbody rig;
+    public Rigidbody rig;
     BehaviorParameters bp;
     StageManager sm;
+    Ball currentBall;
 
     Vector2 dir; //右摇杆 xy 方向
-    float dirAngle = 0; //右摇杆角度
+    //float dirAngle = 0; //右摇杆角度
     float joyForce = 0; //右摇杆力度
     public float joyForceFactor = 10; // 力度的系数
-    float moveSpeed = 10.0f;
+    public float moveSpeed = 10.0f;
 
     private void Awake()
     {
@@ -46,12 +47,10 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         foreach (float degree in viewDegrees)
         {
             Vector3 direction = Quaternion.AngleAxis(degree, transform.up) * transform.forward;
-            Debug.DrawRay(transform.position, direction * maxDistance, Color.white);
+            Debug.DrawRay(transform.position, direction * maxViewDistance, Color.white);
         }
         //Vector3 dirDirection = Quaternion.AngleAxis(dirAngle, transform.up) * transform.forward;
         Debug.DrawRay(transform.position, transform.forward * joyForce * joyForceFactor, Color.red);
-
-
     }
 
     public override void OnEpisodeBegin()  // 每个周期开始时 重置场景
@@ -71,7 +70,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             int hitType = -1;
             Vector3 hitPos = Vector3.zero;
             Vector3 direction = Quaternion.AngleAxis(degree, transform.up) * transform.forward;
-            if (Physics.Raycast(transform.localPosition, direction, out RaycastHit info, maxDistance)) 
+            if (Physics.Raycast(transform.localPosition, direction, out RaycastHit info, maxViewDistance)) 
             {   
                 if (info.collider.CompareTag("Player"))
                 {
@@ -102,6 +101,14 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         float shootX = vectorAction[2];
         float shootY = vectorAction[3];
 
+        //鼠标控制
+        Vector3 v3 = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = v3.z;
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        shootX = worldPos.x * 0.1f;
+        shootY = worldPos.z * 0.1f;
+
         float shoot = vectorAction[4];
 
         rig.AddForce(moveVector * moveSpeed);
@@ -113,7 +120,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             transform.forward = nDir;
         }
 
-        if (sm.ball.IsOwner(transform))
+        if (currentBall && currentBall.IsOwner(this))
         {
             #region 右摇杆角度计算相关
             /*
@@ -138,13 +145,17 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             #endregion
             if (shoot == 1)
             {
-                sm.ball.Shoot(joyForce * joyForceFactor);
+                //sm.ball.Shoot(joyForce * joyForceFactor);
+                currentBall.Shoot(joyForce * joyForceFactor);
             }
         }
         else
         {
             joyForce = 0;
         }
+
+
+
 
         if (false)
         {
@@ -164,5 +175,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         actionsOut[4] = Input.GetAxis("Fire2");
     }
 
-
+    public void SetBall(Ball b)
+    {
+        currentBall = b;
+    }
 }
