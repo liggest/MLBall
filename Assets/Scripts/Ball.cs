@@ -37,17 +37,17 @@ public class Ball : MonoBehaviour
             float distance = Vector3.Distance(transform.localPosition, ownerFront);
             if (distance > safeRadius)
             {
-                ResetOwner();
+                //ResetOwner();
                 //Debug.Log(distance);
                 //transform.localPosition = Vector3.SmoothDamp(transform.localPosition, onwerFront, ref smoothVelocity, smoothTime, float.PositiveInfinity, Time.fixedDeltaTime);
+                transform.RotateAround(owner.transform.localPosition, owner.transform.up, 100);
             }
             else
             {
                 transform.localPosition = Vector3.SmoothDamp(transform.localPosition, ownerFront, ref smoothVelocity, smoothTime, float.PositiveInfinity, Time.fixedDeltaTime);
 
-                //RotateTo(rotateDegree, distance);
+            //RotateTo(rotateDegree, distance);
             }
-            //transform.RotateAround(owner.localPosition, owner.up, rotateSpeed * Time.fixedDeltaTime);
 
         }
     }
