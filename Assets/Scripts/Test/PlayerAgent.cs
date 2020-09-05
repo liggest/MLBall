@@ -101,14 +101,6 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         float shootX = vectorAction[2];
         float shootY = vectorAction[3];
 
-        //鼠标控制
-        Vector3 v3 = Camera.main.WorldToScreenPoint(transform.position);
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = v3.z;
-        Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-        shootX = (worldPos.x - transform.localPosition.x) * 0.1f;
-        shootY = (worldPos.z - transform.localPosition.z) * 0.1f;
-
         float shoot = vectorAction[4];
 
         rig.AddForce(moveVector * moveSpeed);
@@ -171,6 +163,17 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
         actionsOut[2] = Input.GetAxis("JoyR_Horizontal");
         actionsOut[3] = Input.GetAxis("JoyR_Vertical");
+
+        if(actionsOut[2]==0 && actionsOut[3] == 0)
+        {
+            //鼠标控制
+            Vector3 v3 = Camera.main.WorldToScreenPoint(transform.position);
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = v3.z;
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+            actionsOut[2] = (worldPos.x - transform.localPosition.x) * 0.1f;
+            actionsOut[3] = (worldPos.z - transform.localPosition.z) * 0.1f;
+        }
 
         actionsOut[4] = Input.GetAxis("Fire2");
     }
