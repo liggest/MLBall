@@ -166,7 +166,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         actionsOut[2] = Input.GetAxis("JoyR_Horizontal");
         actionsOut[3] = Input.GetAxis("JoyR_Vertical");
 
-        if(JoyName[0].Length == 0)
+        if(JoyName.Length > 0 && JoyName[0].Length == 0)
         {
             //鼠标控制
             Vector3 v3 = Camera.main.WorldToScreenPoint(transform.position);
