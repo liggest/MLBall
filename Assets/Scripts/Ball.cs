@@ -73,7 +73,10 @@ public class Ball : MonoBehaviour
 
     public void ResetOwner()
     {
-        owner.ResetBall();
+        if (owner)
+        {
+            owner.ResetBall();
+        }
         owner = null;
         //ownerRig = null;
         Debug.Log("Reset了");
