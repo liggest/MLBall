@@ -158,13 +158,15 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     public override void Heuristic(float[] actionsOut) // 手操
     {
+        string[] JoyName = Input.GetJoystickNames();
+
         actionsOut[0] = Input.GetAxis("JoyL_Horizontal");
         actionsOut[1] = Input.GetAxis("JoyL_Vertical");
 
         actionsOut[2] = Input.GetAxis("JoyR_Horizontal");
         actionsOut[3] = Input.GetAxis("JoyR_Vertical");
 
-        if(actionsOut[2]==0 && actionsOut[3] == 0)
+        if(JoyName[0].Length == 0)
         {
             //鼠标控制
             Vector3 v3 = Camera.main.WorldToScreenPoint(transform.position);
