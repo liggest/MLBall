@@ -8,6 +8,8 @@ using Unity.MLAgents.Policies;
 public class PlayerAgent : Agent // <- 注意这里是Agent
 {
     //public Ball ball;
+    [Tooltip("是否画射线")]
+    public bool drawRays = false;
     [Tooltip("各个射线的角度")]
     public float[] viewDegrees;
     [Tooltip("射线视野距离")]
@@ -78,13 +80,16 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     private void FixedUpdate()
     {
-        foreach (float degree in viewDegrees)
+        if (drawRays)
         {
-            Vector3 direction = Quaternion.AngleAxis(degree, transform.up) * transform.forward;
-            Debug.DrawRay(transform.position, direction * maxViewDistance, Color.white);
+            foreach (float degree in viewDegrees)
+            {
+                Vector3 direction = Quaternion.AngleAxis(degree, transform.up) * transform.forward;
+                Debug.DrawRay(transform.position, direction * maxViewDistance, Color.white);
+            }
+            //Vector3 dirDirection = Quaternion.AngleAxis(dirAngle, transform.up) * transform.forward;
+            Debug.DrawRay(transform.position, transform.forward * joyForce * joyForceFactor, Color.red);
         }
-        //Vector3 dirDirection = Quaternion.AngleAxis(dirAngle, transform.up) * transform.forward;
-        Debug.DrawRay(transform.position, transform.forward * joyForce * joyForceFactor, Color.red);
     }
 
     public override void OnEpisodeBegin()  // 每个周期开始时 重置场景
@@ -97,6 +102,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         sensor.AddObservation(transform.localPosition);
         sensor.AddObservation(Rig.velocity.x);
         sensor.AddObservation(Rig.velocity.z);
+        //sensor.AddObservation(transform.localRotation);
 
         foreach (float degree in viewDegrees)
         {
