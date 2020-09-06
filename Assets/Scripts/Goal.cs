@@ -8,11 +8,14 @@ public class Goal : MonoBehaviour
     public int teamID;
 
     StageManager sm;
+    MeshRenderer mr;
 
     private void Start()
     {
         sm = Utils.GetStage(transform);
         sm.teamGoals.Add(GlobalManager.instance.GetTeamName(teamID), this);
+        mr = GetComponent<MeshRenderer>();
+        mr.material.color = GlobalManager.instance.GetTeamColor(teamID);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -22,6 +22,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     public float joyForceFactor = 10; // 力度的系数
     public float moveSpeed = 10.0f;
 
+    public Goal teamGoal;
     public int teamID = -1;
     string teamName = "煤";
     Color teamColor = Color.black;
@@ -50,7 +51,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
         sm = Utils.GetStage(transform);
 
-        AddTeam();
+        teamID = teamGoal.teamID;
         teamName = GlobalManager.instance.GetTeamName(teamID);
         teamColor = GlobalManager.instance.GetTeamColor(teamID);
         teamHatColor = GlobalManager.instance.GetTeamColor(teamID, true);
@@ -58,6 +59,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         hatMR = transform.GetChild(0).GetComponent<MeshRenderer>();
         mr.material.color = teamColor;
         hatMR.material.color = teamHatColor;
+        AddTeam();
 
         initPos = transform.localPosition;
     }

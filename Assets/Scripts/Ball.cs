@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour
     //public float rotateSpeed = 360;
     //public float rotateRadius = 1.8f;
     //public float rotateDegree = 0;
-    public float safeRadius = 2.8f;
+    public float safeRadius = 1.8f;
     public float ballDistance = 2;
     public float smoothTime = 0.05f;
 
@@ -42,11 +42,12 @@ public class Ball : MonoBehaviour
                 //ResetOwner();
                 //Debug.Log(distance);
                 //transform.localPosition = Vector3.SmoothDamp(transform.localPosition, onwerFront, ref smoothVelocity, smoothTime, float.PositiveInfinity, Time.fixedDeltaTime);
-                transform.RotateAround(owner.transform.localPosition, owner.transform.up, 100);
+                //transform.RotateAround(owner.transform.localPosition, owner.transform.up, 100);
+                RotateTo();
             }
             else
             {
-                transform.localPosition = Vector3.SmoothDamp(transform.localPosition, ownerFront, ref smoothVelocity, smoothTime, float.PositiveInfinity, Time.fixedDeltaTime);
+                rig.MovePosition(Vector3.SmoothDamp(transform.localPosition, ownerFront, ref smoothVelocity, smoothTime, float.PositiveInfinity, Time.fixedDeltaTime));
 
             //RotateTo(rotateDegree, distance);
             }
@@ -69,10 +70,10 @@ public class Ball : MonoBehaviour
                 SetOwner(target);
             }
         }
-        else if(other.CompareTag("Wall"))
+        /*else if(other.CompareTag("Wall"))
         {
             ResetOwner();
-        }
+        }*/
     }
 
     private void OnTriggerStay(Collider other)
@@ -124,14 +125,34 @@ public class Ball : MonoBehaviour
         return false;
     }
 
-    public void RotateTo(float degree, float distance = -1)
+    public void RotateTo()
     {
-        Vector3 ballpos = Quaternion.AngleAxis(degree, owner.transform.up) * owner.transform.forward;
-        if (distance < 0)
+        Vector3 ownerPos = owner.transform.localPosition;
+        ownerPos.y = 0;
+        Vector3 ballPos = transform.localPosition;
+        ballPos.y = 0;
+        Vector3 ownerToBall = ballPos - ownerPos;
+        //Debug.DrawRay(owner.transform.localPosition, ownerToBall, Color.cyan);
+        float degree = Vector3.SignedAngle(ownerToBall, owner.transform.forward, owner.transform.up);
+        int degFactor = 1;
+        if (degree < 0)
         {
-            distance = Vector3.Distance(transform.localPosition, owner.transform.localPosition);
+            degFactor = -1;
+            degree *= -1;
         }
-        transform.localPosition = owner.transform.localPosition + ballpos * distance;
+        Debug.Log(degree);
+        Vector3 ballY = transform.up * transform.localPosition.y;
+        while (degree > 90)
+        {
+            degree -= 90;
+            ownerToBall = Quaternion.AngleAxis(90 * degFactor, owner.transform.up) * ownerToBall;
+            rig.MovePosition(ownerToBall + ownerPos + ballY);
+        }
+        if (degree > 0)
+        {
+            ownerToBall = Quaternion.AngleAxis(degree * degFactor, owner.transform.up) * ownerToBall;
+            rig.MovePosition(ownerToBall + ownerPos + ballY);
+        }
     }
 
     public void Shoot(float power)
