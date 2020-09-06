@@ -11,6 +11,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     public float[] viewDegrees;
     public float maxViewDistance = 10;
 
+    [HideInInspector]
     public Rigidbody rig;
     BehaviorParameters bp;
     StageManager sm;
@@ -20,7 +21,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     //float dirAngle = 0; //右摇杆角度
     float joyForce = 0; //右摇杆力度
     public float joyForceFactor = 10; // 力度的系数
-    public float moveSpeed = 100.0f;
+    public float moveSpeed = 10.0f;
 
     public Goal teamGoal;
     public int teamID = -1;
@@ -31,6 +32,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     MeshRenderer hatMR;
 
     Vector3 initPos = Vector3.zero;
+
     private void Awake()
     {
         bp = GetComponent<BehaviorParameters>();

@@ -13,6 +13,7 @@ public class Ball : MonoBehaviour
     public float smoothTime = 0.05f;
 
     Rigidbody rig;
+    SpringJoint sj;
     //Rigidbody ownerRig;
     Vector3 smoothVelocity = Vector3.zero;
 
@@ -43,11 +44,11 @@ public class Ball : MonoBehaviour
                 //Debug.Log(distance);
                 //transform.localPosition = Vector3.SmoothDamp(transform.localPosition, onwerFront, ref smoothVelocity, smoothTime, float.PositiveInfinity, Time.fixedDeltaTime);
                 //transform.RotateAround(owner.transform.localPosition, owner.transform.up, 100);
-                RotateTo();
+                //RotateTo();
             }
             else
             {
-                rig.MovePosition(Vector3.SmoothDamp(transform.localPosition, ownerFront, ref smoothVelocity, smoothTime, float.PositiveInfinity, Time.fixedDeltaTime));
+                //rig.MovePosition(Vector3.SmoothDamp(transform.localPosition, ownerFront, ref smoothVelocity, smoothTime, float.PositiveInfinity, Time.fixedDeltaTime));
 
             //RotateTo(rotateDegree, distance);
             }
@@ -62,6 +63,7 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.CompareTag("Player"))
         {
             PlayerAgent target = other.GetComponent<PlayerAgent>();
@@ -94,6 +96,11 @@ public class Ball : MonoBehaviour
         pa.SetBall(this);
         //ownerRig = owner.GetComponent<Rigidbody>();
         Debug.Log("Owner了");
+        sj = gameObject.AddComponent<SpringJoint>();
+        sj.connectedBody = owner.rig;
+        sj.anchor = owner.transform.forward * 2.8f;
+        sj.maxDistance = 0.3f;
+        sj.spring = 100;
     }
 
     public void ResetOwner()
@@ -102,6 +109,7 @@ public class Ball : MonoBehaviour
         if (owner)
         {
             owner.ResetBall();
+            Destroy(sj);
         }
         owner = null;
         //ownerRig = null;

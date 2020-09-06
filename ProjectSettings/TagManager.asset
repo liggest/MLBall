@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - Wall
+  - PlayerHand
   layers:
   - Default
   - TransparentFX
