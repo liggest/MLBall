@@ -13,7 +13,8 @@ public class Ball : MonoBehaviour
     public float smoothTime = 0.05f;
 
     Rigidbody rig;
-    SpringJoint sj;
+    HingeJoint hj;
+    //SpringJoint sj;
     //Rigidbody ownerRig;
     Vector3 smoothVelocity = Vector3.zero;
 
@@ -96,11 +97,21 @@ public class Ball : MonoBehaviour
         pa.SetBall(this);
         //ownerRig = owner.GetComponent<Rigidbody>();
         Debug.Log("Owner了");
+        hj = gameObject.AddComponent<HingeJoint>();
+        hj.autoConfigureConnectedAnchor = false;
+        hj.connectedBody = owner.rig;
+        hj.anchor = Vector3.zero;
+        hj.connectedAnchor = Vector3.forward * safeRadius;
+        //Debug.Log(hj.connectedAnchor);
+        /*
         sj = gameObject.AddComponent<SpringJoint>();
         sj.connectedBody = owner.rig;
-        sj.anchor = owner.transform.forward * 2.8f;
+        sj.anchor = Vector3.zero;
         sj.maxDistance = 0.3f;
         sj.spring = 100;
+        sj.autoConfigureConnectedAnchor = false;
+        sj.connectedAnchor = owner.transform.forward * 2.8f;
+        */
     }
 
     public void ResetOwner()
@@ -109,8 +120,13 @@ public class Ball : MonoBehaviour
         if (owner)
         {
             owner.ResetBall();
-            Destroy(sj);
+            //Destroy(sj);
         }
+        if (hj)
+        {
+            Destroy(hj);
+        }
+        hj = null;
         owner = null;
         //ownerRig = null;
         Debug.Log("Reset了");
