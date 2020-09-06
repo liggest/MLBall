@@ -58,4 +58,9 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+<<<<<<< Updated upstream
 [Aa]ssets/ML-Agents/Timers/Soccer1vs1_timers.json
+=======
+Assets/ML-Agents/Timers/Soccer1vs1_timers.json
+Assets/ML-Agents/Timers/Soccer1vs1_timers.json
+>>>>>>> Stashed changes
