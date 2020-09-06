@@ -8,30 +8,39 @@ using Unity.MLAgents.Policies;
 public class PlayerAgent : Agent // <- 注意这里是Agent
 {
     //public Ball ball;
+    [Tooltip("各个射线的角度")]
     public float[] viewDegrees;
+    [Tooltip("射线视野距离")]
     public float maxViewDistance = 10;
 
-    [HideInInspector]
-    public Rigidbody rig;
+    private Rigidbody rig;
     BehaviorParameters bp;
     StageManager sm;
     Ball currentBall;
 
-    Vector2 dir; //右摇杆 xy 方向
+    //Vector2 dir; //右摇杆 xy 方向
     //float dirAngle = 0; //右摇杆角度
     float joyForce = 0; //右摇杆力度
-    public float joyForceFactor = 10; // 力度的系数
+    [Tooltip("射出力度的系数")]
+    public float joyForceFactor = 10;
+    [Tooltip("移动速度")]
     public float moveSpeed = 10.0f;
 
+    [Tooltip("队伍的球门")]
     public Goal teamGoal;
-    public int teamID = -1;
-    string teamName = "煤";
+    private int teamID = -1;
+    private string teamName = "煤";
     Color teamColor = Color.black;
     Color teamHatColor = Color.gray;
     MeshRenderer mr;
     MeshRenderer hatMR;
 
     Vector3 initPos = Vector3.zero;
+    Quaternion iniRotation = Quaternion.identity;
+
+    public int TeamID { get => teamID; private set => teamID = value; }
+    public string TeamName { get => teamName; private set => teamName = value; }
+    public Rigidbody Rig { get => rig;private set => rig = value; }
 
     private void Awake()
     {
@@ -49,14 +58,14 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     // Start is called before the first frame update
     void Start()
     {
-        rig = GetComponent<Rigidbody>();
+        Rig = GetComponent<Rigidbody>();
 
         sm = Utils.GetStage(transform);
 
-        teamID = teamGoal.teamID;
-        teamName = GlobalManager.instance.GetTeamName(teamID);
-        teamColor = GlobalManager.instance.GetTeamColor(teamID);
-        teamHatColor = GlobalManager.instance.GetTeamColor(teamID, true);
+        TeamID = teamGoal.teamID;
+        TeamName = GlobalManager.instance.GetTeamName(TeamID);
+        teamColor = GlobalManager.instance.GetTeamColor(TeamID);
+        teamHatColor = GlobalManager.instance.GetTeamColor(TeamID, true);
         mr = GetComponent<MeshRenderer>();
         hatMR = transform.GetChild(0).GetComponent<MeshRenderer>();
         mr.material.color = teamColor;
@@ -64,6 +73,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         AddTeam();
 
         initPos = transform.localPosition;
+        iniRotation = transform.localRotation;
     }
 
     private void FixedUpdate()
@@ -84,9 +94,9 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     public override void CollectObservations(VectorSensor sensor) // 向网络提供数据
     {
-        sensor.AddObservation(transform.position);
-        sensor.AddObservation(rig.velocity.x);
-        sensor.AddObservation(rig.velocity.z);
+        sensor.AddObservation(transform.localPosition);
+        sensor.AddObservation(Rig.velocity.x);
+        sensor.AddObservation(Rig.velocity.z);
 
         foreach (float degree in viewDegrees)
         {
@@ -94,21 +104,45 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             int hitType = -1;
             Vector3 hitPos = Vector3.zero;
             Vector3 direction = Quaternion.AngleAxis(degree, transform.up) * transform.forward;
-            if (Physics.Raycast(transform.localPosition, direction, out RaycastHit info, maxViewDistance)) 
+            Vector3 playerPos = transform.localPosition;
+            playerPos.y = 0;
+            if (Physics.Raycast(playerPos, direction, out RaycastHit info, maxViewDistance))  
             {   
                 if (info.collider.CompareTag("Player"))
                 {
-                    hitType = 1;
+                    PlayerAgent target = info.collider.GetComponent<PlayerAgent>();
+                    if (IsTeammate(target))
+                    {
+                        hitType = 2;
+                    }
+                    else
+                    {
+                        hitType = -2;
+                    }
+                    
                 }
                 else if (info.collider.CompareTag("Ball"))
                 {
-                    hitType = 2;
+                    hitType = 1;
                 }
                 else if (info.collider.CompareTag("Wall"))
                 {
                     hitType = 0;
                 }
+                else if (info.collider.CompareTag("Goal"))
+                {
+                    Goal goal = info.collider.GetComponent<Goal>();
+                    if (IsTeamGoal(goal))
+                    {
+                        hitType = 3;
+                    }
+                    else
+                    {
+                        hitType = -3;
+                    }
+                }
                 hitPos = info.transform.InverseTransformPoint(info.point);
+                Debug.Log(info.collider.tag);
             }
             sensor.AddObservation(hitType);
             sensor.AddObservation(hitPos);
@@ -127,7 +161,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
         float shoot = vectorAction[4];
 
-        rig.AddForce(moveVector * moveSpeed);
+        Rig.AddForce(moveVector * moveSpeed);
 
         Vector3 rDir = new Vector3(shootX, 0, shootY);
         if (rDir != Vector3.zero)
@@ -220,13 +254,14 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     public void InitPlayer()
     {
         ResetBall();
-        rig.velocity = Vector3.zero;
-        transform.position = initPos;
+        Rig.velocity = Vector3.zero;
+        transform.localPosition = initPos;
+        transform.localRotation = iniRotation;
     }
 
     public void AddTeam()
     {
-        if(sm.teams.TryGetValue(teamName,out List<PlayerAgent> teamList))
+        if(sm.teams.TryGetValue(TeamName,out List<PlayerAgent> teamList))
         {
             teamList.Add(this);
         }
@@ -234,12 +269,26 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         {
             teamList = new List<PlayerAgent>();
             teamList.Add(this);
-            sm.teams.Add(teamName, teamList);
+            sm.teams.Add(TeamName, teamList);
         }
     }
-
+    /// <summary>
+    /// 判断目标Agent是否为当前Agent的队友
+    /// </summary>
+    /// <param name="pa">目标Agent</param>
+    /// <returns>目标Agent是否为当前Agent的队友</returns>
     public bool IsTeammate(PlayerAgent pa)
     {
-        return sm.teams[teamName].Contains(pa);
+        return sm.teams[TeamName].Contains(pa);
+    }
+
+    /// <summary>
+    /// 判断目标球门是否为当前Agent队伍的球门
+    /// </summary>
+    /// <param name="g">目标球门</param>
+    /// <returns>目标球门是否为当前Agent队伍的球门</returns>
+    public bool IsTeamGoal(Goal g)
+    {
+        return teamGoal.Equals(g);
     }
 }

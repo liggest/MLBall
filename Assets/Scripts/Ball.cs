@@ -34,6 +34,7 @@ public class Ball : MonoBehaviour
 
     private void FixedUpdate()
     {
+        /*
         if (owner)
         {
             Vector3 ownerFront = owner.transform.localPosition + owner.transform.forward * ballDistance;
@@ -55,6 +56,7 @@ public class Ball : MonoBehaviour
             }
 
         }
+        */
 
         if (transform.localPosition.y < -2)
         {
@@ -99,7 +101,7 @@ public class Ball : MonoBehaviour
         Debug.Log("Owner了");
         hj = gameObject.AddComponent<HingeJoint>();
         hj.autoConfigureConnectedAnchor = false;
-        hj.connectedBody = owner.rig;
+        hj.connectedBody = owner.Rig;
         hj.anchor = Vector3.zero;
         hj.connectedAnchor = Vector3.forward * safeRadius;
         //Debug.Log(hj.connectedAnchor);
@@ -187,7 +189,7 @@ public class Ball : MonoBehaviour
         Debug.Log(force);
         rig.AddForce(force,ForceMode.Impulse);
         //owner.rig.AddForce(-force*0.65f, ForceMode.Impulse);
-        owner.rig.AddForce(-force, ForceMode.Impulse);
+        owner.Rig.AddForce(-force, ForceMode.Impulse);
         ResetOwner();
         //Debug.Log("射门！");
     }

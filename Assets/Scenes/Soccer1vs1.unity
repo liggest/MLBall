@@ -977,9 +977,11 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
   viewDegrees:
-  - -45
   - 0
-  - 45
+  - 30
+  - -30
+  - 60
+  - -60
   maxViewDistance: 10
   rig: {fileID: 749402233}
   joyForceFactor: 10
@@ -1481,7 +1483,7 @@ GameObject:
   - component: {fileID: 1258790258}
   m_Layer: 0
   m_Name: Wall Team1 Goal
-  m_TagString: Wall
+  m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2138,7 +2140,7 @@ GameObject:
   - component: {fileID: 1796908633}
   m_Layer: 0
   m_Name: Wall Team2 Goal
-  m_TagString: Wall
+  m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
