@@ -94,7 +94,10 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     public override void OnEpisodeBegin()  // 每个周期开始时 重置场景
     {
-            
+        InitPlayer();
+        foreach(Ball b in sm.balls){
+            b.InitBall();
+        }
     }
 
     public override void CollectObservations(VectorSensor sensor) // 向网络提供数据
@@ -130,6 +133,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
                 else if (info.collider.CompareTag("Ball"))
                 {
                     hitType = 1;
+                    // Debug.Log($"{hitPos},{hitType}" );
                 }
                 else if (info.collider.CompareTag("Wall"))
                 {
@@ -199,7 +203,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             joyForce = rDir.magnitude;
             //Debug.Log("力度" + joyForce);
             #endregion
-            if (shoot == 1)
+            if (shoot >= 0.5)
             {
                 //sm.ball.Shoot(joyForce * joyForceFactor);
                 currentBall.Shoot(joyForce * joyForceFactor);

@@ -52,13 +52,18 @@ public class Goal : MonoBehaviour
             Debug.Log($"{ball.lastPlayer.TeamName}队 进球了！{teamName}队 被破门！");
             if (IsRivalGoal(ball))
             {
-
+                ball.lastPlayer.SetReward(5);
             }
             else
             {
-
+                ball.lastPlayer.SetReward(-5);
             }
         }
         ball.InitBall();
+        foreach (List<PlayerAgent> pal in sm.teams.Values){
+            foreach(PlayerAgent pa in pal){
+                pa.EndEpisode();
+            }
+        }
     }
 }

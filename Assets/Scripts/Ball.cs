@@ -129,7 +129,7 @@ public class Ball : MonoBehaviour
         }
         if (hj)
         {
-            hj.connectedBody = null;
+            //hj.connectedBody = null;
             //hj.breakForce = 1;
             Destroy(hj);
         }
@@ -206,7 +206,7 @@ public class Ball : MonoBehaviour
         yield return new WaitForEndOfFrame();
         Debug.Log(transform.localPosition);
         //yield return new WaitForFixedUpdate();
-        //rig.AddForce(force, ForceMode.Impulse);
+        rig.AddForce(force, ForceMode.Impulse);
         ownerRig.AddForce(-force, ForceMode.Impulse);
         yield return null;
     }
