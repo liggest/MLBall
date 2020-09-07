@@ -148,7 +148,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
                     }
                 }
                 hitPos = info.transform.InverseTransformPoint(info.point);
-                Debug.Log(info.collider.tag);
+                //Debug.Log(info.collider.tag);
             }
             sensor.AddObservation(hitType);
             sensor.AddObservation(hitPos);

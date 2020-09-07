@@ -83,6 +83,7 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        /*
         if (other.CompareTag("Player"))
         {
             if (!IsOwner(other.transform))
@@ -90,7 +91,7 @@ public class Ball : MonoBehaviour
                 PlayerAgent target = other.GetComponent<PlayerAgent>();
                 SetOwner(target);
             }
-        }
+        }*/
     }
 
     public void SetOwner(PlayerAgent pa)
@@ -103,7 +104,9 @@ public class Ball : MonoBehaviour
         hj.autoConfigureConnectedAnchor = false;
         hj.connectedBody = owner.Rig;
         hj.anchor = Vector3.zero;
-        hj.connectedAnchor = Vector3.forward * safeRadius;
+        hj.axis = Vector3.up;
+        hj.connectedAnchor = Vector3.forward * safeRadius - Vector3.up * transform.localPosition.y;
+        hj.enablePreprocessing = false;
         //Debug.Log(hj.connectedAnchor);
         /*
         sj = gameObject.AddComponent<SpringJoint>();
@@ -126,6 +129,8 @@ public class Ball : MonoBehaviour
         }
         if (hj)
         {
+            hj.connectedBody = null;
+            //hj.breakForce = 1;
             Destroy(hj);
         }
         hj = null;
@@ -186,12 +191,24 @@ public class Ball : MonoBehaviour
         Vector3 force = transform.localPosition - owner.transform.localPosition;
         force.y = 0;
         force = force.normalized * power;
-        Debug.Log(force);
-        rig.AddForce(force,ForceMode.Impulse);
-        //owner.rig.AddForce(-force*0.65f, ForceMode.Impulse);
-        owner.Rig.AddForce(-force, ForceMode.Impulse);
+        //Debug.Log(force);
+        //Rigidbody ownerRig = owner.Rig;
+        StartCoroutine(ShootCoroutine(force, owner.Rig));
         ResetOwner();
+        //rig.AddForce(force, ForceMode.Impulse);
+        //owner.rig.AddForce(-force*0.65f, ForceMode.Impulse);
+        //ownerRig.AddForce(-force, ForceMode.Impulse);
         //Debug.Log("射门！");
+    }
+
+    IEnumerator ShootCoroutine(Vector3 force,Rigidbody ownerRig)
+    {
+        yield return new WaitForEndOfFrame();
+        Debug.Log(transform.localPosition);
+        //yield return new WaitForFixedUpdate();
+        //rig.AddForce(force, ForceMode.Impulse);
+        ownerRig.AddForce(-force, ForceMode.Impulse);
+        yield return null;
     }
 
     public void InitBall()
