@@ -87,7 +87,11 @@ public class Ball : MonoBehaviour
             {
                 if (owner)
                 {
+                    if(owner.IsUnbreakable){
+                        return;
+                    }
                     PlayerAgent oldOwner = owner;
+                    owner.Rig.velocity = Vector3.zero;
                     ResetOwner();
                     Vector3 force = transform.localPosition - oldOwner.transform.localPosition;
                     force.y = 0;
@@ -95,6 +99,7 @@ public class Ball : MonoBehaviour
                     StartCoroutine(ShootCoroutine(force, oldOwner.Rig, false));
                 }
                 SetOwner(target);
+                StartCoroutine(owner.Unbreakable());
             }
         }
         /*else if(other.CompareTag("Wall"))
@@ -122,6 +127,7 @@ public class Ball : MonoBehaviour
         pa.SetBall(this);
         //ownerRig = owner.GetComponent<Rigidbody>();
         Debug.Log("Owner了");
+        rig.velocity = Vector3.zero;
         hj = gameObject.AddComponent<HingeJoint>();
         hj.autoConfigureConnectedAnchor = false;
         hj.connectedBody = owner.Rig;

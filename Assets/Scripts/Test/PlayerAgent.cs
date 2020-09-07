@@ -48,6 +48,9 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     Vector3 lastPos = Vector3.zero;
     private float keepBallDistance = 0; // （曾）持球距离
 
+    bool isUnbreakable=false;
+    int unbreakbaleNum = 20;
+
     public int TeamID { get => teamID; private set => teamID = value; }
     public string TeamName { get => teamName; private set => teamName = value; }
     public Rigidbody Rig { get => rig; private set => rig = value; }
@@ -65,6 +68,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     }
 
     public float KeepBallDistance { get => keepBallDistance; }
+    public bool IsUnbreakable { get => isUnbreakable; private  set => isUnbreakable = value; }
 
     private void Awake()
     {
@@ -206,7 +210,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         if (IsKeepingBall)
         {
             keepBallDistance += Vector3.Distance(transform.localPosition, lastPos);
-            Debug.Log($"{KeepBallDistance},{KeepBallTime}");
+            //Debug.Log($"{KeepBallDistance},{KeepBallTime}");
 
             #region 右摇杆角度计算相关
             /*
@@ -310,6 +314,15 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         Rig.velocity = Vector3.zero;
         transform.localPosition = initPos;
         transform.localRotation = iniRotation;
+    }
+
+    public IEnumerator Unbreakable(){
+        isUnbreakable = true;
+        for (int i = 0; i < unbreakbaleNum; i++)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        isUnbreakable = false;
     }
 
     public void AddTeam()
