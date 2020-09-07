@@ -45,25 +45,34 @@ public class Goal : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// 进球并得分（获得奖励）
+    /// </summary>
+    /// <param name="ball">进球的那个球</param>
     private void GoalAndScore(Ball ball)
     {
         if (ball.lastPlayer)
         {
             Debug.Log($"{ball.lastPlayer.TeamName}队 进球了！{teamName}队 被破门！");
-            if (IsRivalGoal(ball))
-            {
-                ball.lastPlayer.SetReward(5);
-            }
-            else
-            {
-                ball.lastPlayer.SetReward(-5);
-            }
+            ball.lastPlayer.GoalReward(this, ball);
+
         }
-        ball.InitBall();
-        foreach (List<PlayerAgent> pal in sm.teams.Values){
-            foreach(PlayerAgent pa in pal){
-                pa.EndEpisode();
+        sm.InitBalls();
+
+        if (ball.lastPlayer && ball.lastPlayer.Bp.BehaviorType == Unity.MLAgents.Policies.BehaviorType.HeuristicOnly)
+        {
+            sm.InitPlayers();
+        }
+        else
+        {
+            foreach (List<PlayerAgent> pal in sm.teams.Values)
+            {
+                foreach (PlayerAgent pa in pal)
+                {
+                    pa.EndEpisode();
+                }
             }
+            sm.InitTimer(true);
         }
     }
 }

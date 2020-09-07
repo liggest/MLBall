@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    [HideInInspector]
     public PlayerAgent owner;
     //public float rotateSpeed = 360;
     //public float rotateRadius = 1.8f;
     //public float rotateDegree = 0;
+    [Tooltip("球和玩家间的距离")]
     public float safeRadius = 1.8f;
-    public float ballDistance = 2;
-    public float smoothTime = 0.05f;
+    //public float ballDistance = 2;
+    //public float smoothTime = 0.05f;
+
+    [Tooltip("抢球时击退玩家的力的系数")]
+    public float knockBackFactor = 20;
+    [HideInInspector]
+    public int clearLastPlayerNum = 200;
+    Coroutine lastPlayerCoroutine;
 
     Rigidbody rig;
     HingeJoint hj;
@@ -34,6 +42,11 @@ public class Ball : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (owner)
+        {
+            owner.KeepBallReward();
+        }
+
         /*
         if (owner)
         {
@@ -72,6 +85,15 @@ public class Ball : MonoBehaviour
             PlayerAgent target = other.GetComponent<PlayerAgent>();
             if (!IsOwner(target))
             {
+                if (owner)
+                {
+                    PlayerAgent oldOwner = owner;
+                    ResetOwner();
+                    Vector3 force = transform.localPosition - oldOwner.transform.localPosition;
+                    force.y = 0;
+                    force = force.normalized * knockBackFactor;
+                    StartCoroutine(ShootCoroutine(force, oldOwner.Rig, false));
+                }
                 SetOwner(target);
             }
         }
@@ -122,8 +144,16 @@ public class Ball : MonoBehaviour
     public void ResetOwner()
     {
         lastPlayer = owner;
+        if (lastPlayerCoroutine != null)
+        {
+            StopCoroutine(lastPlayerCoroutine);
+            lastPlayerCoroutine = null;
+            //Debug.Log("停止了");
+        }
         if (owner)
         {
+            lastPlayerCoroutine = StartCoroutine(ClearLastPlayer());
+
             owner.ResetBall();
             //Destroy(sj);
         }
@@ -154,6 +184,16 @@ public class Ball : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    IEnumerator ClearLastPlayer()
+    {
+        for (int i = 0; i < clearLastPlayerNum; i++)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        lastPlayer = null;
+        //Debug.Log("重置了lastPlayer");
     }
 
     public void RotateTo()
@@ -201,12 +241,15 @@ public class Ball : MonoBehaviour
         //Debug.Log("射门！");
     }
 
-    IEnumerator ShootCoroutine(Vector3 force,Rigidbody ownerRig)
+    IEnumerator ShootCoroutine(Vector3 force, Rigidbody ownerRig, bool shoot = true)
     {
         yield return new WaitForEndOfFrame();
-        Debug.Log(transform.localPosition);
+        //Debug.Log(transform.localPosition);
         //yield return new WaitForFixedUpdate();
-        rig.AddForce(force, ForceMode.Impulse);
+        if (shoot)
+        {
+            rig.AddForce(force, ForceMode.Impulse);
+        }
         ownerRig.AddForce(-force, ForceMode.Impulse);
         yield return null;
     }

@@ -7,6 +7,9 @@ using Unity.MLAgents.Policies;
 
 public class PlayerAgent : Agent // <- 注意这里是Agent
 {
+    [Tooltip("是否可以通过输入控制（手操）")]
+    public bool isControl = false;
+
     //public Ball ball;
     [Tooltip("是否画射线")]
     public bool drawRays = false;
@@ -16,7 +19,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     public float maxViewDistance = 10;
 
     private Rigidbody rig;
-    BehaviorParameters bp;
+    private BehaviorParameters bp;
     StageManager sm;
     Ball currentBall;
 
@@ -40,19 +43,38 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     Vector3 initPos = Vector3.zero;
     Quaternion iniRotation = Quaternion.identity;
 
+    float oldKeepBallTime = 0; // 曾持球时间
+    float startKeepBall = 0; // 开始持球时间
+    Vector3 lastPos = Vector3.zero;
+    private float keepBallDistance = 0; // （曾）持球距离
+
     public int TeamID { get => teamID; private set => teamID = value; }
     public string TeamName { get => teamName; private set => teamName = value; }
-    public Rigidbody Rig { get => rig;private set => rig = value; }
+    public Rigidbody Rig { get => rig; private set => rig = value; }
+    public BehaviorParameters Bp { get => bp; private  set => bp = value; }
+    public bool IsKeepingBall { get => currentBall != null && currentBall.IsOwner(this); }
+
+    public float KeepBallTime {
+        get {
+            if (IsKeepingBall)
+            {
+                return sm.timer - startKeepBall;
+            }
+            return oldKeepBallTime;
+        }
+    }
+
+    public float KeepBallDistance { get => keepBallDistance; }
 
     private void Awake()
     {
-        bp = GetComponent<BehaviorParameters>();
+        Bp = GetComponent<BehaviorParameters>();
 
-        int defaultSize = bp.BrainParameters.VectorObservationSize;
+        int defaultSize = Bp.BrainParameters.VectorObservationSize;
         int actualSize = 5 + 4 * viewDegrees.Length;
         if (defaultSize != actualSize)
         {
-            bp.BrainParameters.VectorObservationSize = actualSize;
+            Bp.BrainParameters.VectorObservationSize = actualSize;
             Debug.Log("正在观测的参数数量与设置中不符，已改正");
         }
     }
@@ -95,9 +117,9 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     public override void OnEpisodeBegin()  // 每个周期开始时 重置场景
     {
         InitPlayer();
-        foreach(Ball b in sm.balls){
-            b.InitBall();
-        }
+        //foreach(Ball b in sm.balls){
+        //    b.InitBall();
+        //}
     }
 
     public override void CollectObservations(VectorSensor sensor) // 向网络提供数据
@@ -105,6 +127,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         sensor.AddObservation(transform.localPosition);
         sensor.AddObservation(Rig.velocity.x);
         sensor.AddObservation(Rig.velocity.z);
+        //可能需要再提供角度
         //sensor.AddObservation(transform.localRotation);
 
         foreach (float degree in viewDegrees)
@@ -180,8 +203,11 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             transform.forward = nDir;
         }
 
-        if (currentBall && currentBall.IsOwner(this))
+        if (IsKeepingBall)
         {
+            keepBallDistance += Vector3.Distance(transform.localPosition, lastPos);
+            Debug.Log($"{KeepBallDistance},{KeepBallTime}");
+
             #region 右摇杆角度计算相关
             /*
             dir = new Vector2(shootX, shootY);
@@ -207,28 +233,39 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             {
                 //sm.ball.Shoot(joyForce * joyForceFactor);
                 currentBall.Shoot(joyForce * joyForceFactor);
+                ShootReward();
             }
         }
         else
         {
             joyForce = 0;
+            IdleReward();
         }
 
         if (transform.localPosition.y < -2)
         {
+            FallReward();
             InitPlayer();
         }
 
+        lastPos = transform.localPosition;
 
+        /*
         if (false)
         {
             SetReward(0.0f); // 设置奖励
             EndEpisode();  //结束当前周期
         }
+        */
     }
 
     public override void Heuristic(float[] actionsOut) // 手操
     {
+        if (!isControl)
+        {
+            return;
+        }
+
         string[] JoyName = Input.GetJoystickNames();
 
         actionsOut[0] = Input.GetAxis("JoyL_Horizontal");
@@ -254,11 +291,17 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     public void SetBall(Ball b)
     {
         currentBall = b;
+        startKeepBall = sm.timer;
+        keepBallDistance = 0;
+        GetBallReward();
     }
 
     public void ResetBall()
     {
+        oldKeepBallTime = KeepBallTime;
+        Ball b = currentBall;
         currentBall = null;
+        LoseBallReward(b);
     }
 
     public void InitPlayer()
@@ -301,4 +344,83 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     {
         return teamGoal.Equals(g);
     }
+
+    /// <summary>
+    /// 球进门得到奖励
+    /// </summary>
+    /// <param name="g">进的球门</param>
+    /// <param name="b">进球门的球</param>
+    public void GoalReward(Goal g,Ball b)
+    {
+        //g.IsRivalGoal
+        //b.lastPlayer
+        //SetReward
+    }
+
+    /// <summary>
+    /// Agent得到球的奖励
+    /// </summary>
+    public void GetBallReward()
+    {
+        //currentBall.lastPlayer
+        //sm.SetTeamReward
+    }
+
+    /// <summary>
+    /// Agent持球奖励
+    /// </summary>
+    public void KeepBallReward()
+    {
+        //currentBall
+    }
+
+    /// <summary>
+    /// Agent丢球奖励
+    /// </summary>
+    /// <param name="b">丢的球</param>
+    public void LoseBallReward(Ball b)
+    {
+
+    }
+
+    /// <summary>
+    /// Agent射门奖励
+    /// </summary>
+    public void ShootReward()
+    {
+        //joyForce
+    }
+
+    /// <summary>
+    /// Agent撞墙奖励
+    /// </summary>
+    public void BumpWallReward()
+    {
+
+    }
+
+    /// <summary>
+    /// Agent掉下Stage的奖励
+    /// </summary>
+    public void FallReward()
+    {
+
+    }
+
+    /// <summary>
+    /// Agent闲逛（未持球状态）的奖励
+    /// </summary>
+    public void IdleReward()
+    {
+
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.CompareTag("Wall"))
+        {
+            BumpWallReward();
+        }
+    }
+
 }
