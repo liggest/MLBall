@@ -399,12 +399,7 @@ MonoBehaviour:
   MaxStep: 6000
   isControl: 0
   drawRays: 0
-  viewDegrees:
-  - 0
-  - 30
-  - -30
-  - 60
-  - -60
+  viewDegrees: []
   maxViewDistance: 12
   joyForceFactor: 10
   moveSpeed: 40
@@ -1281,12 +1276,7 @@ MonoBehaviour:
   MaxStep: 6000
   isControl: 0
   drawRays: 0
-  viewDegrees:
-  - 0
-  - 30
-  - -30
-  - 60
-  - -60
+  viewDegrees: []
   maxViewDistance: 12
   joyForceFactor: 10
   moveSpeed: 40
@@ -1842,12 +1832,7 @@ MonoBehaviour:
   MaxStep: 6000
   isControl: 0
   drawRays: 0
-  viewDegrees:
-  - 0
-  - 30
-  - -30
-  - 60
-  - -60
+  viewDegrees: []
   maxViewDistance: 12
   joyForceFactor: 10
   moveSpeed: 40
@@ -2226,12 +2211,7 @@ MonoBehaviour:
   MaxStep: 6000
   isControl: 0
   drawRays: 0
-  viewDegrees:
-  - 0
-  - 30
-  - -30
-  - 60
-  - -60
+  viewDegrees: []
   maxViewDistance: 12
   joyForceFactor: 10
   moveSpeed: 40

@@ -425,7 +425,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     /// </summary>
     public virtual void BumpWallReward()
     {
-
+      
     }
     /// <summary>
     /// 撞人奖励

@@ -57,22 +57,22 @@ public class FeiPlayerAgent : PlayerAgent
     {
         AddReward(-0.001f);
     }
-    public override void ObservationReward(int observeType, Vector3 observePos)
-    {
-        if(observeType == 1)
-        {
-            AddReward(1);
-        }
-        float distance = Vector3.Distance(observePos, transform.localPosition);
-        if (distance > 1.8f && distance<8f)
-        {
-            AddReward(1 / distance / 1000);
-        }else if (distance > 8f)
-        {
-            AddReward(-distance / 1000);
-        }
+    //public override void ObservationReward(int observeType, Vector3 observePos)
+    //{
+    //    if(observeType == 1)
+    //    {
+    //        AddReward(1);
+    //    }
+    //    float distance = Vector3.Distance(observePos, transform.localPosition);
+    //    if (distance > 1.8f && distance<8f)
+    //    {
+    //        AddReward(1 / distance / 1000);
+    //    }else if (distance > 8f)
+    //    {
+    //        AddReward(-distance / 1000);
+    //    }
         
-    }
+    //}
     public override void BumpPlayerReward(Transform playerTransform)
     {
             AddReward(-0.001f);

@@ -1,5 +1,6 @@
 behaviors:
-  FeiBehavior:
+  # FeiBehavior:
+  RollerBall:
     trainer_type: ppo
     hyperparameters:
       batch_size: 2048
@@ -21,3 +22,7 @@ behaviors:
     max_steps: 5000000
     time_horizon: 200
     summary_freq: 500000
+    # behavioral_cloning:
+    #         demo_path: G:\Documents\Unity Projects\MLBall\Assets\Fei\Demonstrations\FeiPlay.demo
+    #         strength: 0.5
+    #         steps: 10000
