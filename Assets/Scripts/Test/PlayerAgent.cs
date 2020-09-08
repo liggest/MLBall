@@ -20,8 +20,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     private Rigidbody rig;
     private BehaviorParameters bp;
-    public StageManager sm;
-    public Ball currentBall;
+    private StageManager sm;
+    private Ball currentBall;
 
     //Vector2 dir; //右摇杆 xy 方向
     //float dirAngle = 0; //右摇杆角度
@@ -30,6 +30,13 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     public float joyForceFactor = 10;
     [Tooltip("移动速度")]
     public float moveSpeed = 10.0f;
+
+    [HideInInspector,Tooltip("归一化用的最大速度，并非实际能达到的最大速度")]
+    public float maxSpeed = 25;
+    float maxSpeedFactor = 0;
+    [HideInInspector,Tooltip("HitType的最大值")]
+    public float maxHitType = 5;
+    float maxHitTypeFactor = 0;
 
     [Tooltip("队伍的球门")]
     public Goal teamGoal;
@@ -48,13 +55,13 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     Vector3 lastPos = Vector3.zero;
     private float keepBallDistance = 0; // （曾）持球距离
 
-    bool isUnbreakable=false;
+    private bool isUnbreakable=false;
     int unbreakbaleNum = 20;
 
     public int TeamID { get => teamID; private set => teamID = value; }
     public string TeamName { get => teamName; private set => teamName = value; }
     public Rigidbody Rig { get => rig; private set => rig = value; }
-    public BehaviorParameters Bp { get => bp; private  set => bp = value; }
+    public BehaviorParameters BP { get => bp; private  set => bp = value; }
     public bool IsKeepingBall { get => currentBall != null && currentBall.IsOwner(this); }
 
     public float KeepBallTime {
@@ -69,16 +76,18 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     public float KeepBallDistance { get => keepBallDistance; }
     public bool IsUnbreakable { get => isUnbreakable; private  set => isUnbreakable = value; }
+    public StageManager SM { get => sm; private  set => sm = value; }
+    public Ball CurrentBall { get => currentBall; private set => currentBall = value; }
 
     private void Awake()
     {
-        Bp = GetComponent<BehaviorParameters>();
+        bp = GetComponent<BehaviorParameters>();
 
-        int defaultSize = Bp.BrainParameters.VectorObservationSize;
-        int actualSize = 5 + 4 * viewDegrees.Length;
+        int defaultSize = bp.BrainParameters.VectorObservationSize;
+        int actualSize = 6 + 4 * viewDegrees.Length;
         if (defaultSize != actualSize)
         {
-            Bp.BrainParameters.VectorObservationSize = actualSize;
+            bp.BrainParameters.VectorObservationSize = actualSize;
             Debug.Log("正在观测的参数数量与设置中不符，已改正");
         }
     }
@@ -102,6 +111,9 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
         initPos = transform.localPosition;
         iniRotation = transform.localRotation;
+
+        maxSpeedFactor = 1.0f / maxSpeed;
+        maxHitTypeFactor = 1.0f / maxHitType;
     }
 
     private void FixedUpdate()
@@ -129,11 +141,11 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     public override void CollectObservations(VectorSensor sensor) // 向网络提供数据
     {
-        sensor.AddObservation(transform.localPosition);
-        sensor.AddObservation(Rig.velocity.x);
-        sensor.AddObservation(Rig.velocity.z);
-        //可能需要再提供角度
-        //sensor.AddObservation(transform.localRotation);
+        // 这些都需要归一化到[-1,1]
+        sensor.AddObservation(sm.NormalizePos(transform.localPosition));
+        sensor.AddObservation(Rig.velocity.x * maxSpeedFactor);
+        sensor.AddObservation(Rig.velocity.z * maxSpeedFactor);
+        sensor.AddObservation(sm.NormalizeAngleY(transform.localEulerAngles));
 
         foreach (float degree in viewDegrees)
         {
@@ -183,8 +195,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
                 //Debug.Log(info.collider.tag);
                 ObservationReward(hitType, hitPos);
             }
-            sensor.AddObservation(hitType);
-            sensor.AddObservation(hitPos);
+            sensor.AddObservation(hitType * maxHitTypeFactor);
+            sensor.AddObservation(sm.NormalizePos(hitPos));
         }
 
     }
@@ -235,11 +247,12 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             joyForce = rDir.magnitude;
             //Debug.Log("力度" + joyForce);
             #endregion
-            if (shoot >= 0.5)
+            if (shoot >= 0)
             {
                 //sm.ball.Shoot(joyForce * joyForceFactor);
-                currentBall.Shoot(joyForce * joyForceFactor);
-                ShootReward();
+                float forceValue = joyForce * joyForceFactor;
+                currentBall.Shoot(forceValue);
+                ShootReward(forceValue);
             }
         }
         else
@@ -291,7 +304,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             actionsOut[3] = (worldPos.z - transform.localPosition.z) * 0.1f;
         }
 
-        actionsOut[4] = Input.GetAxis("Fire2");
+        actionsOut[4] = (Input.GetAxis("Fire2") - 0.5f) * 2;
     }
 
     public void SetBall(Ball b)
@@ -399,11 +412,12 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     }
 
     /// <summary>
-    /// Agent射门奖励
+    /// 射出球的奖励
     /// </summary>
-    public virtual void ShootReward()
+    /// <param name="forceValue">射出球的力道</param>
+    public virtual void ShootReward(float forceValue)
     {
-        //joyForce
+        //forceValue
     }
 
     /// <summary>
@@ -412,6 +426,14 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     public virtual void BumpWallReward()
     {
 
+    }
+    /// <summary>
+    /// 撞人奖励
+    /// </summary>
+    /// <param name="playerTransform">撞到的人的transform</param>
+    public virtual void BumpPlayerReward(Transform playerTransform)
+    {
+        
     }
 
     /// <summary>
@@ -445,6 +467,10 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         if (collision.collider.CompareTag("Wall"))
         {
             BumpWallReward();
+        }
+        else if (collision.collider.CompareTag("Player"))
+        {
+            BumpPlayerReward(collision.transform);
         }
     }
 
