@@ -338,10 +338,10 @@ MonoBehaviour:
   viewDegrees:
   - 0
   maxViewDistance: 12
+  maxHitType: 5
   joyForceFactor: 10
   moveSpeed: 40
   maxSpeed: 25
-  maxHitType: 5
   teamGoal: {fileID: 1796908633}
 --- !u!114 &185445759
 MonoBehaviour:
@@ -1110,10 +1110,10 @@ MonoBehaviour:
   viewDegrees:
   - 0
   maxViewDistance: 12
+  maxHitType: 5
   joyForceFactor: 10
   moveSpeed: 40
   maxSpeed: 25
-  maxHitType: 5
   teamGoal: {fileID: 1258790258}
 --- !u!114 &749402235
 MonoBehaviour:
@@ -1231,10 +1231,10 @@ MonoBehaviour:
   - 60
   - -60
   maxViewDistance: 12
+  maxHitType: 5
   joyForceFactor: 10
   moveSpeed: 40
   maxSpeed: 25
-  maxHitType: 5
   teamGoal: {fileID: 1258790258}
 --- !u!114 &767226264
 MonoBehaviour:
@@ -2606,10 +2606,10 @@ MonoBehaviour:
   viewDegrees:
   - 0
   maxViewDistance: 12
+  maxHitType: 5
   joyForceFactor: 10
   moveSpeed: 40
   maxSpeed: 25
-  maxHitType: 5
   teamGoal: {fileID: 1796908633}
 --- !u!114 &1625759725
 MonoBehaviour:
