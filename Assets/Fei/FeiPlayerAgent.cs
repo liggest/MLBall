@@ -6,70 +6,70 @@ public class FeiPlayerAgent : PlayerAgent
 {
     public override void BumpWallReward()
     {
-        SetReward(-0.1f);
+        AddReward(-0.1f);
     }
 
     public override void GetBallReward()
     {
-        if (currentBall.lastPlayer == null)
+        if (CurrentBall.lastPlayer == null)
         {
-            SetReward(1f);
-            sm.SetTeamReward(TeamName, 0.2f);
-        }else if (IsTeammate(currentBall.lastPlayer))
+            AddReward(0.25f);
+            SM.SetTeamReward(TeamName, 0.02f);
+        }else if (IsTeammate(CurrentBall.lastPlayer))
         {
-            SetReward(0.7f);
-            sm.SetTeamReward(TeamName, 0.1f);
+            AddReward(0.2f);
+            SM.SetTeamReward(TeamName, 0.018f);
         }
         else
         {
-            SetReward(1.2f);
+            AddReward(0.3f);
         }
 
     }
 
     public override void FallReward()
     {
-        SetReward(-0.5f);
+        SetReward(-1f);
     }
 
-    public override void ShootReward()
+    public override void ShootReward(float forceValue)
     {
-        SetReward(0.2f);
+        AddReward(0.2f);
     }
 
     public override void KeepBallReward()
     {
-        SetReward(0.01f);
+        AddReward(0.01f);
     }
 
     public override void GoalReward(Goal g, Ball b)
     {
         if (g.IsRivalGoal(b))
         {
-            SetReward(3.6f);
+            AddReward(1f);
         }
         else
         {
-            SetReward(-3.8f);
+            AddReward(-1f);
         }
     }
     public override void IdleReward()
     {
-        SetReward(-0.001f);
+        AddReward(-0.001f);
     }
     public override void ObservationReward(int observeType, Vector3 observePos)
     {
         if(observeType == 1)
         {
-            SetReward(0.0006f);
+            AddReward(0.0006f);
         }
         float distance = Vector3.Distance(observePos, transform.localPosition);
         if (distance > 1.8f && distance<8f)
         {
-            SetReward(1 / distance / 1000);
+            AddReward(1 / distance / 1000);
         }else if (distance > 8f)
         {
-            SetReward(-distance / 1000);
+            AddReward(-distance / 1000);
         }
         
     }

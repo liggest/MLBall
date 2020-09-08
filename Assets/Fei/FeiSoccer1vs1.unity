@@ -858,12 +858,12 @@ PrefabInstance:
     - target: {fileID: 3954075284466545328, guid: a502f97d74da22542b3973cbfc7d0114,
         type: 3}
       propertyPath: drawRays
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3954075284466545328, guid: a502f97d74da22542b3973cbfc7d0114,
         type: 3}
       propertyPath: isControl
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3954075284466545328, guid: a502f97d74da22542b3973cbfc7d0114,
         type: 3}
