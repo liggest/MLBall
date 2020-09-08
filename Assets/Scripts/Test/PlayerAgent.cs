@@ -20,7 +20,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     private Rigidbody rig;
     private BehaviorParameters bp;
-    StageManager sm;
+    protected StageManager sm;
     Ball currentBall;
 
     //Vector2 dir; //右摇杆 xy 方向
@@ -34,7 +34,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     [Tooltip("队伍的球门")]
     public Goal teamGoal;
     private int teamID = -1;
-    private string teamName = "煤";
+    protected string teamName = "煤";
     Color teamColor = Color.black;
     Color teamHatColor = Color.gray;
     MeshRenderer mr;
