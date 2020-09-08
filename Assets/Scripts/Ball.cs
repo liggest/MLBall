@@ -28,6 +28,7 @@ public class Ball : MonoBehaviour
 
     Vector3 initPos = Vector3.zero;
 
+    [HideInInspector]
     public PlayerAgent lastPlayer;
 
     // Start is called before the first frame update
@@ -42,11 +43,6 @@ public class Ball : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (owner)
-        {
-            owner.KeepBallReward();
-        }
-
         /*
         if (owner)
         {
@@ -80,7 +76,7 @@ public class Ball : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Agent"))
         {
             PlayerAgent target = other.GetComponent<PlayerAgent>();
             if (!IsOwner(target))

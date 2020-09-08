@@ -17,6 +17,12 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     public float[] viewDegrees;
     [Tooltip("射线视野距离")]
     public float maxViewDistance = 10;
+    float defaultHitType = -1;
+    Vector3 defaultHitPos = -Vector3.one;
+
+    [HideInInspector, Tooltip("HitType的最大值")]
+    public float maxHitType = 5;
+    float maxHitTypeFactor = 0;
 
     private Rigidbody rig;
     private BehaviorParameters bp;
@@ -34,9 +40,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     [HideInInspector,Tooltip("归一化用的最大速度，并非实际能达到的最大速度")]
     public float maxSpeed = 25;
     float maxSpeedFactor = 0;
-    [HideInInspector,Tooltip("HitType的最大值")]
-    public float maxHitType = 5;
-    float maxHitTypeFactor = 0;
+
 
     [Tooltip("队伍的球门")]
     public Goal teamGoal;
@@ -73,7 +77,6 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             return oldKeepBallTime;
         }
     }
-
     public float KeepBallDistance { get => keepBallDistance; }
     public bool IsUnbreakable { get => isUnbreakable; private  set => isUnbreakable = value; }
     public StageManager SM { get => sm; private  set => sm = value; }
@@ -129,6 +132,14 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             //Vector3 dirDirection = Quaternion.AngleAxis(dirAngle, transform.up) * transform.forward;
             Debug.DrawRay(transform.position, transform.forward * joyForce * joyForceFactor, Color.red);
         }
+
+        /*if (Physics.Raycast(transform.localPosition, transform.forward, out RaycastHit info1, maxViewDistance))
+        {
+            if (isControl)
+            {
+                Debug.Log(info1.transform);
+            }
+        }*/
     }
 
     public override void OnEpisodeBegin()  // 每个周期开始时 重置场景
@@ -147,18 +158,26 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         sensor.AddObservation(Rig.velocity.x * maxSpeedFactor);
         sensor.AddObservation(Rig.velocity.z * maxSpeedFactor);
         sensor.AddObservation(sm.NormalizeAngleY(transform.localEulerAngles));
+        //float temp = sm.NormalizeAngleY(transform.localEulerAngles);
 
         foreach (float degree in viewDegrees)
         {
-            
-            int hitType = -1;
-            Vector3 hitPos = Vector3.zero;
+            int hitType = (int)defaultHitType;
+            Vector3 hitPos = defaultHitPos;
             Vector3 direction = Quaternion.AngleAxis(degree, transform.up) * transform.forward;
             Vector3 playerPos = transform.localPosition;
-            playerPos.y = 0;
-            if (Physics.Raycast(playerPos, direction, out RaycastHit info, maxViewDistance))  
-            {   
-                if (info.collider.CompareTag("Player"))
+            //playerPos.y = 0; <- 基本是罪魁祸首
+            //Debug.Log(direction);
+
+            if (Physics.Raycast(playerPos, direction, out RaycastHit info, maxViewDistance))
+            {
+                /*
+                if (isControl)
+                {
+                    Debug.Log(info.transform);
+                }
+                */
+                if (info.collider.CompareTag("Agent"))
                 {
                     PlayerAgent target = info.collider.GetComponent<PlayerAgent>();
                     if (IsTeammate(target))
@@ -169,7 +188,9 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
                     {
                         hitType = -2;
                     }
-                    
+                    //Debug.Log("执行了");
+                    //Debug.Log($"Player{IsTeammate(target)}");
+                    //Debug.Log(info.collider.tag);
                 }
                 else if (info.collider.CompareTag("Ball"))
                 {
@@ -193,13 +214,18 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
                     }
                 }
                 hitPos = info.transform.InverseTransformPoint(info.point);
-                //Debug.Log(info.collider.tag);
                 ObservationReward(hitType, hitPos);
+                //检测到的话
+                sensor.AddObservation(hitType * maxHitTypeFactor); //这里是 hitType/maxHitType
+                sensor.AddObservation(sm.NormalizePos(hitPos)); //这里是归一化后的 hitPos
             }
-            sensor.AddObservation(hitType * maxHitTypeFactor);
-            sensor.AddObservation(sm.NormalizePos(hitPos));
+            else
+            {
+                // 没检测到的话
+                sensor.AddObservation(hitType); // 这里是 -1
+                sensor.AddObservation(hitPos); // 这里是 (-1,-1,-1)
+            }
         }
-
     }
 
     public override void OnActionReceived(float[] vectorAction) // 得到网络输出 指定权重
@@ -225,6 +251,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         if (IsKeepingBall)
         {
             keepBallDistance += Vector3.Distance(transform.localPosition, lastPos);
+            KeepBallReward();
             //Debug.Log($"{KeepBallDistance},{KeepBallTime}");
 
             #region 右摇杆角度计算相关
@@ -469,7 +496,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         {
             BumpWallReward();
         }
-        else if (collision.collider.CompareTag("Player"))
+        else if (collision.collider.CompareTag("Agent"))
         {
             BumpPlayerReward(collision.transform);
         }
