@@ -396,7 +396,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 6000
   isControl: 0
   drawRays: 0
   viewDegrees:
@@ -1280,7 +1280,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 6000
   isControl: 0
   drawRays: 0
   viewDegrees:
@@ -1956,7 +1956,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 6000
   isControl: 0
   drawRays: 0
   viewDegrees:
@@ -2340,7 +2340,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 6000
   isControl: 0
   drawRays: 0
   viewDegrees:
