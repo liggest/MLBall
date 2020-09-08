@@ -20,8 +20,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     private Rigidbody rig;
     private BehaviorParameters bp;
-    StageManager sm;
-    Ball currentBall;
+    public StageManager sm;
+    public Ball currentBall;
 
     //Vector2 dir; //右摇杆 xy 方向
     //float dirAngle = 0; //右摇杆角度
@@ -121,6 +121,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     public override void OnEpisodeBegin()  // 每个周期开始时 重置场景
     {
         InitPlayer();
+        sm.InitBalls();
         //foreach(Ball b in sm.balls){
         //    b.InitBall();
         //}
@@ -180,6 +181,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
                 }
                 hitPos = info.transform.InverseTransformPoint(info.point);
                 //Debug.Log(info.collider.tag);
+                ObservationReward(hitType, hitPos);
             }
             sensor.AddObservation(hitType);
             sensor.AddObservation(hitPos);
@@ -363,7 +365,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     /// </summary>
     /// <param name="g">进的球门</param>
     /// <param name="b">进球门的球</param>
-    public void GoalReward(Goal g,Ball b)
+    public virtual void GoalReward(Goal g,Ball b)
     {
         //g.IsRivalGoal
         //b.lastPlayer
@@ -373,7 +375,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     /// <summary>
     /// Agent得到球的奖励
     /// </summary>
-    public void GetBallReward()
+    public virtual void GetBallReward()
     {
         //currentBall.lastPlayer
         //sm.SetTeamReward
@@ -382,7 +384,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     /// <summary>
     /// Agent持球奖励
     /// </summary>
-    public void KeepBallReward()
+    public virtual void KeepBallReward()
     {
         //currentBall
     }
@@ -391,7 +393,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     /// Agent丢球奖励
     /// </summary>
     /// <param name="b">丢的球</param>
-    public void LoseBallReward(Ball b)
+    public virtual void LoseBallReward(Ball b)
     {
 
     }
@@ -399,7 +401,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     /// <summary>
     /// Agent射门奖励
     /// </summary>
-    public void ShootReward()
+    public virtual void ShootReward()
     {
         //joyForce
     }
@@ -407,7 +409,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     /// <summary>
     /// Agent撞墙奖励
     /// </summary>
-    public void BumpWallReward()
+    public virtual void BumpWallReward()
     {
 
     }
@@ -415,7 +417,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     /// <summary>
     /// Agent掉下Stage的奖励
     /// </summary>
-    public void FallReward()
+    public virtual void FallReward()
     {
 
     }
@@ -423,7 +425,17 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     /// <summary>
     /// Agent闲逛（未持球状态）的奖励
     /// </summary>
-    public void IdleReward()
+    public virtual void IdleReward()
+    {
+
+    }
+
+    /// <summary>
+    /// 射线观察到物体的奖励
+    /// </summary>
+    /// <param name="observeType">观察到物体的类型 0：墙 1：球 2：队友 -2：对手 3：己方球门 -3：对方球门</param>
+    /// <param name="observePos">观察到物体的位置</param>
+    public virtual void ObservationReward(int observeType,Vector3 observePos)
     {
 
     }
