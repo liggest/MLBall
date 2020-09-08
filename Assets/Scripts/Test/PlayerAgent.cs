@@ -78,6 +78,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     public bool IsUnbreakable { get => isUnbreakable; private  set => isUnbreakable = value; }
     public StageManager SM { get => sm; private  set => sm = value; }
     public Ball CurrentBall { get => currentBall; private set => currentBall = value; }
+    public Vector3 LastPos { get => lastPos; private set => lastPos = value; }
 
     private void Awake()
     {
