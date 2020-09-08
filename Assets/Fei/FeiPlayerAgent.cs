@@ -61,7 +61,7 @@ public class FeiPlayerAgent : PlayerAgent
     {
         if(observeType == 1)
         {
-            AddReward(0.0006f);
+            AddReward(1);
         }
         float distance = Vector3.Distance(observePos, transform.localPosition);
         if (distance > 1.8f && distance<8f)
@@ -72,5 +72,9 @@ public class FeiPlayerAgent : PlayerAgent
             AddReward(-distance / 1000);
         }
         
+    }
+    public override void BumpPlayerReward(Transform playerTransform)
+    {
+            AddReward(-0.001f);
     }
 }
