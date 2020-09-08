@@ -1,5 +1,5 @@
 behaviors:
-  RollerBall:
+  FeiBehavior:
     trainer_type: ppo
     hyperparameters:
       batch_size: 2048
@@ -19,5 +19,5 @@ behaviors:
         gamma: 0.99
         strength: 1.0
     max_steps: 5000000
-    time_horizon: 1000
-    summary_freq: 10000
+    time_horizon: 200
+    summary_freq: 500000
