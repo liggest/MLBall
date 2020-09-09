@@ -95,7 +95,10 @@ public class Ball : MonoBehaviour
                     StartCoroutine(ShootCoroutine(force, oldOwner.Rig, false));
                 }
                 SetOwner(target);
-                StartCoroutine(owner.Unbreakable());
+                if (owner) //有可能EndEpisode，导致owner没了
+                {
+                    StartCoroutine(owner.Unbreakable());
+                }
             }
         }
         /*else if(other.CompareTag("Wall"))
@@ -121,6 +124,10 @@ public class Ball : MonoBehaviour
     {
         owner = pa;
         pa.SetBall(this);
+        if (!owner) //有可能EndEpisode，导致owner没了
+        {
+            return;
+        }
         //ownerRig = owner.GetComponent<Rigidbody>();
         Debug.Log("Owner了");
         rig.velocity = Vector3.zero;
@@ -259,6 +266,7 @@ public class Ball : MonoBehaviour
     public void InitBall()
     {
         ResetOwner();
+        lastPlayer = null;
         rig.velocity = Vector3.zero;
         transform.localPosition = initPos;
     }

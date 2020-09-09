@@ -187,6 +187,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     {
         InitPlayer();
         sm.InitBalls();
+        sm.InitTimer();
         //foreach(Ball b in sm.balls){
         //    b.InitBall();
         //}
@@ -575,7 +576,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     }
 
     /// <summary>
-    /// 射线观察到物体的奖励
+    /// 射线观察到物体的奖励 observeType 0：墙 1：球 2：队友 -2：对手 3：己方球门 -3：对方球门
     /// </summary>
     /// <param name="observeType">观察到物体的类型 0：墙 1：球 2：队友 -2：对手 3：己方球门 -3：对方球门</param>
     /// <param name="observePos">观察到物体的位置</param>
