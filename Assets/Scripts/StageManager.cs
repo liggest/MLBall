@@ -102,4 +102,16 @@ public class StageManager : MonoBehaviour
         return eulerAngles.y / 180.0f - 1;
     }
 
+    public void EndEpisodes()
+    {
+        foreach (List<PlayerAgent> pal in teams.Values)
+        {
+            foreach (PlayerAgent pa in pal)
+            {
+                pa.EndEpisode();
+            }
+        }
+        InitTimer(true);
+    }
+
 }

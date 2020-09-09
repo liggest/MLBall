@@ -1,9 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Policies;
+
+[System.Serializable]
+public class ViewRay {
+    [Tooltip("射线角度"), SerializeField]
+    public float degree;
+    [Tooltip("是否使用Agent上的射线设置，会覆盖下面的设置（除了射线角度）")]
+    public bool useAgentSettings = true;
+    [Tooltip("射线高度"), SerializeField]
+    public float height = 0.5f;
+    [Tooltip("射线球半径，为0时不使用球射线"), SerializeField]
+    public float radius = 0;
+    [Tooltip("射线发射距离"), SerializeField]
+    public float distance = 10;
+    [HideInInspector]
+    public Vector3 hitPos = -Vector3.one;
+}
 
 public class PlayerAgent : Agent // <- 注意这里是Agent
 {
@@ -13,8 +30,13 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     //public Ball ball;
     [Tooltip("是否画射线")]
     public bool drawRays = false;
-    [Tooltip("各个射线的角度")]
-    public float[] viewDegrees;
+    [Tooltip("各个射线")]
+    public ViewRay[] viewRays;
+    public float rayHeight = 0.5f;
+    [Tooltip("射线球半径")]
+    public float raySphereRadius = 0;
+    //[Tooltip("各个射线的角度")]
+    //public float[] viewDegrees;
     [Tooltip("射线视野距离")]
     public float maxViewDistance = 10;
     float defaultHitType = -1;
@@ -88,7 +110,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         bp = GetComponent<BehaviorParameters>();
 
         int defaultSize = bp.BrainParameters.VectorObservationSize;
-        int actualSize = 6 + 4 * viewDegrees.Length;
+        //int actualSize = 6 + 4 * viewDegrees.Length;
+        int actualSize = 6 + 4 * viewRays.Length;
         if (defaultSize != actualSize)
         {
             bp.BrainParameters.VectorObservationSize = actualSize;
@@ -116,20 +139,17 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         initPos = transform.localPosition;
         iniRotation = transform.localRotation;
 
+        InitRays();
+
         maxSpeedFactor = 1.0f / maxSpeed;
         maxHitTypeFactor = 1.0f / maxHitType;
     }
+
 
     private void FixedUpdate()
     {
         if (drawRays)
         {
-            foreach (float degree in viewDegrees)
-            {
-                Vector3 direction = Quaternion.AngleAxis(degree, transform.up) * transform.forward;
-                Debug.DrawRay(transform.position, direction * maxViewDistance, Color.white);
-            }
-            //Vector3 dirDirection = Quaternion.AngleAxis(dirAngle, transform.up) * transform.forward;
             Debug.DrawRay(transform.position, transform.forward * joyForce * joyForceFactor, Color.red);
         }
 
@@ -160,16 +180,28 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         sensor.AddObservation(sm.NormalizeAngleY(transform.localEulerAngles));
         //float temp = sm.NormalizeAngleY(transform.localEulerAngles);
 
-        foreach (float degree in viewDegrees)
+        //foreach (float degree in viewDegrees)
+        foreach (ViewRay vray in viewRays)
         {
             int hitType = (int)defaultHitType;
             Vector3 hitPos = defaultHitPos;
-            Vector3 direction = Quaternion.AngleAxis(degree, transform.up) * transform.forward;
+            Vector3 direction = Quaternion.AngleAxis(vray.degree, transform.up) * transform.forward;
             Vector3 playerPos = transform.localPosition;
+            playerPos.y = vray.height;
             //playerPos.y = 0; <- 基本是罪魁祸首
             //Debug.Log(direction);
-
-            if (Physics.Raycast(playerPos, direction, out RaycastHit info, maxViewDistance))
+            bool ishit;
+            RaycastHit info;
+            if (vray.radius > 0)
+            {
+                ishit = Physics.SphereCast(playerPos, vray.radius, direction, out info, vray.distance);
+            }
+            else
+            {
+                ishit = Physics.Raycast(playerPos, direction, out info, vray.distance);
+            }
+            //if (Physics.Raycast(playerPos, direction, out RaycastHit info, maxViewDistance))
+            if(ishit)
             {
                 /*
                 if (isControl)
@@ -216,15 +248,18 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
                 hitPos = info.transform.InverseTransformPoint(info.point);
                 ObservationReward(hitType, hitPos);
                 //检测到的话
+                vray.hitPos = info.point;
                 sensor.AddObservation(hitType * maxHitTypeFactor); //这里是 hitType/maxHitType
                 sensor.AddObservation(sm.NormalizePos(hitPos)); //这里是归一化后的 hitPos
             }
             else
             {
+                vray.hitPos = hitPos;
                 // 没检测到的话
                 sensor.AddObservation(hitType); // 这里是 -1
                 sensor.AddObservation(hitPos); // 这里是 (-1,-1,-1)
             }
+            
         }
     }
 
@@ -381,6 +416,20 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             sm.teams.Add(TeamName, teamList);
         }
     }
+
+    public void InitRays()
+    {
+        foreach (ViewRay viewRay in viewRays)
+        {
+            if (viewRay.useAgentSettings)
+            {
+                viewRay.distance = maxViewDistance;
+                viewRay.height = rayHeight;
+                viewRay.radius = raySphereRadius;
+            }
+        }
+    }
+
     /// <summary>
     /// 判断目标Agent是否为当前Agent的队友
     /// </summary>
@@ -401,6 +450,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         return teamGoal.Equals(g);
     }
 
+    #region 各种奖励函数
     /// <summary>
     /// 球进门得到奖励
     /// </summary>
@@ -489,7 +539,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     {
 
     }
-
+    #endregion
     private void OnCollisionStay(Collision collision)
     {
         if (collision.collider.CompareTag("Wall"))
@@ -499,6 +549,22 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         else if (collision.collider.CompareTag("Agent"))
         {
             BumpPlayerReward(collision.transform);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        foreach (ViewRay vray in viewRays)
+        {
+            Vector3 direction = Quaternion.AngleAxis(vray.degree, transform.up) * transform.forward;
+            Vector3 pos = transform.position;
+            pos.y = vray.height;
+            Gizmos.DrawRay(pos, direction * vray.distance);
+            if (vray.radius > 0 && vray.hitPos.y > -1)
+            {
+                Gizmos.DrawWireSphere(vray.hitPos, vray.radius);
+                vray.hitPos = -Vector3.one;
+            }
         }
     }
 
