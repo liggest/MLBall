@@ -56,13 +56,29 @@ public class StageManager : MonoBehaviour
     /// </summary>
     /// <param name="teamName">队名</param>
     /// <param name="reward">奖励值</param>
-    public void SetTeamReward(string teamName,float reward)
+    public void AddTeamReward(string teamName,float reward)
     {
         if (teams.TryGetValue(teamName, out List<PlayerAgent> pal)) 
         {
             foreach(PlayerAgent pa in pal)
             {
                 pa.AddReward(reward);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 为一个队伍的所有Agent设置奖励（覆盖此周期的当前奖励）
+    /// </summary>
+    /// <param name="teamName">队名</param>
+    /// <param name="reward">奖励值</param>
+    public void SetTeamReward(string teamName, float reward)
+    {
+        if (teams.TryGetValue(teamName, out List<PlayerAgent> pal))
+        {
+            foreach (PlayerAgent pa in pal)
+            {
+                pa.SetReward(reward);
             }
         }
     }
