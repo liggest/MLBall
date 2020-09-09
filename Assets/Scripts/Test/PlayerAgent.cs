@@ -18,6 +18,8 @@ public class ViewRay {
     public float radius = 0;
     [Tooltip("射线发射距离"), SerializeField]
     public float distance = 10;
+    [Tooltip("不向神经网络提交射线击中的位置，而是提交击中时射线的距离")]
+    public bool feedDistance = false;
     [HideInInspector]
     public Vector3 hitPos = -Vector3.one;
 }
@@ -31,7 +33,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     [Tooltip("是否画射线")]
     public bool drawRays = false;
     [Tooltip("各个射线")]
-    public ViewRay[] viewRays;
+    public ViewRay[] viewRays = new ViewRay[1];
     public float rayHeight = 0.5f;
     [Tooltip("射线球半径")]
     public float raySphereRadius = 0;
@@ -39,12 +41,17 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     //public float[] viewDegrees;
     [Tooltip("射线视野距离")]
     public float maxViewDistance = 10;
+    [Tooltip("不向神经网络提交射线击中的位置，而是提交击中时射线的距离")]
+    public bool rayFeedDistance = false;
     float defaultHitType = -1;
     Vector3 defaultHitPos = -Vector3.one;
 
     [HideInInspector, Tooltip("HitType的最大值")]
     public float maxHitType = 5;
     float maxHitTypeFactor = 0;
+
+    [Tooltip("是否向神经网络提交本地位置、角度、速度等信息")]
+    public bool feedLocalInfo = true;
 
     private Rigidbody rig;
     private BehaviorParameters bp;
@@ -108,14 +115,30 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     private void Awake()
     {
         bp = GetComponent<BehaviorParameters>();
+        InitRays();
 
         int defaultSize = bp.BrainParameters.VectorObservationSize;
         //int actualSize = 6 + 4 * viewDegrees.Length;
-        int actualSize = 6 + 4 * viewRays.Length;
+        int actualSize = 0;
+        if (feedLocalInfo)
+        {
+            actualSize+=6;
+        }
+        foreach (ViewRay vray in viewRays)
+        {
+            if (vray.feedDistance)
+            {
+                actualSize += 2;
+            }
+            else
+            {
+                actualSize += 4;
+            }
+        }
         if (defaultSize != actualSize)
         {
             bp.BrainParameters.VectorObservationSize = actualSize;
-            Debug.Log("正在观测的参数数量与设置中不符，已改正");
+            Debug.Log($"正在观测的参数数量与设置中不符，已改正：{defaultSize} -> {actualSize}");
         }
     }
 
@@ -138,8 +161,6 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
         initPos = transform.localPosition;
         iniRotation = transform.localRotation;
-
-        InitRays();
 
         maxSpeedFactor = 1.0f / maxSpeed;
         maxHitTypeFactor = 1.0f / maxHitType;
@@ -173,20 +194,23 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     public override void CollectObservations(VectorSensor sensor) // 向网络提供数据
     {
-        // 这些都需要归一化到[-1,1]
-        sensor.AddObservation(sm.NormalizePos(transform.localPosition));
-        sensor.AddObservation(Rig.velocity.x * maxSpeedFactor);
-        sensor.AddObservation(Rig.velocity.z * maxSpeedFactor);
-        sensor.AddObservation(sm.NormalizeAngleY(transform.localEulerAngles));
-        //float temp = sm.NormalizeAngleY(transform.localEulerAngles);
-
+        if (feedLocalInfo)
+        {
+            // 这些都需要归一化到[-1,1]
+            sensor.AddObservation(sm.NormalizePos(transform.localPosition));
+            sensor.AddObservation(Rig.velocity.x * maxSpeedFactor);
+            sensor.AddObservation(Rig.velocity.z * maxSpeedFactor);
+            sensor.AddObservation(sm.NormalizeAngleY(transform.localEulerAngles));
+            //float temp = sm.NormalizeAngleY(transform.localEulerAngles);
+        }
         //foreach (float degree in viewDegrees)
         foreach (ViewRay vray in viewRays)
         {
             int hitType = (int)defaultHitType;
             Vector3 hitPos = defaultHitPos;
+            float hitDistance = -1;
             Vector3 direction = Quaternion.AngleAxis(vray.degree, transform.up) * transform.forward;
-            Vector3 playerPos = transform.localPosition;
+            Vector3 playerPos = transform.position;
             playerPos.y = vray.height;
             //playerPos.y = 0; <- 基本是罪魁祸首
             //Debug.Log(direction);
@@ -245,19 +269,38 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
                         hitType = -3;
                     }
                 }
-                hitPos = info.transform.InverseTransformPoint(info.point);
-                ObservationReward(hitType, hitPos);
+                hitPos = info.transform.parent.InverseTransformPoint(info.point);
+                hitDistance = info.distance;
+                //if (isControl)
+                //{
+                //    Debug.Log($"{hitType},{info.point},{hitPos}");
+                //}
+                ObservationReward(hitType, hitPos, hitDistance);
                 //检测到的话
-                vray.hitPos = info.point;
+                vray.hitPos = info.point;// 画球用的
                 sensor.AddObservation(hitType * maxHitTypeFactor); //这里是 hitType/maxHitType
-                sensor.AddObservation(sm.NormalizePos(hitPos)); //这里是归一化后的 hitPos
+                if (vray.feedDistance)
+                {
+                    sensor.AddObservation(hitDistance / vray.distance); //这里是归一化后的 hitDistance
+                }
+                else
+                {
+                    sensor.AddObservation(sm.NormalizePos(hitPos)); //这里是归一化后的 hitPos
+                }
             }
             else
             {
                 vray.hitPos = hitPos;
                 // 没检测到的话
                 sensor.AddObservation(hitType); // 这里是 -1
-                sensor.AddObservation(hitPos); // 这里是 (-1,-1,-1)
+                if (vray.feedDistance)
+                {
+                    sensor.AddObservation(hitDistance); //这里是 -1
+                }
+                else
+                {
+                    sensor.AddObservation(hitPos); // 这里是 (-1,-1,-1)
+                }
             }
             
         }
@@ -426,6 +469,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
                 viewRay.distance = maxViewDistance;
                 viewRay.height = rayHeight;
                 viewRay.radius = raySphereRadius;
+                viewRay.feedDistance = rayFeedDistance;
             }
         }
     }
@@ -535,7 +579,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     /// </summary>
     /// <param name="observeType">观察到物体的类型 0：墙 1：球 2：队友 -2：对手 3：己方球门 -3：对方球门</param>
     /// <param name="observePos">观察到物体的位置</param>
-    public virtual void ObservationReward(int observeType,Vector3 observePos)
+    public virtual void ObservationReward(int observeType,Vector3 observePos,float distance)
     {
 
     }
@@ -554,16 +598,19 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     private void OnDrawGizmosSelected()
     {
-        foreach (ViewRay vray in viewRays)
+        if (drawRays)
         {
-            Vector3 direction = Quaternion.AngleAxis(vray.degree, transform.up) * transform.forward;
-            Vector3 pos = transform.position;
-            pos.y = vray.height;
-            Gizmos.DrawRay(pos, direction * vray.distance);
-            if (vray.radius > 0 && vray.hitPos.y > -1)
+            foreach (ViewRay vray in viewRays)
             {
-                Gizmos.DrawWireSphere(vray.hitPos, vray.radius);
-                vray.hitPos = -Vector3.one;
+                Vector3 direction = Quaternion.AngleAxis(vray.degree, transform.up) * transform.forward;
+                Vector3 pos = transform.position;
+                pos.y = vray.height;
+                Gizmos.DrawRay(pos, direction * vray.distance);
+                if (vray.radius > 0 && vray.hitPos.y > -1)
+                {
+                    Gizmos.DrawWireSphere(vray.hitPos, vray.radius);
+                    vray.hitPos = -Vector3.one;
+                }
             }
         }
     }
