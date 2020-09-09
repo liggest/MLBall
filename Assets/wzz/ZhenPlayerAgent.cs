@@ -50,14 +50,20 @@ public class ZhenPlayerAgent : PlayerAgent // <- 注意这里是Agent
         }
         AddReward(-0.1f);
     }
-    public virtual void FallReward()
+    public override void FallReward()
     {
         SetReward(-1f);
     }
-    public virtual void IdleReward()
+    public override void IdleReward()
     {
-        idleDis += Vector3.Distance(transform.localPosition, lastPos);
-        AddReward(Vector3.Distance(transform.localPosition, lastPos) / 1e7f);
+        idleDis += Vector3.Distance(transform.localPosition, LastPos);
+        AddReward(Vector3.Distance(transform.localPosition, LastPos) / 1e3f);
+    }
+    public override void ObservationReward(int observeType, Vector3 observePos)
+    {
+        if(observeType==-3){
+            AddReward(0.1f);
+        }
     }
     private void CompareReward(float main, float other)
     {
