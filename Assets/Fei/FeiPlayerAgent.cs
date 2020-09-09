@@ -14,11 +14,11 @@ public class FeiPlayerAgent : PlayerAgent
         if (CurrentBall.lastPlayer == null)
         {
             AddReward(0.25f);
-            SM.SetTeamReward(TeamName, 0.02f);
+            SM.AddTeamReward(TeamName, 0.02f);
         }else if (IsTeammate(CurrentBall.lastPlayer))
         {
             AddReward(0.2f);
-            SM.SetTeamReward(TeamName, 0.018f);
+            SM.AddTeamReward(TeamName, 0.018f);
         }
         else
         {
@@ -57,22 +57,23 @@ public class FeiPlayerAgent : PlayerAgent
     {
         AddReward(-0.001f);
     }
-    //public override void ObservationReward(int observeType, Vector3 observePos)
-    //{
-    //    if(observeType == 1)
-    //    {
-    //        AddReward(1);
-    //    }
-    //    float distance = Vector3.Distance(observePos, transform.localPosition);
-    //    if (distance > 1.8f && distance<8f)
-    //    {
-    //        AddReward(1 / distance / 1000);
-    //    }else if (distance > 8f)
-    //    {
-    //        AddReward(-distance / 1000);
-    //    }
-        
-    //}
+    public override void ObservationReward(int observeType, Vector3 observePos)
+    {
+        if (observeType == 1)
+        {
+            AddReward(1);
+        }
+        float distance = Vector3.Distance(observePos, transform.localPosition);
+        if (distance > 1.8f && distance < 8f)
+        {
+            AddReward(1 / distance / 1000);
+        }
+        else if (distance > 8f)
+        {
+            AddReward(-distance / 1000);
+        }
+
+    }
     public override void BumpPlayerReward(Transform playerTransform)
     {
             AddReward(-0.001f);

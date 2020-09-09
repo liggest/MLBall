@@ -586,7 +586,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350023614}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2902496c0120472b90269f94a0aec7e, type: 3}
   m_Name: 
@@ -878,18 +878,38 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3954075284466545328, guid: a502f97d74da22542b3973cbfc7d0114,
         type: 3}
+      propertyPath: viewDegrees.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954075284466545328, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
       propertyPath: drawRays
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3954075284466545328, guid: a502f97d74da22542b3973cbfc7d0114,
         type: 3}
       propertyPath: isControl
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3954075284466545328, guid: a502f97d74da22542b3973cbfc7d0114,
         type: 3}
       propertyPath: maxViewDistance
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954075284466545328, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: viewDegrees.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954075284466545328, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: viewDegrees.Array.data[2]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954075284466545328, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: viewDegrees.Array.data[0]
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 3954075284466545329, guid: a502f97d74da22542b3973cbfc7d0114,
         type: 3}
