@@ -372,6 +372,281 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: isControl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: drawRays
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[0].distance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[1].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[1].distance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[2].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[2].distance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[0].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[3].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[4].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[1].degree
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[2].degree
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[3].degree
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[4].degree
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: raySphereRadius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[0].height
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[0].radius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[0].hitPos.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[0].hitPos.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470693, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[0].hitPos.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692412201032, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692412201032, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: raySphereRadius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692412201032, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[0].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692412201032, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[1].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692412201032, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[2].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692412201032, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[3].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692412201032, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[4].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692412201032, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[1].degree
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692412201032, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[2].degree
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692412201032, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[3].degree
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692412201032, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[4].degree
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692855571617, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692855571617, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: raySphereRadius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692855571617, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[0].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692855571617, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[1].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692855571617, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[2].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692855571617, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[3].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692855571617, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[4].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692855571617, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[1].degree
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692855571617, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[2].degree
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692855571617, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[3].degree
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039692855571617, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[4].degree
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039693532317235, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039693532317235, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: raySphereRadius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039693532317235, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[0].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039693532317235, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[1].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039693532317235, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[2].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039693532317235, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[3].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039693532317235, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[4].useAgentSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039693532317235, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[1].degree
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039693532317235, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[2].degree
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039693532317235, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[3].degree
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832039693532317235, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: viewRays.Array.data[4].degree
+      value: -60
+      objectReference: {fileID: 0}
     - target: {fileID: 3832039694050780076, guid: 36759906029c01242a79342f970cfe8a,
         type: 3}
       propertyPath: m_LocalPosition.x

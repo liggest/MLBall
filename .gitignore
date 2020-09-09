@@ -63,3 +63,5 @@ crashlytics-build.properties
 .DS_Store
 .vscode/settings.json
 training/results/
+Assets/ML-Agents/Timers/TestScene_timers.json
+Assets/ML-Agents/Timers/TestScene_timers.json.meta
