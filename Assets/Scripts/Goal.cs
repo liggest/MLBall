@@ -62,17 +62,11 @@ public class Goal : MonoBehaviour
         if (ball.lastPlayer && ball.lastPlayer.BP.BehaviorType == Unity.MLAgents.Policies.BehaviorType.HeuristicOnly)
         {
             sm.InitPlayers();
+            sm.InitTimer(true);
         }
         else
         {
-            foreach (List<PlayerAgent> pal in sm.teams.Values)
-            {
-                foreach (PlayerAgent pa in pal)
-                {
-                    pa.EndEpisode();
-                }
-            }
-            sm.InitTimer(true);
+            sm.EndEpisodes();
         }
     }
 }
