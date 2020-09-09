@@ -42,13 +42,12 @@ public class ZhenPlayerAgent : PlayerAgent // <- 注意这里是Agent
     {
         if (IsTeammate(playerTransform.GetComponent<PlayerAgent>()))
         {
-
+            AddReward(-0.1f);
         }
         else
         {
-            
+            AddReward(-0.1f);
         }
-        AddReward(-0.1f);
     }
     public override void FallReward()
     {
@@ -57,12 +56,17 @@ public class ZhenPlayerAgent : PlayerAgent // <- 注意这里是Agent
     public override void IdleReward()
     {
         idleDis += Vector3.Distance(transform.localPosition, LastPos);
-        AddReward(Vector3.Distance(transform.localPosition, LastPos) / 1e3f);
+        AddReward(Vector3.Distance(transform.localPosition, LastPos) / 1e5f);
     }
     public override void ObservationReward(int observeType, Vector3 observePos)
     {
-        if(observeType==-3){
-            AddReward(0.1f);
+        if (observeType == -3)
+        {
+            AddReward(0.001f);
+        }
+        else if (observeType == 1)
+        {
+            AddReward(0.001f);
         }
     }
     private void CompareReward(float main, float other)
@@ -100,7 +104,8 @@ public class ZhenPlayerAgent : PlayerAgent // <- 注意这里是Agent
             {
                 foreach (PlayerAgent pa in SM.teams[key])
                 {
-                    pa.SetReward(other);
+                    if (other != 0)
+                        pa.SetReward(other);
                 }
             }
         }
