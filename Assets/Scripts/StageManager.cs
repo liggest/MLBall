@@ -8,6 +8,9 @@ public class StageManager : MonoBehaviour
     public Dictionary<string, List<PlayerAgent>> teams = new Dictionary<string, List<PlayerAgent>>(); //场地中的各个队伍
     public Dictionary<string, Goal> teamGoals = new Dictionary<string, Goal>(); //各个队伍的球门
 
+    [Tooltip("场地对角线长度")]
+    public float maxStageLength = 20;
+    float stageDiagonalFactor = 0;
 
     [HideInInspector]
     public float timer = 0; //计时器
@@ -17,6 +20,7 @@ public class StageManager : MonoBehaviour
     private void Awake()
     {
         Utils.SetStage(this);
+        stageDiagonalFactor = 1.0f / maxStageLength;
     }
 
     private void FixedUpdate()
@@ -58,7 +62,7 @@ public class StageManager : MonoBehaviour
         {
             foreach(PlayerAgent pa in pal)
             {
-                pa.SetReward(reward);
+                pa.AddReward(reward);
             }
         }
     }
@@ -70,6 +74,16 @@ public class StageManager : MonoBehaviour
         {
             episodes++;
         }
+    }
+
+    public Vector3 NormalizePos(Vector3 pos)
+    {
+        return pos * stageDiagonalFactor;
+    }
+
+    public float NormalizeAngleY(Vector3 eulerAngles)
+    {
+        return eulerAngles.y / 180.0f - 1;
     }
 
 }

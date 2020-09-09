@@ -59,7 +59,7 @@ public class Goal : MonoBehaviour
         }
         sm.InitBalls();
 
-        if (ball.lastPlayer && ball.lastPlayer.Bp.BehaviorType == Unity.MLAgents.Policies.BehaviorType.HeuristicOnly)
+        if (ball.lastPlayer && ball.lastPlayer.BP.BehaviorType == Unity.MLAgents.Policies.BehaviorType.HeuristicOnly)
         {
             sm.InitPlayers();
         }

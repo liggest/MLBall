@@ -341,9 +341,11 @@ MonoBehaviour:
   - -30
   - 60
   - -60
-  maxViewDistance: 10
+  maxViewDistance: 12
   joyForceFactor: 10
   moveSpeed: 40
+  maxSpeed: 25
+  MaxHitType: 10
   teamGoal: {fileID: 1796908633}
 --- !u!114 &185445759
 MonoBehaviour:
@@ -1231,9 +1233,11 @@ MonoBehaviour:
   - -30
   - 60
   - -60
-  maxViewDistance: 10
+  maxViewDistance: 12
   joyForceFactor: 10
   moveSpeed: 40
+  maxSpeed: 25
+  MaxHitType: 10
   teamGoal: {fileID: 1258790258}
 --- !u!114 &749402235
 MonoBehaviour:
@@ -1350,9 +1354,11 @@ MonoBehaviour:
   - -30
   - 60
   - -60
-  maxViewDistance: 10
+  maxViewDistance: 12
   joyForceFactor: 10
   moveSpeed: 40
+  maxSpeed: 25
+  MaxHitType: 10
   teamGoal: {fileID: 1258790258}
 --- !u!114 &767226264
 MonoBehaviour:
@@ -2729,9 +2735,11 @@ MonoBehaviour:
   - -30
   - 60
   - -60
-  maxViewDistance: 10
+  maxViewDistance: 12
   joyForceFactor: 10
   moveSpeed: 40
+  maxSpeed: 25
+  MaxHitType: 10
   teamGoal: {fileID: 1796908633}
 --- !u!114 &1625759725
 MonoBehaviour:
@@ -2878,6 +2886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balls: []
+  maxStageLength: 20
   timer: 0
   episodes: 0
 --- !u!1 &1796908627

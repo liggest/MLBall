@@ -7,19 +7,95 @@ using Unity.MLAgents.Policies;
 
 public class ZhenPlayerAgent : PlayerAgent // <- 注意这里是Agent
 {
-    public void GoalReward(Goal g, Ball b)
+    public float idleDis = 0;
+    public override void GoalReward(Goal g, Ball b)
     {
         //g.IsRivalGoal
         //b.lastPlayer
         //SetReward
-        float factor = g.IsRivalGoal(b) ? -1f : 1f;
-        foreach (string key in sm.teams.Keys)
+        float factor = g.IsRivalGoal(b) ? 1f : -1f;
+        SetCompareReward(factor, -factor);
+    }
+    public override void GetBallReward()
+    {
+        idleDis = 0;
+        CompareReward(0.5f, -0.1f);
+    }
+    public override void KeepBallReward()
+    {
+        CompareReward(0.005f, 0);
+    }
+    public override void LoseBallReward(Ball b)
+    {
+        idleDis = 0;
+        CompareReward(-0.1f, 0);
+    }
+    public override void ShootReward(float forceValue)
+    {
+        AddReward(forceValue / 15);
+    }
+    public override void BumpWallReward()
+    {
+        AddReward(-0.05f);
+    }
+    public override void BumpPlayerReward(Transform playerTransform)
+    {
+        if (IsTeammate(playerTransform.GetComponent<PlayerAgent>()))
         {
-            if(key==teamName)
+
+        }
+        else
+        {
+            
+        }
+        AddReward(-0.1f);
+    }
+    public virtual void FallReward()
+    {
+        SetReward(-1f);
+    }
+    public virtual void IdleReward()
+    {
+        idleDis += Vector3.Distance(transform.localPosition, lastPos);
+        AddReward(Vector3.Distance(transform.localPosition, lastPos) / 1e7f);
+    }
+    private void CompareReward(float main, float other)
+    {
+        foreach (string key in SM.teams.Keys)
+        {
+            if (key == TeamName)
             {
-                SetReward(factor);
-            }else{
-                SetReward(-factor);
+                foreach (PlayerAgent pa in SM.teams[key])
+                {
+                    pa.AddReward(main);
+                }
+            }
+            else
+            {
+                foreach (PlayerAgent pa in SM.teams[key])
+                {
+                    pa.AddReward(other);
+                }
+            }
+        }
+    }
+    private void SetCompareReward(float main, float other)
+    {
+        foreach (string key in SM.teams.Keys)
+        {
+            if (key == TeamName)
+            {
+                foreach (PlayerAgent pa in SM.teams[key])
+                {
+                    pa.SetReward(main);
+                }
+            }
+            else
+            {
+                foreach (PlayerAgent pa in SM.teams[key])
+                {
+                    pa.SetReward(other);
+                }
             }
         }
     }
