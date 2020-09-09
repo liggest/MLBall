@@ -33,7 +33,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     [Tooltip("是否画射线")]
     public bool drawRays = false;
     [Tooltip("各个射线")]
-    public ViewRay[] viewRays;
+    public ViewRay[] viewRays = new ViewRay[1];
     public float rayHeight = 0.5f;
     [Tooltip("射线球半径")]
     public float raySphereRadius = 0;
@@ -598,16 +598,19 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     private void OnDrawGizmosSelected()
     {
-        foreach (ViewRay vray in viewRays)
+        if (drawRays)
         {
-            Vector3 direction = Quaternion.AngleAxis(vray.degree, transform.up) * transform.forward;
-            Vector3 pos = transform.position;
-            pos.y = vray.height;
-            Gizmos.DrawRay(pos, direction * vray.distance);
-            if (vray.radius > 0 && vray.hitPos.y > -1)
+            foreach (ViewRay vray in viewRays)
             {
-                Gizmos.DrawWireSphere(vray.hitPos, vray.radius);
-                vray.hitPos = -Vector3.one;
+                Vector3 direction = Quaternion.AngleAxis(vray.degree, transform.up) * transform.forward;
+                Vector3 pos = transform.position;
+                pos.y = vray.height;
+                Gizmos.DrawRay(pos, direction * vray.distance);
+                if (vray.radius > 0 && vray.hitPos.y > -1)
+                {
+                    Gizmos.DrawWireSphere(vray.hitPos, vray.radius);
+                    vray.hitPos = -Vector3.one;
+                }
             }
         }
     }
