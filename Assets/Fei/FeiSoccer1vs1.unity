@@ -189,6 +189,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StageFei (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3954075286025105593, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a502f97d74da22542b3973cbfc7d0114, type: 3}
 --- !u!1 &705507993
@@ -350,6 +355,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StageFei (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3954075286025105593, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a502f97d74da22542b3973cbfc7d0114, type: 3}
 --- !u!1 &963194225
@@ -502,6 +512,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StageFei (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3954075286025105593, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a502f97d74da22542b3973cbfc7d0114, type: 3}
 --- !u!1001 &1129402560
@@ -571,6 +586,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StageFei (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3954075286025105593, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a502f97d74da22542b3973cbfc7d0114, type: 3}
 --- !u!1 &1350023614 stripped
@@ -591,7 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2902496c0120472b90269f94a0aec7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Record: 0
+  Record: 1
   DemonstrationName: FeiPlay
   DemonstrationDirectory: Assets/Fei/Demonstrations
 --- !u!1001 &1434330285
@@ -660,6 +680,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StageFei (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954075286025105593, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a502f97d74da22542b3973cbfc7d0114, type: 3}
@@ -798,6 +823,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StageFei (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3954075286025105593, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a502f97d74da22542b3973cbfc7d0114, type: 3}
 --- !u!1001 &1889278907
@@ -867,8 +897,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: StageFei (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3954075286025105593, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a502f97d74da22542b3973cbfc7d0114, type: 3}
+--- !u!1 &2032800797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3954075284957768333, guid: a502f97d74da22542b3973cbfc7d0114,
+    type: 3}
+  m_PrefabInstance: {fileID: 3954075284930382539}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2032800806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032800797}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2902496c0120472b90269f94a0aec7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Record: 0
+  DemonstrationName: FeiPlayB
+  DemonstrationDirectory: Assets/Fei/Demonstrations
 --- !u!1001 &3954075284930382539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -916,6 +972,40 @@ PrefabInstance:
       propertyPath: m_BehaviorType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3954075284466545329, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: 05e75201c0e9f814885af43fbebd4b7e,
+        type: 3}
+    - target: {fileID: 3954075284957768321, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: isControl
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954075284957768322, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: m_BehaviorType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954075284957768322, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: 05e75201c0e9f814885af43fbebd4b7e,
+        type: 3}
+    - target: {fileID: 3954075285617378948, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: 05e75201c0e9f814885af43fbebd4b7e,
+        type: 3}
+    - target: {fileID: 3954075285766186874, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: 05e75201c0e9f814885af43fbebd4b7e,
+        type: 3}
     - target: {fileID: 3954075286025105592, guid: a502f97d74da22542b3973cbfc7d0114,
         type: 3}
       propertyPath: m_LocalPosition.x

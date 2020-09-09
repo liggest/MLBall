@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class FeiPlayerAgent : PlayerAgent
 {
-    public override void BumpWallReward()
-    {
-        AddReward(-0.1f);
-    }
+    //public override void BumpWallReward()
+    //{
+    //    AddReward(-0.1f);
+    //}
 
     public override void GetBallReward()
     {
@@ -68,14 +68,14 @@ public class FeiPlayerAgent : PlayerAgent
         {
             AddReward(1 / distance / 1000);
         }
-        else if (distance > 8f)
-        {
-            AddReward(-distance / 1000);
-        }
+        //else if (distance > 8f)
+        //{
+        //    AddReward(-distance / 1000);
+        //}
 
     }
-    public override void BumpPlayerReward(Transform playerTransform)
-    {
-            AddReward(-0.001f);
-    }
+    //public override void BumpPlayerReward(Transform playerTransform)
+    //{
+    //        AddReward(-0.001f);
+    //}
 }
