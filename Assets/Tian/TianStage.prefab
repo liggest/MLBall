@@ -390,7 +390,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 3000
   isControl: 0
   drawRays: 0
   viewRays:
@@ -966,7 +966,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 3000
   isControl: 0
   drawRays: 0
   viewRays:
@@ -1184,7 +1184,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 3000
   isControl: 0
   drawRays: 0
   viewRays:
@@ -2400,7 +2400,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 3000
   isControl: 0
   drawRays: 0
   viewRays:

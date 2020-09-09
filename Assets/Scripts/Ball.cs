@@ -31,6 +31,8 @@ public class Ball : MonoBehaviour
     [HideInInspector]
     public PlayerAgent lastPlayer;
 
+    public Rigidbody Rig { get => rig; private set => rig = value; }
+
     // Start is called before the first frame update
     void Start()
     {
