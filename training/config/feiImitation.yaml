@@ -23,7 +23,7 @@ behaviors:
         learning_rate: 0.0003
         use_actions: false
         use_vail: false
-        demo_path: ../../MLBall/Assets/Fei/Demonstrations/FeiPlayB.demo
+        demo_path: ../../MLBall/Assets/Fei/Demonstrations/FeiPlayB2.demo
     keep_checkpoints: 5
     max_steps: 15000000
     time_horizon: 64

@@ -611,8 +611,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2902496c0120472b90269f94a0aec7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Record: 1
-  DemonstrationName: FeiPlay
+  Record: 0
+  DemonstrationName: FeiPlayB2
   DemonstrationDirectory: Assets/Fei/Demonstrations
 --- !u!1001 &1434330285
 PrefabInstance:
@@ -976,8 +976,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 05e75201c0e9f814885af43fbebd4b7e,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3954075284957768321, guid: a502f97d74da22542b3973cbfc7d0114,
         type: 3}
       propertyPath: isControl
@@ -992,20 +991,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 05e75201c0e9f814885af43fbebd4b7e,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3954075285617378948, guid: a502f97d74da22542b3973cbfc7d0114,
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 05e75201c0e9f814885af43fbebd4b7e,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3954075285766186874, guid: a502f97d74da22542b3973cbfc7d0114,
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 05e75201c0e9f814885af43fbebd4b7e,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3954075286025105592, guid: a502f97d74da22542b3973cbfc7d0114,
         type: 3}
       propertyPath: m_LocalPosition.x

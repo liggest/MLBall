@@ -399,10 +399,39 @@ MonoBehaviour:
   MaxStep: 6000
   isControl: 0
   drawRays: 0
-  viewDegrees:
-  - -30
-  - 0
-  - 30
+  viewRays:
+  - degree: 0
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  - degree: 30
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  - degree: -30
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  - degree: 60
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  - degree: -60
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  rayHeight: 0.5
+  raySphereRadius: 0.3
   maxViewDistance: 12
   maxHitType: 5
   joyForceFactor: 10
@@ -1279,10 +1308,39 @@ MonoBehaviour:
   MaxStep: 6000
   isControl: 0
   drawRays: 0
-  viewDegrees:
-  - -30
-  - 0
-  - 30
+  viewRays:
+  - degree: 0
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  - degree: 30
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  - degree: -30
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  - degree: 60
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  - degree: -60
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  rayHeight: 0.5
+  raySphereRadius: 0.3
   maxViewDistance: 12
   maxHitType: 5
   joyForceFactor: 10
@@ -1838,10 +1896,39 @@ MonoBehaviour:
   MaxStep: 6000
   isControl: 0
   drawRays: 0
-  viewDegrees:
-  - -30
-  - 0
-  - 30
+  viewRays:
+  - degree: 0
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  - degree: 30
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  - degree: -30
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  - degree: 60
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  - degree: -60
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  rayHeight: 0.5
+  raySphereRadius: 0.3
   maxViewDistance: 12
   maxHitType: 5
   joyForceFactor: 10
@@ -2220,10 +2307,39 @@ MonoBehaviour:
   MaxStep: 6000
   isControl: 0
   drawRays: 0
-  viewDegrees:
-  - -30
-  - 0
-  - 30
+  viewRays:
+  - degree: 0
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  - degree: 30
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  - degree: -30
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  - degree: 60
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  - degree: -60
+    useAgentSettings: 1
+    height: 0
+    radius: 0
+    distance: 0
+    hitPos: {x: 0, y: 0, z: 0}
+  rayHeight: 0.5
+  raySphereRadius: 0.3
   maxViewDistance: 12
   maxHitType: 5
   joyForceFactor: 10

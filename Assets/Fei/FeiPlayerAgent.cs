@@ -34,7 +34,7 @@ public class FeiPlayerAgent : PlayerAgent
 
     public override void ShootReward(float forceValue)
     {
-        AddReward(0.2f);
+        AddReward(0.15f);
     }
 
     public override void KeepBallReward()
@@ -61,7 +61,7 @@ public class FeiPlayerAgent : PlayerAgent
     {
         if (observeType == 1)
         {
-            AddReward(1);
+            AddReward(0.0012f);
         }
         float distance = Vector3.Distance(observePos, transform.localPosition);
         if (distance > 1.8f && distance < 8f)
