@@ -51,11 +51,15 @@ public class Goal : MonoBehaviour
     /// <param name="ball">进球的那个球</param>
     private void GoalAndScore(Ball ball)
     {
-        if (ball.lastPlayer)
+        if (ball.owner)
+        {
+            Debug.Log($"{ball.owner.TeamName}队 进球了！{teamName}队 被破门！");
+            ball.owner.GoalReward(this, ball);
+        }
+        else if (ball.lastPlayer)
         {
             Debug.Log($"{ball.lastPlayer.TeamName}队 进球了！{teamName}队 被破门！");
             ball.lastPlayer.GoalReward(this, ball);
-
         }
         sm.InitBalls();
 
