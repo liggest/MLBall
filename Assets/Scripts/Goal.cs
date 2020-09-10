@@ -41,7 +41,11 @@ public class Goal : MonoBehaviour
     /// <returns>是否是对手的进球</returns>
     public bool IsRivalGoal(Ball ball)
     {
-        if(ball.lastPlayer && ball.lastPlayer.TeamID != teamID)
+        if(ball.owner && ball.owner.TeamID != teamID)
+        {
+            return true;
+        }
+        else if(ball.lastPlayer && ball.lastPlayer.TeamID != teamID)
         {
             return true;
         }
