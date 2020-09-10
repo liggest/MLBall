@@ -68,3 +68,5 @@ Assets/ML-Agents/Timers/TestScene_timers.json.meta
 Assets/ML-Agents/Timers/TianSceneTest_timers.json.meta
 Assets/ML-Agents/Timers/TianSceneTest_timers.json
 
+training/config/StrikersVsGoalie.yaml
+training/config/SoccerTwos.yaml
