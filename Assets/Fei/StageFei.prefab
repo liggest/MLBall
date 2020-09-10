@@ -405,35 +405,42 @@ MonoBehaviour:
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 30
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -30
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 60
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -60
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   rayHeight: 0.5
   raySphereRadius: 0.3
   maxViewDistance: 12
+  rayFeedDistance: 0
   maxHitType: 5
+  feedLocalInfo: 1
   joyForceFactor: 10
   moveSpeed: 40
   maxSpeed: 25
@@ -451,7 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 25
+    VectorObservationSize: 26
     NumStackedVectorObservations: 1
     VectorActionSize: 05000000
     VectorActionDescriptions: []
@@ -1314,35 +1321,42 @@ MonoBehaviour:
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 30
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -30
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 60
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -60
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   rayHeight: 0.5
   raySphereRadius: 0.3
   maxViewDistance: 12
+  rayFeedDistance: 0
   maxHitType: 5
+  feedLocalInfo: 1
   joyForceFactor: 10
   moveSpeed: 40
   maxSpeed: 25
@@ -1360,7 +1374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 25
+    VectorObservationSize: 26
     NumStackedVectorObservations: 1
     VectorActionSize: 05000000
     VectorActionDescriptions: []
@@ -1902,35 +1916,42 @@ MonoBehaviour:
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 30
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -30
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 60
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -60
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   rayHeight: 0.5
   raySphereRadius: 0.3
   maxViewDistance: 12
+  rayFeedDistance: 0
   maxHitType: 5
+  feedLocalInfo: 1
   joyForceFactor: 10
   moveSpeed: 40
   maxSpeed: 25
@@ -1948,7 +1969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 25
+    VectorObservationSize: 26
     NumStackedVectorObservations: 1
     VectorActionSize: 05000000
     VectorActionDescriptions: []
@@ -2313,35 +2334,42 @@ MonoBehaviour:
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 30
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -30
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 60
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -60
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 0
     hitPos: {x: 0, y: 0, z: 0}
   rayHeight: 0.5
   raySphereRadius: 0.3
   maxViewDistance: 12
+  rayFeedDistance: 0
   maxHitType: 5
+  feedLocalInfo: 1
   joyForceFactor: 10
   moveSpeed: 40
   maxSpeed: 25
@@ -2359,7 +2387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 25
+    VectorObservationSize: 26
     NumStackedVectorObservations: 1
     VectorActionSize: 05000000
     VectorActionDescriptions: []

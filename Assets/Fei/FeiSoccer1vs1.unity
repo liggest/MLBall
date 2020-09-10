@@ -612,7 +612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Record: 0
-  DemonstrationName: FeiPlay3B
+  DemonstrationName: FeiPlay4
   DemonstrationDirectory: Assets/Fei/Demonstrations
 --- !u!1001 &1434330285
 PrefabInstance:
@@ -966,6 +966,11 @@ PrefabInstance:
         type: 3}
       propertyPath: viewDegrees.Array.data[0]
       value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954075284466545328, guid: a502f97d74da22542b3973cbfc7d0114,
+        type: 3}
+      propertyPath: rayFeedDistance
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3954075284466545329, guid: a502f97d74da22542b3973cbfc7d0114,
         type: 3}
