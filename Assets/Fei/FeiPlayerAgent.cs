@@ -33,7 +33,7 @@ public class FeiPlayerAgent : PlayerAgent
 
     public override void ShootReward(float forceValue)
     {
-        AddReward(0.35f);
+        AddReward(0.45f);
     }
 
     public override void KeepBallReward()
@@ -58,10 +58,10 @@ public class FeiPlayerAgent : PlayerAgent
             AddReward(-0.8f);
         }
     }
-    public override void IdleReward()
-    {
-        AddReward(-0.0009f);
-    }
+    //public override void IdleReward()
+    //{
+    //    AddReward(-0.0009f);
+    //}
 
     public override void ObservationReward(int observeType, Vector3 observePos, float distance)
     {
