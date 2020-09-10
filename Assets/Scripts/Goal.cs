@@ -26,6 +26,7 @@ public class Goal : MonoBehaviour
         if (other.CompareTag("Ball"))
         {
             Ball ball = other.GetComponent<Ball>();
+            //ball.ResetOwner();
             GoalAndScore(ball);
             //sm.ball.ResetBall();
         }
