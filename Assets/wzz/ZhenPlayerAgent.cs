@@ -8,6 +8,7 @@ using Unity.MLAgents.Policies;
 public class ZhenPlayerAgent : PlayerAgent // <- 注意这里是Agent
 {
     public float idleDis = 0;
+    public Vector3 idleVec = Vector3.zero;
     public override void GoalReward(Goal g, Ball b)
     {
         //g.IsRivalGoal
@@ -19,7 +20,9 @@ public class ZhenPlayerAgent : PlayerAgent // <- 注意这里是Agent
     public override void GetBallReward()
     {
         idleDis = 0;
-        CompareReward(0.5f, -0.1f);
+        idleVec = Vector3.zero;
+        CompareReward(0.8f, -0.1f);
+        OnEpisodeEnd();
     }
     public override void KeepBallReward()
     {
@@ -28,6 +31,7 @@ public class ZhenPlayerAgent : PlayerAgent // <- 注意这里是Agent
     public override void LoseBallReward(Ball b)
     {
         idleDis = 0;
+        idleVec = Vector3.zero;
         CompareReward(-0.1f, 0);
     }
     public override void ShootReward(float forceValue)
@@ -56,9 +60,10 @@ public class ZhenPlayerAgent : PlayerAgent // <- 注意这里是Agent
     public override void IdleReward()
     {
         idleDis += Vector3.Distance(transform.localPosition, LastPos);
-        AddReward(Vector3.Distance(transform.localPosition, LastPos) / 1e5f);
+        idleVec += transform.localPosition-LastPos;
+        AddReward(idleVec.magnitude / 1e4f - 0.001f);
     }
-    public override void ObservationReward(int observeType, Vector3 observePos)
+    public override void ObservationReward(int observeType, Vector3 observePos, float distance)
     {
         if (observeType == -3)
         {

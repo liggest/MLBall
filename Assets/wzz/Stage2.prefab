@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1054516267477584856}
   - component: {fileID: 5560099414800007654}
   - component: {fileID: 1881194299852083503}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball (2)
   m_TagString: Ball
   m_Icon: {fileID: 0}
@@ -282,70 +282,83 @@ MonoBehaviour:
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -40
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -20
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 0
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 20
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 40
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 60
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -45
     useAgentSettings: 0
     height: 2.5
     radius: 0.25
     distance: 20
+    feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: 0
     useAgentSettings: 0
     height: 2.5
     radius: 0.25
     distance: 20
+    feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: 45
     useAgentSettings: 0
     height: 2.5
     radius: 0.25
     distance: 20
+    feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   rayHeight: 0.5
   raySphereRadius: 0.2
   maxViewDistance: 20
+  rayFeedDistance: 1
   maxHitType: 5
+  feedLocalInfo: 1
   joyForceFactor: 10
   moveSpeed: 40
   maxSpeed: 25
   teamGoal: {fileID: 2987534675279779736}
   idleDis: 0
+  idleVec: {x: 0, y: 0, z: 0}
 --- !u!114 &2987534673667792062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,7 +491,7 @@ GameObject:
   - component: {fileID: 2987534673879223462}
   - component: {fileID: 2987534673879223465}
   - component: {fileID: 2987534673879223464}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball
   m_TagString: Ball
   m_Icon: {fileID: 0}
@@ -917,70 +930,83 @@ MonoBehaviour:
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -40
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -20
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 0
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 20
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 40
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 60
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -45
     useAgentSettings: 0
     height: 2.5
     radius: 0.25
     distance: 20
+    feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: 0
     useAgentSettings: 0
     height: 2.5
     radius: 0.25
     distance: 20
+    feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: 45
     useAgentSettings: 0
     height: 2.5
     radius: 0.25
     distance: 20
+    feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   rayHeight: 0.5
   raySphereRadius: 0.2
   maxViewDistance: 20
+  rayFeedDistance: 1
   maxHitType: 5
+  feedLocalInfo: 1
   joyForceFactor: 10
   moveSpeed: 40
   maxSpeed: 25
   teamGoal: {fileID: 2987534674742193331}
   idleDis: 0
+  idleVec: {x: 0, y: 0, z: 0}
 --- !u!114 &2987534674245894233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1159,70 +1185,83 @@ MonoBehaviour:
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -40
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -20
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 0
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 20
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 40
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 60
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -45
     useAgentSettings: 0
     height: 2.5
     radius: 0.25
     distance: 20
+    feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: 0
     useAgentSettings: 0
     height: 2.5
     radius: 0.25
     distance: 20
+    feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: 45
     useAgentSettings: 0
     height: 2.5
     radius: 0.25
     distance: 20
+    feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   rayHeight: 0.5
   raySphereRadius: 0.2
   maxViewDistance: 20
+  rayFeedDistance: 1
   maxHitType: 5
+  feedLocalInfo: 1
   joyForceFactor: 10
   moveSpeed: 40
   maxSpeed: 25
   teamGoal: {fileID: 2987534674742193331}
   idleDis: 0
+  idleVec: {x: 0, y: 0, z: 0}
 --- !u!114 &2987534674261625274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1259,7 +1298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 10
+  DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
 --- !u!1 &2987534674279124129
 GameObject:
@@ -2041,7 +2080,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2987534674889018290}
   m_Layer: 0
-  m_Name: Stage 1
+  m_Name: Stage2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2667,70 +2706,83 @@ MonoBehaviour:
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -40
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -20
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 0
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 20
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 40
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: 60
     useAgentSettings: 1
     height: 0
     radius: 0
     distance: 0
+    feedDistance: 1
     hitPos: {x: 0, y: 0, z: 0}
   - degree: -45
     useAgentSettings: 0
     height: 2.5
     radius: 0.25
     distance: 20
+    feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: 0
     useAgentSettings: 0
     height: 2.5
     radius: 0.25
     distance: 20
+    feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: 45
     useAgentSettings: 0
     height: 2.5
     radius: 0.25
     distance: 20
+    feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   rayHeight: 0.5
   raySphereRadius: 0.2
   maxViewDistance: 20
+  rayFeedDistance: 1
   maxHitType: 5
+  feedLocalInfo: 1
   joyForceFactor: 10
   moveSpeed: 40
   maxSpeed: 25
   teamGoal: {fileID: 2987534675279779736}
   idleDis: 0
+  idleVec: {x: 0, y: 0, z: 0}
 --- !u!114 &2987534675406958124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2905,7 +2957,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5261637e1e1a74a8a4b02d57e316fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balls: []
+  balls:
+  - {fileID: 2987534673879223464}
   maxStageLength: 20
   timer: 0
   episodes: 0
@@ -2924,7 +2977,7 @@ GameObject:
   - component: {fileID: 2961465239447151471}
   - component: {fileID: 6852461631581411808}
   - component: {fileID: 3132564466957460882}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball (6)
   m_TagString: Ball
   m_Icon: {fileID: 0}
@@ -3066,7 +3119,7 @@ GameObject:
   - component: {fileID: 7814866570829355299}
   - component: {fileID: 6878547113328531184}
   - component: {fileID: 4567198444932609735}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball (4)
   m_TagString: Ball
   m_Icon: {fileID: 0}
@@ -3208,7 +3261,7 @@ GameObject:
   - component: {fileID: 7641343140838650596}
   - component: {fileID: 993020515726971509}
   - component: {fileID: 6962990497553290517}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball (1)
   m_TagString: Ball
   m_Icon: {fileID: 0}
@@ -3350,7 +3403,7 @@ GameObject:
   - component: {fileID: 1064797223448167687}
   - component: {fileID: 2219249731440893682}
   - component: {fileID: 6867519711038040409}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball (5)
   m_TagString: Ball
   m_Icon: {fileID: 0}
@@ -3492,7 +3545,7 @@ GameObject:
   - component: {fileID: 6615208112990642026}
   - component: {fileID: 2064748739921451534}
   - component: {fileID: 3244968576297801470}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball (7)
   m_TagString: Ball
   m_Icon: {fileID: 0}
@@ -3634,7 +3687,7 @@ GameObject:
   - component: {fileID: 8203246577825417093}
   - component: {fileID: 8093609813136306732}
   - component: {fileID: 669011155817194905}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball (3)
   m_TagString: Ball
   m_Icon: {fileID: 0}
@@ -3776,7 +3829,7 @@ GameObject:
   - component: {fileID: 5046760993317393572}
   - component: {fileID: 2893988081072410696}
   - component: {fileID: 3429557196586636154}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball (8)
   m_TagString: Ball
   m_Icon: {fileID: 0}

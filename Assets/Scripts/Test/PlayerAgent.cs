@@ -19,7 +19,7 @@ public class ViewRay {
     [Tooltip("射线发射距离"), SerializeField]
     public float distance = 10;
     [Tooltip("不向神经网络提交射线击中的位置，而是提交击中时射线的距离")]
-    public bool feedDistance = false;
+    public bool feedDistance = true;
     [HideInInspector]
     public Vector3 hitPos = -Vector3.one;
 }
