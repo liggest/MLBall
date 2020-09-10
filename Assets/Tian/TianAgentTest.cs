@@ -14,6 +14,8 @@ public class TianAgentTest : PlayerAgent
             Agent碰球不再游戏结束，而是同一Agent累计碰球三次后才周期结束，每次碰球后球位置随机变化
         catchBall7：
             同一Agent累计碰球若干次后周期结束，碰球次数要求随着周期数缓慢增加，每次碰球后球位置随机变化，拥有随机初速度
+        shootBall2：
+            正常游戏，抢球有奖励，进球有奖励，引入了self-play
     */
     float ballCount = 0;
     float catchCount = 0;
@@ -107,6 +109,7 @@ public class TianAgentTest : PlayerAgent
     }
     public override void KeepBallReward()
     {
+        //Debug.Log(KeepBallTime);
         float award = -Mathf.Log10(KeepBallTime + 5) + 1; //5秒内持球是正奖励
         //award *= 0.005f;
         award *= 0.01f;
@@ -126,7 +129,7 @@ public class TianAgentTest : PlayerAgent
                 }
                 else
                 {
-                    SM.AddTeamReward(team, -0.2f);
+                    SM.AddTeamReward(team, -0.4f);
                 }
             }
         }
