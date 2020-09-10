@@ -923,7 +923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Record: 0
-  DemonstrationName: FeiPlay3B
+  DemonstrationName: FeiPlay4B
   DemonstrationDirectory: Assets/Fei/Demonstrations
 --- !u!1001 &3954075284930382539
 PrefabInstance:
