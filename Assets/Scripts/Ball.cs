@@ -78,7 +78,8 @@ public class Ball : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag("Agent"))
+        //if (other.CompareTag("Agent"))
+        if (Utils.EndWithTag(other, "Agent")) 
         {
             PlayerAgent target = other.GetComponent<PlayerAgent>();
             if (!IsOwner(target))
@@ -181,20 +182,12 @@ public class Ball : MonoBehaviour
     }
     public bool IsOwner(PlayerAgent pa)
     {
-        if (pa.Equals(owner))
-        {
-            return true;
-        }
-        return false;
+        return pa.Equals(owner);
     }
 
     public bool IsOwner(Transform t)
     {
-        if (owner && t.Equals(owner.transform))
-        {
-            return true;
-        }
-        return false;
+        return owner && t.Equals(owner.transform);
     }
 
     IEnumerator ClearLastPlayer()
@@ -249,7 +242,6 @@ public class Ball : MonoBehaviour
         //rig.AddForce(force, ForceMode.Impulse);
         //owner.rig.AddForce(-force*0.65f, ForceMode.Impulse);
         //ownerRig.AddForce(-force, ForceMode.Impulse);
-        //Debug.Log("射门！");
     }
 
     IEnumerator ShootCoroutine(Vector3 force, Rigidbody ownerRig, bool shoot = true)
