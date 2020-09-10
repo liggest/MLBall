@@ -99,7 +99,8 @@ public class TianAgentTest : PlayerAgent
             SM.AddTeamReward(TeamName, 0.01f);
             if (CurrentBall.lastPlayer)
             {
-                CurrentBall.lastPlayer.AddReward(-0.05f);
+                //CurrentBall.lastPlayer.AddReward(-0.05f);
+                CurrentBall.lastPlayer.AddReward(-0.08f);
                 SM.AddTeamReward(CurrentBall.lastPlayer.TeamName, -0.01f);
             }
         }
@@ -107,7 +108,8 @@ public class TianAgentTest : PlayerAgent
     public override void KeepBallReward()
     {
         float award = -Mathf.Log10(KeepBallTime + 5) + 1; //5秒内持球是正奖励
-        award *= 0.005f;
+        //award *= 0.005f;
+        award *= 0.01f;
         AddReward(award);
         //Debug.Log(award);   
     }
@@ -116,7 +118,17 @@ public class TianAgentTest : PlayerAgent
         if (g.IsRivalGoal(b))
         {
             AddReward(1.0f);
-            SM.AddTeamReward(TeamName, 0.2f);
+            foreach(string team in SM.teams.Keys)
+            {
+                if (team == TeamName)
+                {
+                    SM.AddTeamReward(team, 0.2f);
+                }
+                else
+                {
+                    SM.AddTeamReward(team, -0.2f);
+                }
+            }
         }
         else
         {
