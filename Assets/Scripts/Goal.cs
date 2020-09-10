@@ -9,6 +9,9 @@ public class Goal : MonoBehaviour
     public int teamID;
     string teamName;
 
+    [Tooltip("在进球时结束Episode")]
+    public bool EndAtGoal = true;
+
     StageManager sm;
     MeshRenderer mr;
 
@@ -63,14 +66,18 @@ public class Goal : MonoBehaviour
         }
         sm.InitBalls();
 
-        if (ball.lastPlayer && ball.lastPlayer.BP.BehaviorType == Unity.MLAgents.Policies.BehaviorType.HeuristicOnly)
+        if (EndAtGoal)
         {
-            sm.InitPlayers();
-            sm.InitTimer(true);
+            if (ball.lastPlayer && ball.lastPlayer.BP.BehaviorType == Unity.MLAgents.Policies.BehaviorType.HeuristicOnly)
+            {
+                sm.InitPlayers();
+                sm.InitTimer(true);
+            }
+            else
+            {
+                sm.EndEpisodes();
+            }
         }
-        else
-        {
-            sm.EndEpisodes();
-        }
+
     }
 }
