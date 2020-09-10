@@ -31,16 +31,19 @@ public class FeiPlayerAgent : PlayerAgent
         SetReward(-1f);
     }
 
-    //public override void ShootReward(float forceValue)
-    //{
-    //    AddReward(0.25f);
-    //}
+    public override void ShootReward(float forceValue)
+    {
+        AddReward(0.35f);
+    }
 
     public override void KeepBallReward()
     {
-        //AddReward(0.001f);
-        if (KeepBallTime > 5f) {
+        if (KeepBallTime > 3f) {
             AddReward(-0.000001f);
+        }
+        else
+        {
+            AddReward(0.001f);
         }
     }
 
@@ -55,30 +58,30 @@ public class FeiPlayerAgent : PlayerAgent
             AddReward(-0.8f);
         }
     }
-    //public override void IdleReward()
-    //{
-    //    AddReward(-0.0009f);
-    //}
+    public override void IdleReward()
+    {
+        AddReward(-0.0009f);
+    }
 
-    //public override void ObservationReward(int observeType, Vector3 observePos, float distance)
-    //{
-    //    if (observeType == 1)
-    //    {
-    //        AddReward(0.0005f);
-    //    }
-    //    if (distance > 1.8f && distance < 8f)
-    //    {
-    //        AddReward(1 / distance / 5000);
-    //    }
-    //    //else if (distance > 8f)
-    //    //{
-    //    //    AddReward(-distance / 1000);
-    //    //}
+    public override void ObservationReward(int observeType, Vector3 observePos, float distance)
+    {
+        if (observeType == 1)
+        {
+            AddReward(0.0005f);
+        }
+        if (distance > 1.8f && distance < 8f)
+        {
+            AddReward(1 / distance / 5000);
+        }
+        //else if (distance > 8f)
+        //{
+        //    AddReward(-distance / 1000);
+        //}
 
-    //    //}
-    //    //public override void BumpPlayerReward(Transform playerTransform)
-    //    //{
-    //    //        AddReward(-0.001f);
-    //    //}
-    //}
+        //    //}
+        //    //public override void BumpPlayerReward(Transform playerTransform)
+        //    //{
+        //    //        AddReward(-0.001f);
+        //    //}
+    }
 }
