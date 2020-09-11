@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Tian/TianSceneWithRay.unity
+    guid: cb71f029fbfdf1647a9d7f04c777b93e
   m_configObjects: {}

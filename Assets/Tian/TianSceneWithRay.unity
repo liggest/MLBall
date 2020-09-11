@@ -258,6 +258,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5717557455228562839, guid: 6cf6547ea1cd28941bdbf31f99198bcd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cf6547ea1cd28941bdbf31f99198bcd, type: 3}
 --- !u!1001 &320402999
@@ -327,6 +332,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5717557455228562839, guid: 6cf6547ea1cd28941bdbf31f99198bcd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cf6547ea1cd28941bdbf31f99198bcd, type: 3}
 --- !u!1001 &521781368
@@ -395,6 +405,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stage (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5717557455228562839, guid: 6cf6547ea1cd28941bdbf31f99198bcd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cf6547ea1cd28941bdbf31f99198bcd, type: 3}
@@ -533,6 +548,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stage (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5717557455228562839, guid: 6cf6547ea1cd28941bdbf31f99198bcd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cf6547ea1cd28941bdbf31f99198bcd, type: 3}

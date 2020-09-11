@@ -16,6 +16,7 @@ public class TianRaySensorAgent : PlayerAgent
     {
         base.OnEpisodeBegin();
         timeMinus = 0;
+        transform.localPosition /= 2.0f;
     }
 
     public override void OnActionReceived(float[] vectorAction)
@@ -42,5 +43,14 @@ public class TianRaySensorAgent : PlayerAgent
         }
     }
 
+    public override void FallReward()
+    {
+        SetReward(-1);
+    }
+
+    public override void BumpWallReward()
+    {
+        AddReward(-maxStepFactor);
+    }
 
 }

@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 5717557453430861712}
   - component: {fileID: 5717557453430861724}
   - component: {fileID: 5717557453430861726}
-  - component: {fileID: 5717557453430861727}
+  - component: {fileID: 3500768189819511420}
   - component: {fileID: 5717557453430861721}
   - component: {fileID: 5717557455368781933}
   - component: {fileID: 5717557453430861720}
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_BehaviorName: TianRay
   TeamId: 0
   m_UseChildSensors: 1
---- !u!114 &5717557453430861727
+--- !u!114 &3500768189819511420
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5717557453430861713}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12538086ad289844f9e1a3d4e0a35978, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ecc4fbe2bcff464fb51523516013391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
@@ -257,41 +257,13 @@ MonoBehaviour:
   viewRays:
   - degree: 0
     useAgentSettings: 1
-    height: 0
+    height: 0.5
     radius: 0
-    distance: 0
+    distance: 10
     feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
-  - degree: 30
-    useAgentSettings: 1
-    height: 0
-    radius: 0
-    distance: 0
-    feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
-  - degree: -30
-    useAgentSettings: 1
-    height: 0
-    radius: 0
-    distance: 0
-    feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
-  - degree: 60
-    useAgentSettings: 1
-    height: 0
-    radius: 0
-    distance: 0
-    feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
-  - degree: -60
-    useAgentSettings: 1
-    height: 0
-    radius: 0
-    distance: 0
-    feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
+    hitPos: {x: -1, y: -1, z: -1}
   rayHeight: 0.5
-  raySphereRadius: 0.6
+  raySphereRadius: 0
   maxViewDistance: 12
   rayFeedDistance: 0
   maxHitType: 5
@@ -392,7 +364,7 @@ GameObject:
   - component: {fileID: 5717557453448685183}
   - component: {fileID: 5717557453448685180}
   - component: {fileID: 5717557453448685181}
-  - component: {fileID: 5717557453448685170}
+  - component: {fileID: 400730092180462838}
   - component: {fileID: 5717557453448685171}
   - component: {fileID: 5717557453628594287}
   - component: {fileID: 5717557453448685176}
@@ -521,7 +493,7 @@ MonoBehaviour:
   m_BehaviorName: TianRay
   TeamId: 0
   m_UseChildSensors: 1
---- !u!114 &5717557453448685170
+--- !u!114 &400730092180462838
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -530,7 +502,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5717557453448685169}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12538086ad289844f9e1a3d4e0a35978, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ecc4fbe2bcff464fb51523516013391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
@@ -547,36 +519,8 @@ MonoBehaviour:
     distance: 10
     feedDistance: 0
     hitPos: {x: -1, y: -1, z: -1}
-  - degree: 30
-    useAgentSettings: 1
-    height: 0
-    radius: 0
-    distance: 0
-    feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
-  - degree: -30
-    useAgentSettings: 1
-    height: 0
-    radius: 0
-    distance: 0
-    feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
-  - degree: 60
-    useAgentSettings: 1
-    height: 0
-    radius: 0
-    distance: 0
-    feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
-  - degree: -60
-    useAgentSettings: 1
-    height: 0
-    radius: 0
-    distance: 0
-    feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
   rayHeight: 0.5
-  raySphereRadius: 0.6
+  raySphereRadius: 0
   maxViewDistance: 12
   rayFeedDistance: 0
   maxHitType: 5
@@ -1468,7 +1412,7 @@ GameObject:
   - component: {fileID: 5717557454007794276}
   - component: {fileID: 5717557454007794277}
   - component: {fileID: 5717557454007794330}
-  - component: {fileID: 5717557454007794331}
+  - component: {fileID: 5973279734625172583}
   - component: {fileID: 5717557454007794328}
   - component: {fileID: 5717557454548249144}
   - component: {fileID: 5717557454007794273}
@@ -1597,7 +1541,7 @@ MonoBehaviour:
   m_BehaviorName: TianRay
   TeamId: 1
   m_UseChildSensors: 1
---- !u!114 &5717557454007794331
+--- !u!114 &5973279734625172583
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1606,7 +1550,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5717557454007794334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12538086ad289844f9e1a3d4e0a35978, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ecc4fbe2bcff464fb51523516013391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
@@ -1623,36 +1567,8 @@ MonoBehaviour:
     distance: 10
     feedDistance: 0
     hitPos: {x: -1, y: -1, z: -1}
-  - degree: 30
-    useAgentSettings: 1
-    height: 0
-    radius: 0
-    distance: 0
-    feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
-  - degree: -30
-    useAgentSettings: 1
-    height: 0
-    radius: 0
-    distance: 0
-    feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
-  - degree: 60
-    useAgentSettings: 1
-    height: 0
-    radius: 0
-    distance: 0
-    feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
-  - degree: -60
-    useAgentSettings: 1
-    height: 0
-    radius: 0
-    distance: 0
-    feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
   rayHeight: 0.5
-  raySphereRadius: 0.6
+  raySphereRadius: 0
   maxViewDistance: 12
   rayFeedDistance: 0
   maxHitType: 5
@@ -2299,7 +2215,7 @@ GameObject:
   - component: {fileID: 5717557454711015434}
   - component: {fileID: 5717557454711015435}
   - component: {fileID: 5717557454711015432}
-  - component: {fileID: 5717557454711015433}
+  - component: {fileID: 3370684615883531406}
   - component: {fileID: 5717557454711015438}
   - component: {fileID: 5717557454204433749}
   - component: {fileID: 5717557454711015447}
@@ -2428,7 +2344,7 @@ MonoBehaviour:
   m_BehaviorName: TianRay
   TeamId: 1
   m_UseChildSensors: 1
---- !u!114 &5717557454711015433
+--- !u!114 &3370684615883531406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2437,7 +2353,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5717557454711015436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12538086ad289844f9e1a3d4e0a35978, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ecc4fbe2bcff464fb51523516013391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
@@ -2454,36 +2370,8 @@ MonoBehaviour:
     distance: 10
     feedDistance: 0
     hitPos: {x: -1, y: -1, z: -1}
-  - degree: 30
-    useAgentSettings: 1
-    height: 0
-    radius: 0
-    distance: 0
-    feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
-  - degree: -30
-    useAgentSettings: 1
-    height: 0
-    radius: 0
-    distance: 0
-    feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
-  - degree: 60
-    useAgentSettings: 1
-    height: 0
-    radius: 0
-    distance: 0
-    feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
-  - degree: -60
-    useAgentSettings: 1
-    height: 0
-    radius: 0
-    distance: 0
-    feedDistance: 0
-    hitPos: {x: 0, y: 0, z: 0}
   rayHeight: 0.5
-  raySphereRadius: 0.6
+  raySphereRadius: 0
   maxViewDistance: 12
   rayFeedDistance: 0
   maxHitType: 5
