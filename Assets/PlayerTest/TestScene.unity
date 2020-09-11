@@ -557,6 +557,11 @@ PrefabInstance:
       propertyPath: rayFeedDistance
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3832039692396470699, guid: 36759906029c01242a79342f970cfe8a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Agent
+      objectReference: {fileID: 0}
     - target: {fileID: 3832039692412201032, guid: 36759906029c01242a79342f970cfe8a,
         type: 3}
       propertyPath: viewRays.Array.size

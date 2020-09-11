@@ -70,7 +70,6 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     public float maxSpeed = 25;
     float maxSpeedFactor = 0;
 
-
     [Tooltip("队伍的球门")]
     public Goal teamGoal;
     private int teamID = -1;
@@ -90,6 +89,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     private bool isUnbreakable=false;
     int unbreakbaleNum = 20;
+
+    bool useRaySensor = false;
 
     public int TeamID { get => teamID; private set => teamID = value; }
     public string TeamName { get => teamName; private set => teamName = value; }
@@ -111,34 +112,47 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     public StageManager SM { get => sm; private  set => sm = value; }
     public Ball CurrentBall { get => currentBall; private set => currentBall = value; }
     public Vector3 LastPos { get => lastPos; private set => lastPos = value; }
+    public bool UseRaySensor { get => useRaySensor; private set => useRaySensor = value; }
 
     private void Awake()
     {
-        bp = GetComponent<BehaviorParameters>();
-        InitRays();
+        useRaySensor = TryGetComponent(out RayPerceptionSensorComponentBase rayBase);
 
-        int defaultSize = bp.BrainParameters.VectorObservationSize;
-        //int actualSize = 6 + 4 * viewDegrees.Length;
-        int actualSize = 0;
-        if (feedLocalInfo)
+        bp = GetComponent<BehaviorParameters>();
+
+        if (!useRaySensor)
         {
-            actualSize+=6;
-        }
-        foreach (ViewRay vray in viewRays)
-        {
-            if (vray.feedDistance)
+            
+            InitRays();
+
+            int defaultSize = bp.BrainParameters.VectorObservationSize;
+            //int actualSize = 6 + 4 * viewDegrees.Length;
+            int actualSize = 0;
+            if (feedLocalInfo)
             {
-                actualSize += 2;
+                actualSize += 6;
             }
-            else
+            foreach (ViewRay vray in viewRays)
             {
-                actualSize += 4;
+                if (vray.feedDistance)
+                {
+                    actualSize += 2;
+                }
+                else
+                {
+                    actualSize += 4;
+                }
+            }
+            if (defaultSize != actualSize)
+            {
+                bp.BrainParameters.VectorObservationSize = actualSize;
+                Debug.Log($"正在观测的参数数量与设置中不符，已改正：{defaultSize} -> {actualSize}");
             }
         }
-        if (defaultSize != actualSize)
+        else
         {
-            bp.BrainParameters.VectorObservationSize = actualSize;
-            Debug.Log($"正在观测的参数数量与设置中不符，已改正：{defaultSize} -> {actualSize}");
+            bp.BrainParameters.VectorObservationSize = 0;
+            Debug.Log($"因为启用了RayPerceptionSensor，所以观测参数数量设为0");
         }
     }
 
@@ -195,6 +209,11 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     public override void CollectObservations(VectorSensor sensor) // 向网络提供数据
     {
+        if (useRaySensor)
+        {
+            return;
+        }
+
         if (feedLocalInfo)
         {
             // 这些都需要归一化到[-1,1]
@@ -235,6 +254,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
                 }
                 */
                 if (info.collider.CompareTag("Agent"))
+                //if (Utils.EndWithTag(info.collider, "Agent"))
                 {
                     PlayerAgent target = info.collider.GetComponent<PlayerAgent>();
                     if (IsTeammate(target))
@@ -259,6 +279,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
                     hitType = 0;
                 }
                 else if (info.collider.CompareTag("Goal"))
+                //else if (Utils.EndWithTag(info.collider, "Goal"))
                 {
                     Goal goal = info.collider.GetComponent<Goal>();
                     if (IsTeamGoal(goal))
@@ -354,7 +375,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             joyForce = rDir.magnitude;
             //Debug.Log("力度" + joyForce);
             #endregion
-            if (shoot >= 0)
+            //if (shoot >= 0) <- 这里会让它开幕射击
+            if (shoot > 0)
             {
                 //sm.ball.Shoot(joyForce * joyForceFactor);
                 float forceValue = joyForce * joyForceFactor;
@@ -591,7 +613,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         {
             BumpWallReward();
         }
-        else if (collision.collider.CompareTag("Agent"))
+        //else if (collision.collider.CompareTag("Agent"))
+        else if (Utils.EndWithTag(collision.collider, "Agent")) 
         {
             BumpPlayerReward(collision.transform);
         }
