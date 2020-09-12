@@ -7,7 +7,6 @@ public class TianAgentTest : PlayerAgent
     public RandomManager RM;
 
     /*
-
         最初：
             随机Agent位置和角度、随机球位置、Agent碰球则周期结束、玩家看球有奖励，看非球的话奖励会减少甚至变成惩罚
         几个模型后：（约catchBall4）
@@ -18,12 +17,16 @@ public class TianAgentTest : PlayerAgent
             同一Agent累计碰球若干次后周期结束，碰球次数要求随着周期数缓慢增加，每次碰球后球位置随机变化，拥有随机初速度
         shootBall2：
             正常游戏，抢球有奖励，进球有奖励，引入了self-play
-        shootBall4：
-            从4人对抗削减到1人游戏，每次从四人中随机选一人，球和人的位置随机、球有随机速度，取消了self-play
+        shootBall3：
+            从4人对抗削减到1人游戏，每次从四人中随机选一人，球和人的位置随机、球有随机速度，取消了self-play，碰球、射门奖励
+        shootBall3_2：
+            四人对抗，抢球奖励，被抢球惩罚，射门奖励，继续self-play（但是设置了teamid）
     */
     float ballCount = 0;
     float catchCount = 0;
     static float catchLimit = 3;
+
+    float maxStepFactor = 0f;
 
     public override void OnEpisodeBegin()
     {
@@ -46,12 +49,20 @@ public class TianAgentTest : PlayerAgent
 
         //ballCount = 0;
         //catchCount = 0;
+        maxStepFactor = 1.0f / MaxStep;
     }
 
     Vector3 RandomPosition()
     {
         return new Vector3(Random.Range(-9f, 9f), 1, Random.Range(-13f, 13f));
     }
+
+    public override void OnActionReceived(float[] vectorAction)
+    {
+        base.OnActionReceived(vectorAction);
+        AddReward(-maxStepFactor);
+    }
+
     public override void ObservationReward(int observeType, Vector3 observePos, float distance)
     {
         /*
@@ -73,6 +84,7 @@ public class TianAgentTest : PlayerAgent
     }
     public override void GetBallReward()
     {
+        /*
         if (CurrentBall.lastPlayer)
         {
 
@@ -81,7 +93,7 @@ public class TianAgentTest : PlayerAgent
         {
             AddReward(0.1f);
         }
-
+        */
         /*
         AddReward(0.1f);
         foreach (string key in SM.teams.Keys)
@@ -117,16 +129,17 @@ public class TianAgentTest : PlayerAgent
         if (!IsTeammate(CurrentBall.lastPlayer))
         {
             AddReward(0.1f);
-            SM.AddTeamReward(TeamName, 0.01f);
+            //SM.AddTeamReward(TeamName, 0.01f);
             if (CurrentBall.lastPlayer)
             {
                 //CurrentBall.lastPlayer.AddReward(-0.05f);
                 CurrentBall.lastPlayer.AddReward(-0.08f);
-                SM.AddTeamReward(CurrentBall.lastPlayer.TeamName, -0.01f);
+                //SM.AddTeamReward(CurrentBall.lastPlayer.TeamName, -0.01f);
             }
         }
         */
     }
+    /*
     public override void KeepBallReward()
     {
         //Debug.Log(KeepBallTime);
@@ -136,6 +149,7 @@ public class TianAgentTest : PlayerAgent
         AddReward(award);
         //Debug.Log(award);   
     }
+    */
     public override void GoalReward(Goal g, Ball b)
     {
         if (g.IsRivalGoal(b))

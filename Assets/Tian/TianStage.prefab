@@ -359,7 +359,7 @@ MonoBehaviour:
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: TianTest
-  TeamId: 0
+  TeamId: 1
   m_UseChildSensors: 1
 --- !u!114 &341239826951337061
 MonoBehaviour:
@@ -439,6 +439,7 @@ MonoBehaviour:
   moveSpeed: 40
   maxSpeed: 25
   teamGoal: {fileID: 341239828562673473}
+  RM: {fileID: 0}
 --- !u!1 &341239827263325652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,6 +1016,7 @@ MonoBehaviour:
   moveSpeed: 40
   maxSpeed: 25
   teamGoal: {fileID: 341239828025459818}
+  RM: {fileID: 0}
 --- !u!1 &341239827460596076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,6 +1235,7 @@ MonoBehaviour:
   moveSpeed: 40
   maxSpeed: 25
   teamGoal: {fileID: 341239828025459818}
+  RM: {fileID: 0}
 --- !u!1 &341239827532360947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,6 +1857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamID: 3
+  EndAtGoal: 1
 --- !u!1 &341239828161972929
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,7 +2373,7 @@ MonoBehaviour:
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: TianTest
-  TeamId: 0
+  TeamId: 1
   m_UseChildSensors: 1
 --- !u!114 &341239828472186611
 MonoBehaviour:
@@ -2449,6 +2453,7 @@ MonoBehaviour:
   moveSpeed: 40
   maxSpeed: 25
   teamGoal: {fileID: 341239828562673473}
+  RM: {fileID: 0}
 --- !u!1 &341239828473799364
 GameObject:
   m_ObjectHideFlags: 0
@@ -2663,3 +2668,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamID: 2
+  EndAtGoal: 1
