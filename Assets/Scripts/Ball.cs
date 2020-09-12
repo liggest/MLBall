@@ -270,6 +270,9 @@ public class Ball : MonoBehaviour
         ResetOwner();
         lastPlayer = null;
         rig.velocity = Vector3.zero;
+        initPos.x = Random.Range(-10,10);
+        initPos.z = Random.Range(-10,10);
         transform.localPosition = initPos;
+
     }
 }

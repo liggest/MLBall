@@ -19,7 +19,7 @@ public class ViewRay {
     [Tooltip("射线发射距离"), SerializeField]
     public float distance = 10;
     [Tooltip("不向神经网络提交射线击中的位置，而是提交击中时射线的距离")]
-    public bool feedDistance = false;
+    public bool feedDistance = true;
     [HideInInspector]
     public Vector3 hitPos = -Vector3.one;
 }
@@ -66,15 +66,14 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     [Tooltip("移动速度")]
     public float moveSpeed = 10.0f;
 
-    [HideInInspector,Tooltip("归一化用的最大速度，并非实际能达到的最大速度")]
+    [HideInInspector, Tooltip("归一化用的最大速度，并非实际能达到的最大速度")]
     public float maxSpeed = 25;
     float maxSpeedFactor = 0;
-
 
     [Tooltip("队伍的球门")]
     public Goal teamGoal;
     private int teamID = -1;
-    private string teamName = "煤";
+    protected string teamName = "煤";
     Color teamColor = Color.black;
     Color teamHatColor = Color.gray;
     MeshRenderer mr;
@@ -85,20 +84,22 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     float oldKeepBallTime = 0; // 曾持球时间
     float startKeepBall = 0; // 开始持球时间
-    Vector3 lastPos = Vector3.zero;
+    protected Vector3 lastPos = Vector3.zero;
     private float keepBallDistance = 0; // （曾）持球距离
 
-    private bool isUnbreakable=false;
+    private bool isUnbreakable = false;
     int unbreakbaleNum = 20;
 
     public int TeamID { get => teamID; private set => teamID = value; }
     public string TeamName { get => teamName; private set => teamName = value; }
     public Rigidbody Rig { get => rig; private set => rig = value; }
-    public BehaviorParameters BP { get => bp; private  set => bp = value; }
+    public BehaviorParameters BP { get => bp; private set => bp = value; }
     public bool IsKeepingBall { get => currentBall != null && currentBall.IsOwner(this); }
 
-    public float KeepBallTime {
-        get {
+    public float KeepBallTime
+    {
+        get
+        {
             if (IsKeepingBall)
             {
                 return sm.timer - startKeepBall;
@@ -107,8 +108,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         }
     }
     public float KeepBallDistance { get => keepBallDistance; }
-    public bool IsUnbreakable { get => isUnbreakable; private  set => isUnbreakable = value; }
-    public StageManager SM { get => sm; private  set => sm = value; }
+    public bool IsUnbreakable { get => isUnbreakable; private set => isUnbreakable = value; }
+    public StageManager SM { get => sm; private set => sm = value; }
     public Ball CurrentBall { get => currentBall; private set => currentBall = value; }
     public Vector3 LastPos { get => lastPos; private set => lastPos = value; }
 
@@ -148,7 +149,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         Rig = GetComponent<Rigidbody>();
 
         sm = Utils.GetStage(transform);
-
+        print(teamGoal);
         TeamID = teamGoal.teamID;
         TeamName = GlobalManager.instance.GetTeamName(TeamID);
         teamColor = GlobalManager.instance.GetTeamColor(TeamID);
@@ -400,7 +401,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         actionsOut[2] = Input.GetAxis("JoyR_Horizontal");
         actionsOut[3] = Input.GetAxis("JoyR_Vertical");
 
-        if(JoyName.Length == 0 || JoyName[0].Length == 0)
+        if (JoyName.Length == 0 || JoyName[0].Length == 0)
         {
             //鼠标控制
             Vector3 v3 = Camera.main.WorldToScreenPoint(transform.position);
@@ -438,7 +439,8 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         transform.localRotation = iniRotation;
     }
 
-    public IEnumerator Unbreakable(){
+    public IEnumerator Unbreakable()
+    {
         isUnbreakable = true;
         for (int i = 0; i < unbreakbaleNum; i++)
         {
@@ -449,7 +451,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
 
     public void AddTeam()
     {
-        if(sm.teams.TryGetValue(TeamName,out List<PlayerAgent> teamList))
+        if (sm.teams.TryGetValue(TeamName, out List<PlayerAgent> teamList))
         {
             teamList.Add(this);
         }
@@ -501,7 +503,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     /// </summary>
     /// <param name="g">进的球门</param>
     /// <param name="b">进球门的球</param>
-    public virtual void GoalReward(Goal g,Ball b)
+    public virtual void GoalReward(Goal g, Ball b)
     {
         //g.IsRivalGoal
         //b.lastPlayer
@@ -556,7 +558,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
     /// <param name="playerTransform">撞到的人的transform</param>
     public virtual void BumpPlayerReward(Transform playerTransform)
     {
-        
+
     }
 
     /// <summary>
