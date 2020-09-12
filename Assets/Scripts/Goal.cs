@@ -20,6 +20,11 @@ public class Goal : MonoBehaviour
         sm = Utils.GetStage(transform);
         sm.teamGoals.Add(GlobalManager.instance.GetTeamName(teamID), this);
         mr = GetComponent<MeshRenderer>();
+        ChangeTeam();
+    }
+
+    public void ChangeTeam()
+    {
         mr.material.color = GlobalManager.instance.GetTeamColor(teamID);
         teamName = GlobalManager.instance.GetTeamName(teamID);
     }

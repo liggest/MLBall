@@ -164,7 +164,7 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
         Rig = GetComponent<Rigidbody>();
 
         sm = Utils.GetStage(transform);
-        print(teamGoal);
+        //print(teamGoal);
         TeamID = teamGoal.teamID;
         TeamName = GlobalManager.instance.GetTeamName(TeamID);
         teamColor = GlobalManager.instance.GetTeamColor(TeamID);
@@ -484,6 +484,11 @@ public class PlayerAgent : Agent // <- 注意这里是Agent
             teamList.Add(this);
             sm.teams.Add(TeamName, teamList);
         }
+    }
+
+    public void ChangeTeam()
+    {
+
     }
 
     public void InitRays()

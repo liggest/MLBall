@@ -17,13 +17,13 @@ public class StageManager : MonoBehaviour
     [HideInInspector]
     public int episodes = 0; //场地周期数
 
-    private void Awake()
+    public void Awake()
     {
         Utils.SetStage(this);
         stageDiagonalFactor = 1.0f / maxStageLength;
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         timer += Time.fixedDeltaTime;
     }
