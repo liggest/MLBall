@@ -40,4 +40,9 @@ public class Utils
         return name;
     }
 
+    public static bool EndWithTag(Collider collider,string tag)
+    {
+        return collider.tag.EndsWith(tag);
+    }
+
 }

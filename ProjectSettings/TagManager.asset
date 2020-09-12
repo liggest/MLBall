@@ -8,6 +8,10 @@ TagManager:
   - Wall
   - Goal
   - Agent
+  - Team1Agent
+  - Team2Agent
+  - Team1Goal
+  - Team2Goal
   layers:
   - Default
   - TransparentFX
