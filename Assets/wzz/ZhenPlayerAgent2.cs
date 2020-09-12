@@ -5,28 +5,48 @@ using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Policies;
 
-public class ZhenPlayerAgent : PlayerAgent // <- 注意这里是Agent
+public class ZhenPlayerAgent2 : PlayerAgent // <- 注意这里是Agent
 {
     public float idleDis = 0;
+    public int goalCount = 0;
+    public int stepCount = 0;
     public Vector3 idleVec = Vector3.zero;
+    public override void OnEpisodeBegin()  // 每个周期开始时 重置场景
+    {
+        InitPlayer();
+        SM.InitBalls();
+        SM.InitTimer();
+        Vector3 pos = transform.localPosition;
+        pos.x = Random.Range(-10, 10);
+        pos.z = Random.Range(-10, 10);
+        transform.localPosition = pos;
+        goalCount = 0;
+        stepCount = 0;
+    }
+
+    public override void OnActionReceived(float[] vectorAction)
+    {
+        base.OnActionReceived(vectorAction);
+        stepCount++;
+    }
     public override void GoalReward(Goal g, Ball b)
     {
         //g.IsRivalGoal
         //b.lastPlayer
         //SetReward
-        float factor = g.IsRivalGoal(b) ? 1f : -1f;
-        SetCompareReward(factor, -factor);
+        float factor = (2-stepCount/MaxStep)*(g.IsRivalGoal(b) ? 1f : -1f );
+        CompareReward(factor, 0);
+        ++goalCount;
     }
     public override void GetBallReward()
     {
         idleDis = 0;
         idleVec = Vector3.zero;
-        CompareReward(0.8f, -0.1f);
-        OnEpisodeEnd();
+        CompareReward(1f/MaxStep, 0);
     }
     public override void KeepBallReward()
     {
-        CompareReward(0.005f, 0);
+        CompareReward(0.125f/MaxStep, 0);
     }
     public override void LoseBallReward(Ball b)
     {
@@ -36,11 +56,11 @@ public class ZhenPlayerAgent : PlayerAgent // <- 注意这里是Agent
     }
     public override void ShootReward(float forceValue)
     {
-        AddReward(forceValue / 15);
+        AddReward(0.2f*(forceValue / 15 - 0.2f)/MaxStep);
     }
     public override void BumpWallReward()
     {
-        AddReward(-0.05f);
+        AddReward(-0.2f/MaxStep);
     }
     public override void BumpPlayerReward(Transform playerTransform)
     {
@@ -50,28 +70,28 @@ public class ZhenPlayerAgent : PlayerAgent // <- 注意这里是Agent
         }
         else
         {
-            AddReward(-0.1f);
+            AddReward(-0.05f);
         }
     }
     public override void FallReward()
     {
-        SetReward(-1f);
+        SetReward(-0.5f);
     }
     public override void IdleReward()
     {
         idleDis += Vector3.Distance(transform.localPosition, LastPos);
-        idleVec += transform.localPosition-LastPos;
-        AddReward(idleVec.magnitude / 1e4f - 0.001f);
+        idleVec += transform.localPosition - LastPos;
+        AddReward(-0.5f/MaxStep);
     }
     public override void ObservationReward(int observeType, Vector3 observePos, float distance)
     {
         if (observeType == -3)
         {
-            AddReward(0.001f);
+            AddReward(1f/10*Mathf.Exp(-distance) / MaxStep);
         }
-        else if (observeType == 1)
+        else if (observeType == 1) //ball
         {
-            AddReward(0.001f);
+            AddReward(1f/10*Mathf.Exp(-distance) / MaxStep);
         }
     }
     private void CompareReward(float main, float other)

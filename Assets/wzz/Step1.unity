@@ -122,7 +122,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &657250223
+--- !u!1001 &144028513
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -134,12 +134,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792060, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534673667792062, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 1b8a54441c528497b966f651b5af7516,
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792062, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: drawRays
@@ -150,6 +159,11 @@ PrefabInstance:
       propertyPath: MaxStep
       value: 6000
       objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: drawRays
@@ -159,19 +173,37 @@ PrefabInstance:
         type: 3}
       propertyPath: MaxStep
       value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894231, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2987534674245894233, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 1b8a54441c528497b966f651b5af7516,
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894233, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534674261625274, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 1b8a54441c528497b966f651b5af7516,
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625274, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: isControl
@@ -187,10 +219,20 @@ PrefabInstance:
       propertyPath: MaxStep
       value: 6000
       objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625277, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
@@ -200,7 +242,7 @@ PrefabInstance:
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -45
+      value: -44
       objectReference: {fileID: 0}
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
@@ -225,7 +267,7 @@ PrefabInstance:
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
@@ -245,14 +287,23 @@ PrefabInstance:
     - target: {fileID: 2987534674889018291, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_Name
-      value: Stage1 (3)
+      value: Stage1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958122, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2987534675406958124, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 1b8a54441c528497b966f651b5af7516,
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958124, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: drawRays
@@ -262,6 +313,479 @@ PrefabInstance:
         type: 3}
       propertyPath: MaxStep
       value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571356934902379094, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080543838134395420, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416020241173452463, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842501899563841976, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8277953670794508000, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623794028502834410, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059770362774236101, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a7ea43a5fb1ea401e9a200d8d6619565, type: 3}
+--- !u!1001 &394768435
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 385438577535439924, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792060, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792062, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792062, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: drawRays
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: MaxStep
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: drawRays
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: MaxStep
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894231, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894233, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894233, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625274, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625274, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: isControl
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: drawRays
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: MaxStep
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625277, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 131
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018291, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Name
+      value: Stage1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958122, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958124, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958124, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: drawRays
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: MaxStep
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571356934902379094, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080543838134395420, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416020241173452463, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842501899563841976, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8277953670794508000, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623794028502834410, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059770362774236101, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a7ea43a5fb1ea401e9a200d8d6619565, type: 3}
+--- !u!1001 &540938924
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 385438577535439924, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792060, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792062, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792062, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: drawRays
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: MaxStep
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: drawRays
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: MaxStep
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894231, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894233, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894233, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625274, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625274, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: isControl
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: drawRays
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: MaxStep
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625277, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 131
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018291, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Name
+      value: Stage1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958122, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958124, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958124, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: drawRays
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: MaxStep
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3571356934902379094, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
@@ -475,7 +999,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1001 &1110030839
+--- !u!1001 &1137247473
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -487,12 +1011,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792060, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534673667792062, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 1b8a54441c528497b966f651b5af7516,
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792062, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: drawRays
@@ -503,6 +1036,11 @@ PrefabInstance:
       propertyPath: MaxStep
       value: 6000
       objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: drawRays
@@ -512,19 +1050,37 @@ PrefabInstance:
         type: 3}
       propertyPath: MaxStep
       value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894231, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2987534674245894233, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 1b8a54441c528497b966f651b5af7516,
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894233, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534674261625274, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 1b8a54441c528497b966f651b5af7516,
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625274, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: isControl
@@ -540,10 +1096,20 @@ PrefabInstance:
       propertyPath: MaxStep
       value: 6000
       objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625277, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 45
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
@@ -553,7 +1119,7 @@ PrefabInstance:
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -44
       objectReference: {fileID: 0}
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
@@ -578,7 +1144,7 @@ PrefabInstance:
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
@@ -598,14 +1164,23 @@ PrefabInstance:
     - target: {fileID: 2987534674889018291, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_Name
-      value: Stage1 (1)
+      value: Stage1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958122, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2987534675406958124, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 1b8a54441c528497b966f651b5af7516,
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958124, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: drawRays
@@ -615,6 +1190,11 @@ PrefabInstance:
         type: 3}
       propertyPath: MaxStep
       value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3571356934902379094, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
@@ -721,7 +1301,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1834417535
+--- !u!1001 &1733734814
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -733,12 +1313,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792060, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534673667792062, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 1b8a54441c528497b966f651b5af7516,
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792062, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: drawRays
@@ -749,6 +1338,11 @@ PrefabInstance:
       propertyPath: MaxStep
       value: 6000
       objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: drawRays
@@ -758,19 +1352,37 @@ PrefabInstance:
         type: 3}
       propertyPath: MaxStep
       value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894231, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2987534674245894233, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 1b8a54441c528497b966f651b5af7516,
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894233, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534674261625274, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 1b8a54441c528497b966f651b5af7516,
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625274, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: isControl
@@ -786,10 +1398,20 @@ PrefabInstance:
       propertyPath: MaxStep
       value: 6000
       objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625277, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 45
+      value: 87
       objectReference: {fileID: 0}
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
@@ -799,7 +1421,7 @@ PrefabInstance:
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -45
+      value: -44
       objectReference: {fileID: 0}
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
@@ -824,7 +1446,7 @@ PrefabInstance:
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
@@ -844,14 +1466,23 @@ PrefabInstance:
     - target: {fileID: 2987534674889018291, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_Name
-      value: Stage1 (2)
+      value: Stage1 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958122, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2987534675406958124, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 1b8a54441c528497b966f651b5af7516,
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958124, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: drawRays
@@ -861,6 +1492,479 @@ PrefabInstance:
         type: 3}
       propertyPath: MaxStep
       value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571356934902379094, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080543838134395420, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416020241173452463, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842501899563841976, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8277953670794508000, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623794028502834410, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059770362774236101, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a7ea43a5fb1ea401e9a200d8d6619565, type: 3}
+--- !u!1001 &1847611303
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 385438577535439924, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792060, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792062, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792062, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: drawRays
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: MaxStep
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: drawRays
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: MaxStep
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894231, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894233, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894233, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625274, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625274, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: isControl
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: drawRays
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: MaxStep
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625277, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 88
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018291, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Name
+      value: Stage1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958122, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958124, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958124, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: drawRays
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: MaxStep
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571356934902379094, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080543838134395420, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416020241173452463, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842501899563841976, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8277953670794508000, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623794028502834410, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059770362774236101, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a7ea43a5fb1ea401e9a200d8d6619565, type: 3}
+--- !u!1001 &2016834038
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 385438577535439924, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792060, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792062, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792062, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: drawRays
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: MaxStep
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: drawRays
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: MaxStep
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894231, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894233, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674245894233, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625274, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625274, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: isControl
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: drawRays
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: MaxStep
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674261625277, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018290, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534674889018291, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Name
+      value: Stage1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958122, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: DecisionPeriod
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958124, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958124, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: drawRays
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: MaxStep
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
+        type: 3}
+      propertyPath: feedLocalInfo
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3571356934902379094, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
@@ -920,8 +2024,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 86d88797934ef46368c267e6de553239,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534673667792062, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
@@ -940,7 +2043,7 @@ PrefabInstance:
     - target: {fileID: 2987534673667792063, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: feedLocalInfo
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
@@ -955,7 +2058,7 @@ PrefabInstance:
     - target: {fileID: 2987534674245894230, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: feedLocalInfo
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2987534674245894231, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
@@ -966,8 +2069,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 86d88797934ef46368c267e6de553239,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534674245894233, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
@@ -977,8 +2079,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 86d88797934ef46368c267e6de553239,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534674261625274, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
@@ -1002,7 +2103,7 @@ PrefabInstance:
     - target: {fileID: 2987534674261625276, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: feedLocalInfo
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2987534674261625277, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
@@ -1078,8 +2179,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 86d88797934ef46368c267e6de553239,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2987534675406958124, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
@@ -1098,7 +2198,7 @@ PrefabInstance:
     - target: {fileID: 2987534675406958125, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
       propertyPath: feedLocalInfo
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3571356934902379094, guid: a7ea43a5fb1ea401e9a200d8d6619565,
         type: 3}
