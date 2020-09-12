@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 2987534673667791939}
   - component: {fileID: 2987534673667791936}
   - component: {fileID: 2987534673667791937}
-  - component: {fileID: 1898382156623584580}
+  - component: {fileID: 2987534673667792063}
   - component: {fileID: 2987534673667792062}
   - component: {fileID: 2987534673667792060}
   m_Layer: 0
@@ -164,7 +164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2987534673667792061
 Transform:
   m_ObjectHideFlags: 0
@@ -257,8 +257,8 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 1
---- !u!114 &1898382156623584580
+  m_CollisionDetection: 3
+--- !u!114 &2987534673667792063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2987534673667792058}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5689414fea6e944ee82a56f98341dcbb, type: 3}
+  m_Script: {fileID: 11500000, guid: ad2e0e94f5b434eaaa7b792d7b938338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
@@ -275,75 +275,75 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 6000
   isControl: 0
-  drawRays: 1
+  drawRays: 0
   viewRays:
   - degree: -60
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: -40
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: -20
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: 0
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: 20
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: 40
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: 60
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: -45
     useAgentSettings: 0
     height: 2.5
-    radius: 0.3
+    radius: 0.2
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: 0
     useAgentSettings: 0
     height: 2.5
-    radius: 0.3
+    radius: 0.2
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
-  - degree: 0
+  - degree: 45
     useAgentSettings: 0
     height: 2.5
-    radius: 0.3
+    radius: 0.2
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
@@ -358,8 +358,7 @@ MonoBehaviour:
   maxSpeed: 25
   teamGoal: {fileID: 2987534675279779736}
   idleDis: 0
-  goalCount: 0
-  stepCount: 0
+  getBallCount: 0
   idleVec: {x: 0, y: 0, z: 0}
 --- !u!114 &2987534673667792062
 MonoBehaviour:
@@ -805,7 +804,7 @@ GameObject:
   - component: {fileID: 2987534674245894234}
   - component: {fileID: 2987534674245894235}
   - component: {fileID: 2987534674245894232}
-  - component: {fileID: 4932592180989625276}
+  - component: {fileID: 2987534674245894230}
   - component: {fileID: 2987534674245894233}
   - component: {fileID: 2987534674245894231}
   m_Layer: 0
@@ -907,8 +906,8 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 1
---- !u!114 &4932592180989625276
+  m_CollisionDetection: 3
+--- !u!114 &2987534674245894230
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -917,7 +916,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2987534674245894229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5689414fea6e944ee82a56f98341dcbb, type: 3}
+  m_Script: {fileID: 11500000, guid: ad2e0e94f5b434eaaa7b792d7b938338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
@@ -930,70 +929,70 @@ MonoBehaviour:
   - degree: -60
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: -40
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: -20
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: 0
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: 20
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: 40
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: 60
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: -45
     useAgentSettings: 0
     height: 2.5
-    radius: 0.3
+    radius: 0.2
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: 0
     useAgentSettings: 0
     height: 2.5
-    radius: 0.3
+    radius: 0.2
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
-  - degree: 0
+  - degree: 45
     useAgentSettings: 0
     height: 2.5
-    radius: 0.3
+    radius: 0.2
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
@@ -1008,8 +1007,7 @@ MonoBehaviour:
   maxSpeed: 25
   teamGoal: {fileID: 2987534674742193331}
   idleDis: 0
-  goalCount: 0
-  stepCount: 0
+  getBallCount: 0
   idleVec: {x: 0, y: 0, z: 0}
 --- !u!114 &2987534674245894233
 MonoBehaviour:
@@ -1062,7 +1060,7 @@ GameObject:
   - component: {fileID: 2987534674261625271}
   - component: {fileID: 2987534674261625268}
   - component: {fileID: 2987534674261625272}
-  - component: {fileID: 1139012143169107000}
+  - component: {fileID: 2987534674261625276}
   - component: {fileID: 2987534674261625274}
   - component: {fileID: 2987534674261625277}
   m_Layer: 0
@@ -1071,7 +1069,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2987534674261625273
 Transform:
   m_ObjectHideFlags: 0
@@ -1164,8 +1162,8 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 1
---- !u!114 &1139012143169107000
+  m_CollisionDetection: 3
+--- !u!114 &2987534674261625276
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1174,7 +1172,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2987534674261625269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5689414fea6e944ee82a56f98341dcbb, type: 3}
+  m_Script: {fileID: 11500000, guid: ad2e0e94f5b434eaaa7b792d7b938338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
@@ -1187,70 +1185,70 @@ MonoBehaviour:
   - degree: -60
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: -40
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: -20
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: 0
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: 20
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: 40
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: 60
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: -45
     useAgentSettings: 0
     height: 2.5
-    radius: 0.3
+    radius: 0.2
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: 0
     useAgentSettings: 0
     height: 2.5
-    radius: 0.3
+    radius: 0.2
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
-  - degree: 0
+  - degree: 45
     useAgentSettings: 0
     height: 2.5
-    radius: 0.3
+    radius: 0.2
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
@@ -1265,8 +1263,7 @@ MonoBehaviour:
   maxSpeed: 25
   teamGoal: {fileID: 2987534674742193331}
   idleDis: 0
-  goalCount: 0
-  stepCount: 0
+  getBallCount: 0
   idleVec: {x: 0, y: 0, z: 0}
 --- !u!114 &2987534674261625274
 MonoBehaviour:
@@ -2086,7 +2083,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2987534674889018290}
   m_Layer: 0
-  m_Name: Stage2
+  m_Name: Stage1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2579,7 +2576,7 @@ GameObject:
   - component: {fileID: 2987534675406958129}
   - component: {fileID: 2987534675406958126}
   - component: {fileID: 2987534675406958127}
-  - component: {fileID: 675083826714628061}
+  - component: {fileID: 2987534675406958125}
   - component: {fileID: 2987534675406958124}
   - component: {fileID: 2987534675406958122}
   m_Layer: 0
@@ -2681,8 +2678,8 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 1
---- !u!114 &675083826714628061
+  m_CollisionDetection: 3
+--- !u!114 &2987534675406958125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2691,7 +2688,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2987534675406958120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5689414fea6e944ee82a56f98341dcbb, type: 3}
+  m_Script: {fileID: 11500000, guid: ad2e0e94f5b434eaaa7b792d7b938338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
@@ -2704,70 +2701,70 @@ MonoBehaviour:
   - degree: -60
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: -40
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: -20
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: 0
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: 20
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: 40
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: 60
     useAgentSettings: 1
     height: 0.5
-    radius: 0.3
+    radius: 0.1
     distance: 20
     feedDistance: 1
-    hitPos: {x: -1, y: -1, z: -1}
+    hitPos: {x: 0, y: 0, z: 0}
   - degree: -45
     useAgentSettings: 0
     height: 2.5
-    radius: 0.3
+    radius: 0.2
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
   - degree: 0
     useAgentSettings: 0
     height: 2.5
-    radius: 0.3
+    radius: 0.2
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
-  - degree: 0
+  - degree: 45
     useAgentSettings: 0
     height: 2.5
-    radius: 0.3
+    radius: 0.2
     distance: 20
     feedDistance: 1
     hitPos: {x: -1, y: -1, z: -1}
@@ -2782,8 +2779,7 @@ MonoBehaviour:
   maxSpeed: 25
   teamGoal: {fileID: 2987534675279779736}
   idleDis: 0
-  goalCount: 0
-  stepCount: 0
+  getBallCount: 0
   idleVec: {x: 0, y: 0, z: 0}
 --- !u!114 &2987534675406958124
 MonoBehaviour:
