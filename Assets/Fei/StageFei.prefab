@@ -466,7 +466,7 @@ MonoBehaviour:
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: FeiBehavior
+  m_BehaviorName: FeiBehaviorR
   TeamId: 0
   m_UseChildSensors: 1
 --- !u!114 &3954075284466545335
@@ -1382,7 +1382,7 @@ MonoBehaviour:
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: FeiBehavior
+  m_BehaviorName: FeiBehaviorB
   TeamId: 0
   m_UseChildSensors: 1
 --- !u!114 &3954075284957768323
@@ -1977,7 +1977,7 @@ MonoBehaviour:
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: FeiBehavior
+  m_BehaviorName: FeiBehaviorR
   TeamId: 0
   m_UseChildSensors: 1
 --- !u!114 &3954075285617378949
@@ -2395,7 +2395,7 @@ MonoBehaviour:
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: FeiBehavior
+  m_BehaviorName: FeiBehaviorB
   TeamId: 0
   m_UseChildSensors: 1
 --- !u!114 &3954075285766186875
