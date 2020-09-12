@@ -4836,7 +4836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ed89bedd149a14188f036e4ab76f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 180
+  rotateSpeed: 0
 --- !u!1 &1079649609
 GameObject:
   m_ObjectHideFlags: 0
@@ -9886,6 +9886,7 @@ MonoBehaviour:
   maxStageLength: 20
   timer: 0
   episodes: 0
+  needRandom: 1
 --- !u!4 &2885721919141532630
 Transform:
   m_ObjectHideFlags: 0
