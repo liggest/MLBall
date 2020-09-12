@@ -27,6 +27,7 @@ public class TianAgentTest : PlayerAgent
     static float catchLimit = 3;
 
     float maxStepFactor = 0f;
+    float stepReward = 0f;
 
     public override void OnEpisodeBegin()
     {
@@ -36,7 +37,7 @@ public class TianAgentTest : PlayerAgent
         //{
         //    RM.ActivateAll(this);
         //}
-
+        /*
         transform.localPosition = RandomPosition();
         foreach(Ball b in SM.balls)
         {
@@ -44,12 +45,13 @@ public class TianAgentTest : PlayerAgent
             b.Rig.velocity = RandomPosition();
         }
         transform.localRotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
-
-        RM.AddAgentCount();
+        */
+        //RM.AddAgentCount();
 
         //ballCount = 0;
         //catchCount = 0;
         maxStepFactor = 1.0f / MaxStep;
+        stepReward = 0;
     }
 
     Vector3 RandomPosition()
@@ -60,7 +62,8 @@ public class TianAgentTest : PlayerAgent
     public override void OnActionReceived(float[] vectorAction)
     {
         base.OnActionReceived(vectorAction);
-        AddReward(-maxStepFactor);
+        //AddReward(-maxStepFactor);
+        stepReward -= maxStepFactor;
     }
 
     public override void ObservationReward(int observeType, Vector3 observePos, float distance)
@@ -154,7 +157,7 @@ public class TianAgentTest : PlayerAgent
     {
         if (g.IsRivalGoal(b))
         {
-            AddReward(1.0f);
+            AddReward(1.0f + stepReward);
             /*
             foreach(string team in SM.teams.Keys)
             {
