@@ -33,7 +33,7 @@ public class FeiPlayerAgent : PlayerAgent
 
     public override void ShootReward(float forceValue)
     {
-        AddReward(0.45f);
+        AddReward(0.32f);
     }
 
     public override void KeepBallReward()
