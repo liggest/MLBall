@@ -16,7 +16,7 @@ public class TianRaySensorAgent : PlayerAgent
     {
         base.OnEpisodeBegin();
         timeMinus = 0;
-        transform.localPosition /= 2.0f;
+        //transform.localPosition /= 2.0f;
     }
 
     public override void OnActionReceived(float[] vectorAction)
