@@ -16,10 +16,10 @@ public class ZhenPlayerAgent2 : PlayerAgent // <- 注意这里是Agent
         InitPlayer();
         SM.InitBalls();
         SM.InitTimer();
-        Vector3 pos = transform.localPosition;
-        pos.x = Random.Range(-10, 10);
-        pos.z = Random.Range(-10, 10);
-        transform.localPosition = pos;
+        // Vector3 pos = transform.localPosition;
+        // pos.x = Random.Range(-10f, 10f);
+        // pos.z = Random.Range(-10f, 10f);
+        // transform.localPosition = pos;
         goalCount = 0;
         stepCount = 0;
     }
